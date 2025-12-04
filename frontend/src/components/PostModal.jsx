@@ -54,6 +54,13 @@ const PostModal = ({ show, setShow }) => {
 
     //  useDispatch
     dispatch(addDaak(postData));
+    setShow(false);
+    // setCaption("");
+    // setImage(null);
+    // setImagePreview(null);
+    // setZoomIn(false);
+    // setRange(100);
+    // setEditFilter(filters.original);
   };
 
   return (

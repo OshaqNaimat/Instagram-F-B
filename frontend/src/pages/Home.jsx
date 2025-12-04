@@ -5,9 +5,18 @@ import Followers from "../components/Followers";
 import PostModal from "../components/PostModal";
 import Stories from "../components/Stories";
 import Hmessages from "../components/Hmessages";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { getDaak } from "../features/posts/postSlice";
 
 const Home = () => {
   const [show, setShow] = useState(false);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getDaak);
+  }, []);
+
   return (
     <>
       {/* <Hmessages className="fixed right-5 bottom-5" /> */}
