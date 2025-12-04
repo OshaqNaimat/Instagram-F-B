@@ -7,7 +7,7 @@ import Slider from "@mui/material/Slider";
 import { RiSendPlaneFill } from "react-icons/ri";
 import { FiBookmark } from "react-icons/fi";
 
-const Posts = () => {
+const Posts = ({ caption, image, filter }) => {
   return (
     <>
       <div className="container rounded-md shadow-lg w-[80%] mt-10 mx-auto relative select-none overflow-hidden">
@@ -33,11 +33,7 @@ const Posts = () => {
           <BsThreeDots size={25} className="cursor-pointer" />
         </div>
         <div className="relative">
-          <img
-            className="w-full object-fit-cover "
-            src="https://www.zdnet.com/a/img/resize/a0dcec40a8cd8d2e1b3a9e12a05c2819622d20be/2021/07/19/8a337c80-5ed6-43a1-98fb-b981d420890f/programming-languages-shutterstock-1680857539.jpg?auto=webp&fit=crop&height=1200&width=1200"
-            alt=""
-          />
+          <img className="w-full object-fit-cover " src={image} alt="" />
         </div>
         {/* <div className="absolute bottom-3 right-3 ">
                  <IoVolumeMute  size={25} className='bg-black/50 p-1 cursor-pointer text-white rounded-full  '/> */}
@@ -79,7 +75,7 @@ const Posts = () => {
         <p className="text-gray p-2 ">
           {" "}
           <span className="font-semibold mx-1">Username</span>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed, quos.
+          {caption}
         </p>
         <div className="flex items-cneter p-2 rounded-md">
           <input

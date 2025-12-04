@@ -35,7 +35,7 @@ const Home = () => {
         <div className="col-span-4 md:col-span-3 lg:col-span-2 p-3 rounded-md">
           {/* <Stories /> */}
           {post?.map((item, index) => {
-            <Posts key={item._id} />;
+            return <Posts {...item} key={item._id} />;
           })}
         </div>
 
