@@ -6,7 +6,7 @@ import PostModal from "../components/PostModal";
 import Stories from "../components/Stories";
 import Hmessages from "../components/Hmessages";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getDaak } from "../features/posts/postSlice";
 
 const Home = () => {
@@ -16,6 +16,9 @@ const Home = () => {
   useEffect(() => {
     dispatch(getDaak);
   }, []);
+
+  const { post, postLoading, postError, postSuccess, postMessage } =
+    useSelector((state) => state.daak);
 
   return (
     <>
@@ -31,8 +34,9 @@ const Home = () => {
 
         <div className="col-span-4 md:col-span-3 lg:col-span-2 p-3 rounded-md">
           {/* <Stories /> */}
-          <Posts />
-          <Posts />
+          {post?.map((item, index) => {
+            <Posts key={item._id} />;
+          })}
         </div>
 
         {/* Followers */}
