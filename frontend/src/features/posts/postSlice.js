@@ -61,7 +61,7 @@ export const postSlice = createSlice({
       state.postMessage = action.payload;
       state.post = [];
     });
-    builder.addCase(getDaak.fullfilled, (state, action) => {
+    builder.addCase(getDaak.fulfilled, (state, action) => {
       state.postSuccess = true;
       state.postLoading = false;
       state.posts = action.payload;
