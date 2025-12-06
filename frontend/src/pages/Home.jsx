@@ -8,9 +8,11 @@ import Hmessages from "../components/Hmessages";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getDaak } from "../features/posts/postSlice";
+import ProfilePage from "../components/ProfilePage";
 
 const Home = () => {
   const [show, setShow] = useState(false);
+  const [ppage, setPpage] = useState(false);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -23,11 +25,18 @@ const Home = () => {
   return (
     <>
       {/* <Hmessages className="fixed right-5 bottom-5" /> */}
+
       <PostModal show={show} setShow={setShow} />
       <div className="grid grid-cols-4 min-h-screen">
         {/* Sidebar */}
         <div className="hidden md:block md:col-span-1 lg:col-span-1">
-          <Sidebar show={show} setShow={setShow} isMobile={false} />
+          <Sidebar
+            show={show}
+            setShow={setShow}
+            ppage={ppage}
+            setPpage={setPpage}
+            isMobile={false}
+          />
         </div>
 
         {/* Posts */}

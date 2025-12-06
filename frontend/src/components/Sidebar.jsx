@@ -1,7 +1,7 @@
 import React from "react";
 import sidebarItems from "./Data";
 
-const Sidebar = ({ isMobile, show, setShow }) => {
+const Sidebar = ({ isMobile, show, setShow, setPpage, ppage }) => {
   const mobileVisibleTitles = [
     "Home",
     "Explore",
@@ -40,15 +40,14 @@ const Sidebar = ({ isMobile, show, setShow }) => {
       >
         {filteredItems.map((item) => (
           <li
-            onClick={() => {
-              if (item.title == "Create") {
-                setShow(true);
-              }
-            }}
             key={item.id}
+            onClick={() => {
+              if (item.title === "Create") setShow(true);
+              if (item.title === "Profile") setPpage(true);
+            }}
             className={`flex items-center md:justify-center lg:justify-start gap-3 py-3 px-2 my-2 text-[20px] cursor-pointer
-            rounded-md hover:bg-gray-200 duration-100 active:scale-95
-            ${isMobile && "!my-0"}`}
+              rounded-md hover:bg-gray-200 duration-100 active:scale-95
+              ${isMobile && "!my-0"}`}
           >
             {item.icon}
 
