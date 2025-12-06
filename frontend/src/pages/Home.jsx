@@ -14,10 +14,10 @@ const Home = () => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getDaak);
+    dispatch(getDaak());
   }, []);
 
-  const { post, postLoading, postError, postSuccess, postMessage } =
+  const { posts, postLoading, postError, postSuccess, postMessage } =
     useSelector((state) => state.daak);
 
   return (
@@ -33,8 +33,8 @@ const Home = () => {
         {/* Posts */}
 
         <div className="col-span-4 md:col-span-3 lg:col-span-2 p-3 rounded-md">
-          {/* <Stories /> */}
-          {post?.map((item, index) => {
+          <Stories />
+          {posts?.map((item, index) => {
             return <Posts {...item} key={item._id} />;
           })}
         </div>
