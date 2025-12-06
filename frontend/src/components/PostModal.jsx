@@ -224,7 +224,7 @@ const PostModal = ({ show, setShow }) => {
                     <img
                       src="https://cdn-icons-png.flaticon.com/256/1177/1177568.png"
                       alt=""
-                      className="w[32px] h-[32px] rounded-full "
+                      className="w[32px] h-8 rounded-full "
                     />
                     <h5 className="font-semibold ">Username</h5>
                   </div>
