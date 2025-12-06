@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { TbSettingsFilled } from "react-icons/tb";
 import { IoAddCircle, IoAddCircleOutline } from "react-icons/io5";
-import { FaRegBookmark, FaTable } from "react-icons/fa6";
+import { FaCamera, FaRegBookmark, FaTable } from "react-icons/fa6";
 import { BsPersonSquare } from "react-icons/bs";
 
 const ProfilePage = () => {
@@ -60,17 +60,27 @@ const ProfilePage = () => {
         </div>
       </div>
       <div className="flex w-[90%] justify-around mx-auto   ">
-        <div className="border-2 w-[50px] flex justify-center border-t-0 border-l-0 border-r-0 border-b-black">
+        <div className="border-0 w-[50px] flex justify-center border-t-0 border-l-0 border-r-0 border-b-3">
           <FaTable size={30} />
         </div>
-        <div className="border-2 w-[50px] flex justify-center border-t-0 border-l-0 border-r-0 border-b-black">
+        <div className="border-2 w-[50px] flex justify-center border-t-0 border-l-0 border-r-0 border-b-3">
           <FaRegBookmark size={30} />
         </div>
-        <div className="border-2 w-[50px] flex justify-center border-t-0 border-l-0 border-r-0 border-b-black">
+        <div className="border-2 w-[50px] flex justify-center border-t-0 border-l-0 border-r-0 border-b-3">
           <BsPersonSquare size={30} />
         </div>
       </div>
       <hr className="w-[90%] mx-auto" />
+      <div className="flex-col flex gap-4 p-10 items-center justify-center ">
+        <FaCamera size={50} className="cursor-pointer" />
+        <h2 className="text-5xl font-bold">Share Photos</h2>
+        <p className="text-gray-700">
+          When you share photos, they will appear on your profile.
+        </p>
+        <h3 className="cursor-pointer text-blue-600 font-semibold border-0  border-t-0 border-e-0 border-l-0 hover:text-blue-500 hover:border-b-3 duration-75">
+          Share your first photo
+        </h3>
+      </div>
     </>
   );
 };
