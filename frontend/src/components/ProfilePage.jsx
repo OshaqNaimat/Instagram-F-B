@@ -73,6 +73,7 @@ const ProfilePage = () => {
       <hr className="w-[90%] mx-auto" />
       <div className="flex-col flex gap-4 p-10 items-center justify-center ">
         <FaCamera size={50} className="cursor-pointer" />
+
         <h2 className="text-5xl font-bold">Share Photos</h2>
         <p className="text-gray-700">
           When you share photos, they will appear on your profile.
