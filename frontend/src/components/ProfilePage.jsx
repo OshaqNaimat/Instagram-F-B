@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { TbSettingsFilled } from "react-icons/tb";
 import { IoAddCircle, IoAddCircleOutline } from "react-icons/io5";
+import { FaRegBookmark, FaTable } from "react-icons/fa6";
+import { BsPersonSquare } from "react-icons/bs";
 
 const ProfilePage = () => {
+  const [active, setActive] = useState(false);
   return (
     <>
       <div className="w-full p-4 sm:p-6">
@@ -41,23 +44,33 @@ const ProfilePage = () => {
         </div>
 
         <div className="flex flex-col sm:flex-row justify-center gap-3 mt-6">
-          <button className="bg-gray-400 text-white p-3 outline-0 w-full sm:w-[220px] lg:w-[300px] cursor-pointer rounded-2xl hover:bg-gray-500 transition">
+          <button className="bg-gray-200 font-semibold text-black p-3 outline-0 w-full sm:w-[220px] lg:w-[300px] cursor-pointer rounded-2xl hover:bg-gray-400 transition">
             Edit Profile
           </button>
 
-          <button className="bg-gray-400 text-white p-3 outline-0 w-full sm:w-[220px] lg:w-[300px] cursor-pointer rounded-2xl hover:bg-gray-500 transition">
+          <button className="bg-gray-200 font-semibold text-black p-3 outline-0 w-full sm:w-[220px] lg:w-[300px] cursor-pointer rounded-2xl hover:bg-gray-400 transition">
             View Archive
           </button>
         </div>
       </div>
-      <div className="flex justify-center">
-        <IoAddCircleOutline size={100} />
-        <IoAddCircleOutline size={100} />
-        <IoAddCircleOutline size={100} />
-        <IoAddCircleOutline size={100} />
-        <IoAddCircleOutline size={100} />
-        <IoAddCircleOutline size={100} />
+      <div className="flex justify-center items-center mb-8">
+        <div className="flex-col items-center justify-center cursor-pointer">
+          <IoAddCircleOutline size={100} />
+          <h5 className="text-center">New</h5>
+        </div>
       </div>
+      <div className="flex w-[90%] justify-around mx-auto   ">
+        <div className="border-2 w-[50px] flex justify-center border-t-0 border-l-0 border-r-0 border-b-black">
+          <FaTable size={30} />
+        </div>
+        <div className="border-2 w-[50px] flex justify-center border-t-0 border-l-0 border-r-0 border-b-black">
+          <FaRegBookmark size={30} />
+        </div>
+        <div className="border-2 w-[50px] flex justify-center border-t-0 border-l-0 border-r-0 border-b-black">
+          <BsPersonSquare size={30} />
+        </div>
+      </div>
+      <hr className="w-[90%] mx-auto" />
     </>
   );
 };
