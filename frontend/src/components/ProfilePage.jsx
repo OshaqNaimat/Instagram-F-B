@@ -31,13 +31,15 @@ const ProfilePage = () => {
           </p>
         </div>
       </div>
-      <button className="bg-gray-400 text-white p-3 w-[200px] cursor-pointer rounded-md hover:bg-gray-500">
-        Edit Profile
-      </button>
+      <div className="flex justify-center gap-4">
+        <button className="bg-gray-400 text-white p-3 w-[300px] cursor-pointer rounded-2xl hover:bg-gray-500">
+          Edit Profile
+        </button>
 
-      <button className="bg-gray-400 text-white p-3 w-[200px] cursor-pointer rounded-md hover:bg-gray-500">
-        Edit Profile
-      </button>
+        <button className="bg-gray-400 text-white p-3 w-[300px] cursor-pointer rounded-2xl hover:bg-gray-500">
+          View Archive
+        </button>
+      </div>
     </div>
   );
 };
