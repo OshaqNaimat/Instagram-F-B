@@ -1,51 +1,64 @@
 import React from "react";
 import { TbSettingsFilled } from "react-icons/tb";
+import { IoAddCircle, IoAddCircleOutline } from "react-icons/io5";
 
 const ProfilePage = () => {
   return (
-    <div className="w-full p-4 sm:p-6">
-      <div className="flex flex-col sm:flex-row w-full sm:w-[80%] lg:w-[60%] mx-auto items-center sm:items-start gap-4">
-        <img
-          className="w-[130px] h-[130px] sm:w-[180px] sm:h-[180px] lg:w-[200px] lg:h-[200px] rounded-full object-cover"
-          src="https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg?semt=ais_hybrid&w=740&q=80"
-          alt=""
-        />
+    <>
+      <div className="w-full p-4 sm:p-6">
+        <div className="flex flex-col sm:flex-row w-full sm:w-[80%] lg:w-[60%] mx-auto items-center sm:items-start gap-4">
+          <img
+            className="w-[130px] h-[130px] sm:w-[180px] sm:h-[180px] lg:w-[200px] lg:h-[200px] rounded-full object-cover"
+            src="https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg?semt=ais_hybrid&w=740&q=80"
+            alt=""
+          />
 
-        <div className="flex flex-col text-center sm:text-left w-full">
-          <div className="flex items-center justify-center sm:justify-start">
-            <h2 className="font-semibold text-xl sm:text-2xl me-3">Username</h2>
-            <TbSettingsFilled
-              size={26}
-              className="cursor-pointer hover:scale-105 transition"
-            />
+          <div className="flex flex-col text-center sm:text-left w-full">
+            <div className="flex items-center justify-center sm:justify-start">
+              <h2 className="font-semibold text-xl sm:text-2xl me-3">
+                Username
+              </h2>
+              <TbSettingsFilled
+                size={26}
+                className="cursor-pointer hover:scale-105 transition"
+              />
+            </div>
+
+            <h5 className="my-2 text-sm sm:text-base">FullName</h5>
+
+            <div className="flex justify-center sm:justify-start gap-3 mb-3">
+              <p className="text-sm">0 Posts</p>
+              <p className="text-sm">0 Followers</p>
+              <p className="text-sm">0 Following</p>
+            </div>
+
+            <p className="text-sm leading-relaxed">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio et
+              illum, unde fugit magnam, provident similique est repudiandae
+              tenetur voluptatum ex ad architecto expedita asperiores nihil
+            </p>
           </div>
+        </div>
 
-          <h5 className="my-2 text-sm sm:text-base">FullName</h5>
+        <div className="flex flex-col sm:flex-row justify-center gap-3 mt-6">
+          <button className="bg-gray-400 text-white p-3 outline-0 w-full sm:w-[220px] lg:w-[300px] cursor-pointer rounded-2xl hover:bg-gray-500 transition">
+            Edit Profile
+          </button>
 
-          <div className="flex justify-center sm:justify-start gap-3 mb-3">
-            <p className="text-sm">0 Posts</p>
-            <p className="text-sm">0 Followers</p>
-            <p className="text-sm">0 Following</p>
-          </div>
-
-          <p className="text-sm leading-relaxed">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio et
-            illum, unde fugit magnam, provident similique est repudiandae
-            tenetur voluptatum ex ad architecto expedita asperiores nihil
-          </p>
+          <button className="bg-gray-400 text-white p-3 outline-0 w-full sm:w-[220px] lg:w-[300px] cursor-pointer rounded-2xl hover:bg-gray-500 transition">
+            View Archive
+          </button>
         </div>
       </div>
-
-      <div className="flex flex-col sm:flex-row justify-center gap-3 mt-6">
-        <button className="bg-gray-400 text-white p-3 outline-0 w-full sm:w-[220px] lg:w-[300px] cursor-pointer rounded-2xl hover:bg-gray-500 transition">
-          Edit Profile
-        </button>
-
-        <button className="bg-gray-400 text-white p-3 outline-0 w-full sm:w-[220px] lg:w-[300px] cursor-pointer rounded-2xl hover:bg-gray-500 transition">
-          View Archive
-        </button>
+      <div className="flex justify-center">
+        <IoAddCircleOutline size={100} />
+        <IoAddCircleOutline size={100} />
+        <IoAddCircleOutline size={100} />
+        <IoAddCircleOutline size={100} />
+        <IoAddCircleOutline size={100} />
+        <IoAddCircleOutline size={100} />
       </div>
-    </div>
+    </>
   );
 };
 
