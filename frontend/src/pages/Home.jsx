@@ -9,10 +9,11 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getDaak } from "../features/posts/postSlice";
 import ProfilePage from "../components/ProfilePage";
+import AllSuggestedPeoples from "../components/AllSuggestedPeoples";
 
 const Home = () => {
   const [show, setShow] = useState(false);
-  const [ppage, setPpage] = useState(false);
+  const [allSuggestions, setAllSuggestions] = useState(false);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -25,32 +26,35 @@ const Home = () => {
   return (
     <>
       {/* <Hmessages className="fixed right-5 bottom-5" /> */}
-
+      {/* <div className="min-h-screen backdrop-blur-md absolute z-100 w-full"> */}
+      <AllSuggestedPeoples
+        allSuggestions={allSuggestions}
+        setAllSuggestion={setAllSuggestions}
+      />
+      {/* </div> */}
       <PostModal show={show} setShow={setShow} />
       <div className="grid grid-cols-4 min-h-screen">
         {/* Sidebar */}
         <div className="hidden md:block md:col-span-1 lg:col-span-1">
-          <Sidebar
-            show={show}
-            setShow={setShow}
-            ppage={ppage}
-            setPpage={setPpage}
-            isMobile={false}
-          />
+          <Sidebar show={show} setShow={setShow} isMobile={false} />
         </div>
 
         {/* Posts */}
 
         <div className="col-span-4 md:col-span-3 lg:col-span-2 p-3 rounded-md">
-          <Stories />
+          {/* <Stories /> */}
           {posts?.map((item, index) => {
             return <Posts {...item} key={item._id} />;
           })}
         </div>
 
         {/* Followers */}
+
         <div className="hidden lg:block lg:col-span-1 m-3">
-          <Followers />
+          <Followers
+            allSuggestions={allSuggestions}
+            setAllSuggestion={setAllSuggestions}
+          />
         </div>
 
         {/* Bottom Navbar for small screens */}

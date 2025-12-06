@@ -3,7 +3,7 @@ import { BsThreeDots } from "react-icons/bs";
 import { GoDotFill } from "react-icons/go";
 import Fpeoples from "./Fpeoples";
 
-const Followers = () => {
+const Followers = ({ allSuggestions, setAllSuggestion }) => {
   return (
     <>
       <div className="container shadow-lg rounded-md mt-9 p-3">
@@ -29,7 +29,12 @@ const Followers = () => {
 
         <div className="flex my-2 justify-between">
           <h4 className="text-gray-500 font-semibold">Suggested for you</h4>
-          <p className="font-semibold cursor-pointer">See All</p>
+          <p
+            onClick={() => setAllSuggestion(true)}
+            className="font-semibold cursor-pointer"
+          >
+            See All
+          </p>
         </div>
 
         <Fpeoples />
