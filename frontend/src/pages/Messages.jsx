@@ -46,6 +46,14 @@ const Messages = () => {
               Requests
             </h5>
           </div>
+          <div className="flex   cursor-pointer">
+            <img
+              className="w-[60px]  h-[60px] rounded-full"
+              src="https://cdn-icons-png.flaticon.com/256/12225/12225935.png"
+              alt=""
+            />
+            <h4>Username</h4>
+          </div>
         </div>
         {/* messages section */}
         <div className="col-span-7">
