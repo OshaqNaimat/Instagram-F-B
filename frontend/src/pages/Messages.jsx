@@ -4,13 +4,14 @@ import { IoIosArrowDown } from "react-icons/io";
 import { IoArrowDown, IoSearch } from "react-icons/io5";
 import { CiChat2 } from "react-icons/ci";
 import Cpeoples from "../components/Cpeoples";
+import { LuSend } from "react-icons/lu";
 
 const Messages = () => {
   const [chatPeoples, setChatPeoples] = useState("");
   return (
     <>
       {/* chat section */}
-      <div className="grid grid-cols-10 select-none">
+      <div className="grid grid-cols-10 select-none ">
         <div className="col-span-3 p-8">
           <div className="flex justify-between items-center">
             <div className="flex gap-2 items-center justify-center cursor-pointer">
@@ -42,11 +43,31 @@ const Messages = () => {
             />
             <p className="text-sm text-gray-500 m-0 ">Your Note</p>
           </div>
-          <Cpeoples />
+          <div className="flex justify-between my-2">
+            <h3 className="font-bold text-xl">Messages</h3>
+            <h5 className="font-bold  text-lg text-gray-500 cursor-pointer hover:border-b-2">
+              Requests
+            </h5>
+          </div>
+          <div className="overflow-y-scroll h-[70vh]">
+            <Cpeoples />
+            <Cpeoples />
+            <Cpeoples />
+            <Cpeoples />
+            <Cpeoples />
+            <Cpeoples />
+            <Cpeoples />
+            <Cpeoples />
+          </div>
         </div>
         {/* messages section */}
-        <div className="col-span-7">
-          <h1>Lorem, ipsum.</h1>
+        <div className="col-span-7 gap-2 flex flex-col items-center justify-center">
+          <LuSend size={60} />
+          <h4 className="font-semibold text-xl">Your messages</h4>
+          <p className="text-gray-500">Send a message to start a chat.</p>
+          <button className="p-1 bg-blue-500 text-white rounded-md cursor-pointer hover:bg-blue-700 transition">
+            Send message
+          </button>
         </div>
       </div>
     </>
