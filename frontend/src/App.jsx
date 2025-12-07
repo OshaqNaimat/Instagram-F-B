@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ProfilePage from "./components/ProfilePage";
+import Messages from "./pages/Messages";
 const App = () => {
   return (
     <Router>
@@ -13,6 +14,7 @@ const App = () => {
         <Route path="/Home" element={<Home />} />
         <Route path="/register" element={<Register />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/message" element={<Messages />} />
       </Routes>
     </Router>
   );
