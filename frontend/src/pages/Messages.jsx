@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaPenToSquare } from "react-icons/fa6";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoArrowDown, IoSearch } from "react-icons/io5";
 import { CiChat2 } from "react-icons/ci";
+import Cpeoples from "../components/Cpeoples";
 
 const Messages = () => {
+  const [chatPeoples, setChatPeoples] = useState("");
   return (
     <>
       {/* chat section */}
@@ -40,20 +42,7 @@ const Messages = () => {
             />
             <p className="text-sm text-gray-500 m-0 ">Your Note</p>
           </div>
-          <div className="flex justify-between my-2">
-            <h3 className="font-bold text-xl">Messages</h3>
-            <h5 className="font-bold  text-lg text-gray-500 cursor-pointer hover:border-b-2">
-              Requests
-            </h5>
-          </div>
-          <div className="flex   cursor-pointer">
-            <img
-              className="w-[60px]  h-[60px] rounded-full"
-              src="https://cdn-icons-png.flaticon.com/256/12225/12225935.png"
-              alt=""
-            />
-            <h4>Username</h4>
-          </div>
+          <Cpeoples />
         </div>
         {/* messages section */}
         <div className="col-span-7">
