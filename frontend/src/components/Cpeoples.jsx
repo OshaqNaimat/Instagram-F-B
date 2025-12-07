@@ -1,20 +1,18 @@
-import React from "react";
-
-const Cpeoples = () => {
+const Cpeoples = ({ data }) => {
   return (
-    <>
-      <div className="flex item-center gap-4 cursor-pointer my-3">
-        <img
-          className="w-[60px]  h-[60px] rounded-full"
-          src="https://cdn-icons-png.flaticon.com/256/12225/12225935.png"
-          alt=""
-        />
-        <div className="">
-          <h4>Username</h4>
-          <p>User . Message . time</p>
-        </div>
+    <div className="flex items-center gap-4 cursor-pointer my-3">
+      <img
+        className="w-[60px] h-[60px] rounded-full"
+        src="https://cdn-icons-png.flaticon.com/256/12225/12225935.png"
+        alt=""
+      />
+
+      {/* Username hides automatically on small screen (your Instagram behavior) */}
+      <div className="hidden lg:block">
+        <h4 className="font-semibold">{data.username}</h4>
+        <p className="text-sm text-gray-500">{data.message}</p>
       </div>
-    </>
+    </div>
   );
 };
 

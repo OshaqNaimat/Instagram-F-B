@@ -7,7 +7,15 @@ import Cpeoples from "../components/Cpeoples";
 import { LuSend } from "react-icons/lu";
 
 const Messages = () => {
-  const [chatPeoples, setChatPeoples] = useState("");
+  const [chatPeoples, setChatPeoples] = useState([
+    { id: 1, username: "Ali", message: "Salam" },
+    { id: 2, username: "Ahmed", message: "Salam" },
+    { id: 3, username: "Usman", message: "Salam" },
+    { id: 5, username: "Abdullah", message: "Salam" },
+    { id: 6, username: "Murad", message: "Salam" },
+    { id: 7, username: "Yosuf", message: "Salam" },
+    { id: 8, username: "Rashid", message: "Salam" },
+  ]);
   return (
     <>
       {/* chat section */}
@@ -50,14 +58,11 @@ const Messages = () => {
             </h5>
           </div>
           <div className="overflow-y-scroll h-[70vh]">
-            <Cpeoples />
-            <Cpeoples />
-            <Cpeoples />
-            <Cpeoples />
-            <Cpeoples />
-            <Cpeoples />
-            <Cpeoples />
-            <Cpeoples />
+            {/* <div className="overflow-y-scroll h-[70vh]"> */}
+            {chatPeoples.map((item) => (
+              <Cpeoples key={item.id} data={item} />
+            ))}
+            {/* </div> */}
           </div>
         </div>
         {/* messages section */}
