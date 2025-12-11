@@ -1,6 +1,6 @@
 const Cpeoples = ({ data }) => {
   return (
-    <div className="flex items-center gap-4 cursor-pointer my-3">
+    <div className="flex items-center gap-4 cursor-pointer my-3 hover:bg-gray-200 p-2 rounded-md transition">
       <img
         className="w-[60px] h-[60px] rounded-full"
         src="https://cdn-icons-png.flaticon.com/256/12225/12225935.png"
