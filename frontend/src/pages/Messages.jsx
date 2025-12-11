@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { FaPenToSquare } from "react-icons/fa6";
-import { IoIosArrowDown } from "react-icons/io";
-import { IoSearch } from "react-icons/io5";
+import { IoIosArrowDown, IoMdInformationCircleOutline } from "react-icons/io";
+import { IoCall, IoCallOutline, IoSearch } from "react-icons/io5";
 import { LuSend } from "react-icons/lu";
 import Cpeoples from "../components/Cpeoples";
+import { BsCameraVideo } from "react-icons/bs";
 
 /**
  * Instagram‑style responsive layout:
@@ -82,8 +83,8 @@ const Messages = () => {
         </button>
       </div> */}
       {/* one person chat page */}
-      <div className="">
-        <div className="flex p-2 justify-between border-b gap-3">
+      <div className="min-vh-screen ">
+        <div className="flex p-2 justify-between items-center border-b gap-3">
           <img
             className="w-[60px] h-[60px] rounded-full object-cover"
             src="https://img.freepik.com/free-photo/portrait-white-man-isolated_53876-40306.jpg?semt=ais_hybrid&w=740&q=80"
@@ -93,8 +94,12 @@ const Messages = () => {
             <h4 className="font-semibold">Username</h4>
             <p className="text-gray-500 text-[11px]">Active 2hr ago</p>
           </div>
+          <div className="flex items-center gap-4 ">
+            <IoCallOutline size={25} className="" />
+            <BsCameraVideo size={25} className="" />
+            <IoMdInformationCircleOutline size={25} className="" />
+          </div>
         </div>
-        <div className=""></div>
       </div>
     </div>
   );
