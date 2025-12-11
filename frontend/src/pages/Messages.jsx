@@ -83,8 +83,8 @@ const Messages = () => {
         </button>
       </div> */}
       {/* one person chat page */}
-      <div className="min-vh-screen ">
-        <div className="flex p-2 justify-between items-center border-b gap-3">
+      <div className="min-vh-screen w-full">
+        <div className="flex p-2 justify-between w-full items-center border-b gap-3">
           <img
             className="w-[60px] h-[60px] rounded-full object-cover"
             src="https://img.freepik.com/free-photo/portrait-white-man-isolated_53876-40306.jpg?semt=ais_hybrid&w=740&q=80"
@@ -98,6 +98,17 @@ const Messages = () => {
             <IoCallOutline size={25} className="" />
             <BsCameraVideo size={25} className="" />
             <IoMdInformationCircleOutline size={25} className="" />
+          </div>
+        </div>
+        <div className="flex flex-col items-center justify-center text-center w-full h-[80vh]">
+          <img
+            className="rounded-full w-[120px] h-[120px] object-contain"
+            src="https://img.freepik.com/free-photo/portrait-white-man-isolated_53876-40306.jpg?semt=ais_hybrid&w=740&q=80"
+            alt=""
+          />
+          <div className="">
+            <h2 className="font-bold text-xl">Username</h2>
+            <p className="text-gray-500 text-[11px]">Fullname . Instagram</p>
           </div>
         </div>
       </div>
