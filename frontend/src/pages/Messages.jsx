@@ -74,41 +74,50 @@ const Messages = () => {
       </div>
 
       {/* RIGHT PANEL */}
-      {/* <div className="col-span-12 sm:col-span-8 flex flex-col items-center justify-center text-center px-4">
-        <LuSend size={60} className="text-gray-600" />
+      <div className="col-span-12 sm:col-span-8 flex flex-col items-center justify-center text-center px-4">
+        {/* <LuSend size={60} className="text-gray-600" />
         <h4 className="font-semibold text-xl mt-4">Your messages</h4>
         <p className="text-gray-500 text-sm">Send a message to start a chat.</p>
         <button className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition">
           Send message
-        </button>
-      </div> */}
-      {/* one person chat page */}
-      <div className="min-vh-screen w-full">
-        <div className="flex p-2 justify-between w-full items-center border-b gap-3">
-          <img
-            className="w-[60px] h-[60px] rounded-full object-cover"
-            src="https://img.freepik.com/free-photo/portrait-white-man-isolated_53876-40306.jpg?semt=ais_hybrid&w=740&q=80"
-            alt=""
-          />
-          <div className="">
-            <h4 className="font-semibold">Username</h4>
-            <p className="text-gray-500 text-[11px]">Active 2hr ago</p>
+        </button> */}
+        {/* one person chat page */}
+        <div className="h-full w-full">
+          <div className="flex p-2 justify-between w-full items-center border-b gap-3">
+            <img
+              className="w-[60px] h-[60px] rounded-full object-cover"
+              src="https://img.freepik.com/free-photo/portrait-white-man-isolated_53876-40306.jpg?semt=ais_hybrid&w=740&q=80"
+              alt=""
+            />
+            <div className="">
+              <h4 className="font-semibold">Username</h4>
+              <p className="text-gray-500 text-[11px]">Active 2hr ago</p>
+            </div>
+            <div className="flex items-center gap-4 ">
+              <IoCallOutline size={25} />
+              <BsCameraVideo size={25} />
+              <IoMdInformationCircleOutline size={25} />
+            </div>
           </div>
-          <div className="flex items-center gap-4 ">
-            <IoCallOutline size={25} className="" />
-            <BsCameraVideo size={25} className="" />
-            <IoMdInformationCircleOutline size={25} className="" />
+          <div className="flex flex-col items-center justify-center text-center w-full h-[80vh]">
+            <img
+              className="rounded-full w-[120px] h-[120px] object-contain"
+              src="https://img.freepik.com/free-photo/portrait-white-man-isolated_53876-40306.jpg?semt=ais_hybrid&w=740&q=80"
+              alt=""
+            />
+            <div className="">
+              <h2 className="font-bold text-xl">Username</h2>
+              <p className="text-gray-500 text-[11px]">Fullname . Instagram</p>
+            </div>
           </div>
-        </div>
-        <div className="flex flex-col items-center justify-center text-center w-full h-[80vh]">
-          <img
-            className="rounded-full w-[120px] h-[120px] object-contain"
-            src="https://img.freepik.com/free-photo/portrait-white-man-isolated_53876-40306.jpg?semt=ais_hybrid&w=740&q=80"
-            alt=""
-          />
-          <div className="">
-            <h2 className="font-bold text-xl">Username</h2>
-            <p className="text-gray-500 text-[11px]">Fullname . Instagram</p>
+          <div className="w-full">
+            <input
+              type="text"
+              name=""
+              id=""
+              placeholder="write a message ..."
+              className="p-2 w-full"
+            />
           </div>
         </div>
       </div>
