@@ -89,7 +89,7 @@ const Messages = () => {
             <div className="flex items-center gap-2 cursor-pointer">
               <img
                 className="w-[60px] h-[60px] rounded-full object-cover"
-                src="https://img.freepik.com/free-photo/portrait-white-man-isolated_53876-40306.jpg?semt=ais_hybrid&w=740&q=80"
+                src="https://cdn-icons-png.flaticon.com/256/12225/12225935.png"
                 alt=""
               />
               <div>
@@ -117,7 +117,7 @@ const Messages = () => {
           <div className="flex-1 overflow-y-auto flex flex-col items-center justify-center text-center p-4">
             <img
               className="rounded-full w-[120px] h-[120px] object-contain"
-              src="https://img.freepik.com/free-photo/portrait-white-man-isolated_53876-40306.jpg?semt=ais_hybrid&w=740&q=80"
+              src="https://cdn-icons-png.flaticon.com/256/12225/12225935.png"
               alt=""
             />
             <div>
