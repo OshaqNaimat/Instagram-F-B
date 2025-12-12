@@ -6,6 +6,7 @@ import { BsCameraVideo } from "react-icons/bs";
 import Cpeoples from "../components/Cpeoples";
 import { FaRegSmile } from "react-icons/fa";
 import { TiMicrophoneOutline } from "react-icons/ti";
+import { PiStickerBold } from "react-icons/pi";
 
 /**
  * Fixed version:
@@ -119,15 +120,28 @@ const Messages = () => {
         </div>
 
         {/* Input Section — No extra margin */}
-        <div className="p-3  bg-white">
-          <FaRegSmile />
+        <div className="p-3 flex items-center  bg-white">
+          <FaRegSmile
+            size={49}
+            className="border border-e-0 border-gray-300 p-2 rounded-full rounded-e-none hover:scale-105 cursor-pointer"
+          />
           <input
             type="text"
-            placeholder="Write a message..."
-            className="p-2 w-full border border-gray-300 rounded-full outline-none"
+            placeholder="Message..."
+            className="p-3 w-full border border-s-0 border-e-0 border-gray-300 rounded-s-none  outline-none"
           />
-          <TiMicrophoneOutline />
-          <IoImageOutline />
+          <TiMicrophoneOutline
+            size={49}
+            className="border  border-gray-300 p-2 border-s-0 border-e-0  hover:scale-105 cursor-pointer"
+          />
+          <IoImageOutline
+            size={49}
+            className="border  border-gray-300 p-2 border-s-0 border-e-0  hover:scale-105 cursor-pointer"
+          />
+          <PiStickerBold
+            size={49}
+            className="border  border-gray-300 p-2 border-s-0  rounded-full rounded-s-none hover:scale-105 cursor-pointer"
+          />
         </div>
       </div>
     </div>
