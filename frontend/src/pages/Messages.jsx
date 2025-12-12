@@ -117,6 +117,7 @@ const Messages = () => {
             <h2 className="font-bold text-xl">Username</h2>
             <p className="text-gray-500 text-[11px]">Fullname · Instagram</p>
           </div>
+          <button className="">View Profile</button>
         </div>
 
         {/* Input Section — No extra margin */}
