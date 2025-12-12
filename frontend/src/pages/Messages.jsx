@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { FaPenToSquare } from "react-icons/fa6";
 import { IoIosArrowDown, IoMdInformationCircleOutline } from "react-icons/io";
-import { IoCallOutline, IoSearch } from "react-icons/io5";
+import { IoCallOutline, IoImageOutline, IoSearch } from "react-icons/io5";
 import { BsCameraVideo } from "react-icons/bs";
 import Cpeoples from "../components/Cpeoples";
+import { FaRegSmile } from "react-icons/fa";
+import { TiMicrophoneOutline } from "react-icons/ti";
 
 /**
  * Fixed version:
@@ -117,12 +119,15 @@ const Messages = () => {
         </div>
 
         {/* Input Section — No extra margin */}
-        <div className="p-3 border-t bg-white">
+        <div className="p-3  bg-white">
+          <FaRegSmile />
           <input
             type="text"
             placeholder="Write a message..."
             className="p-2 w-full border border-gray-300 rounded-full outline-none"
           />
+          <TiMicrophoneOutline />
+          <IoImageOutline />
         </div>
       </div>
     </div>
