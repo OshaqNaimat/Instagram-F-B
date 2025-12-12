@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 import { FaPenToSquare } from "react-icons/fa6";
 import { IoIosArrowDown, IoMdInformationCircleOutline } from "react-icons/io";
-import { IoCall, IoCallOutline, IoSearch } from "react-icons/io5";
-import { LuSend } from "react-icons/lu";
-import Cpeoples from "../components/Cpeoples";
+import { IoCallOutline, IoSearch } from "react-icons/io5";
 import { BsCameraVideo } from "react-icons/bs";
+import Cpeoples from "../components/Cpeoples";
 
 /**
- * Instagram‑style responsive layout:
- * - Left section collapses on mobile
- * - Chat list becomes a drawer on small screens
- * - Clean, minimal UI similar to Instagram
+ * Fixed version:
+ * - Independent scroll for LEFT and RIGHT sections
+ * - Removed extra bottom spacing under input
+ * - Right panel chat body now scrolls separately
  */
 
 const Messages = () => {
@@ -25,9 +24,9 @@ const Messages = () => {
   ]);
 
   return (
-    <div className="grid grid-cols-12 h-screen select-none">
+    <div className="grid grid-cols-12 h-screen select-none overflow-hidden">
       {/* LEFT PANEL */}
-      <div className="col-span-4 border-r hidden sm:flex flex-col p-4">
+      <div className="col-span-4 border-r hidden sm:flex flex-col p-4 overflow-hidden">
         {/* Top Username Row */}
         <div className="flex justify-between items-center mb-3">
           <div className="flex gap-1 items-center cursor-pointer">
@@ -65,8 +64,8 @@ const Messages = () => {
           </h5>
         </div>
 
-        {/* Chat List */}
-        <div className="overflow-y-scroll h-[450px] pr-1 ">
+        {/* Chat List — Independent Scroll */}
+        <div className="overflow-y-auto flex-1 pr-1">
           {chatPeoples.map((item) => (
             <Cpeoples key={item.id} data={item} />
           ))}
@@ -74,62 +73,56 @@ const Messages = () => {
       </div>
 
       {/* RIGHT PANEL */}
-      <div className="col-span-12 sm:col-span-8 flex flex-col items-center  justify-center px-4">
-        {/* <LuSend size={60} className="text-gray-600" />
-        <h4 className="font-semibold text-xl mt-4">Your messages</h4>
-        <p className="text-gray-500 text-sm">Send a message to start a chat.</p>
-        <button className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition">
-          Send message
-        </button> */}
-        {/* one person chat page */}
-        <div className="h-full w-full">
-          <div className="flex p-2 justify-between w-full items-center border-b gap-3">
-            <div className="flex items-center justify-center gap-2 cursor-pointer">
-              <img
-                className="w-[60px] h-[60px] rounded-full object-cover"
-                src="https://img.freepik.com/free-photo/portrait-white-man-isolated_53876-40306.jpg?semt=ais_hybrid&w=740&q=80"
-                alt=""
-              />
-              <div className="">
-                <h4 className="font-semibold">Username</h4>
-                <p className="text-gray-500 text-[11px]">Active 2hr ago</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-4 ">
-              <IoCallOutline
-                size={25}
-                className="cursor-pointer hover:scale-105 transition"
-              />
-              <BsCameraVideo
-                size={25}
-                className="cursor-pointer hover:scale-105 transition"
-              />
-              <IoMdInformationCircleOutline
-                size={25}
-                className="cursor-pointer hover:scale-105 transition"
-              />
-            </div>
-          </div>
-          <div className="flex flex-col items-center justify-center text-center w-full h-[80vh] -mt-">
+      <div className="col-span-12 sm:col-span-8 flex flex-col h-full overflow-hidden">
+        {/* Chat Header */}
+        <div className="flex p-2 justify-between items-center border-b gap-3 sticky top-0 bg-white z-10">
+          <div className="flex items-center gap-2 cursor-pointer">
             <img
-              className="rounded-full w-[120px] h-[120px] object-contain"
+              className="w-[60px] h-[60px] rounded-full object-cover"
               src="https://img.freepik.com/free-photo/portrait-white-man-isolated_53876-40306.jpg?semt=ais_hybrid&w=740&q=80"
               alt=""
             />
-            <div className="">
-              <h2 className="font-bold text-xl">Username</h2>
-              <p className="text-gray-500 text-[11px]">Fullname . Instagram</p>
+            <div>
+              <h4 className="font-semibold">Username</h4>
+              <p className="text-gray-500 text-[11px]">Active 2hr ago</p>
             </div>
           </div>
-          {/* <div className="w-full"> */}
+          <div className="flex items-center gap-4 ">
+            <IoCallOutline
+              size={25}
+              className="cursor-pointer hover:scale-105 transition"
+            />
+            <BsCameraVideo
+              size={25}
+              className="cursor-pointer hover:scale-105 transition"
+            />
+            <IoMdInformationCircleOutline
+              size={25}
+              className="cursor-pointer hover:scale-105 transition"
+            />
+          </div>
+        </div>
+
+        {/* Chat Body — Independent Scroll */}
+        <div className="flex-1 overflow-y-auto flex flex-col items-center justify-center text-center p-4">
+          <img
+            className="rounded-full w-[120px] h-[120px] object-contain"
+            src="https://img.freepik.com/free-photo/portrait-white-man-isolated_53876-40306.jpg?semt=ais_hybrid&w=740&q=80"
+            alt=""
+          />
+          <div>
+            <h2 className="font-bold text-xl">Username</h2>
+            <p className="text-gray-500 text-[11px]">Fullname · Instagram</p>
+          </div>
+        </div>
+
+        {/* Input Section — No extra margin */}
+        <div className="p-3 border-t bg-white">
           <input
             type="text"
-            name=""
-            id=""
-            placeholder="write a message ..."
-            className="p-2 w-full"
+            placeholder="Write a message..."
+            className="p-2 w-full border border-gray-300 rounded-full outline-none"
           />
-          {/* </div> */}
         </div>
       </div>
     </div>
