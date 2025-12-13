@@ -18,37 +18,36 @@ const Reels = () => {
         <div
           className="
             absolute bottom-8 right-3 sm:bottom-8 sm:-right-20 sm:text-black md:text-black md:bottom-8 md:-right-20
-            flex flex-col gap-7 
+            flex flex-col gap-7 items-center
             text-white
-
             lg:text-black lg:-right-20 lg:bottom-8
           "
         >
-          <div className="cursor-pointer text-center">
-            <FaRegHeart size={30} />
+          <div className="cursor-pointer flex flex-col items-center text-center ">
+            <FaRegHeart size={30} className="hover:scale-105 transition" />
             <p className="text-xs">Likes</p>
           </div>
 
-          <div className="cursor-pointer text-center">
-            <FaRegComment size={30} />
+          <div className="cursor-pointer text-center flex flex-col items-center ">
+            <FaRegComment size={30} className="hover:scale-105 transition" />
             <p className="text-xs">Comments</p>
           </div>
 
-          <div className="cursor-pointer text-center">
-            <FiSend size={30} />
+          <div className="cursor-pointer text-center flex flex-col items-center ">
+            <FiSend size={30} className="hover:scale-105 transition" />
             <p className="text-xs">Send</p>
           </div>
 
-          <div className="cursor-pointer">
-            <FaRegBookmark size={30} />
+          <div className="cursor-pointer flex flex-col items-center ">
+            <FaRegBookmark size={30} className="hover:scale-105 transition" />
           </div>
 
-          <div className="cursor-pointer">
-            <BsThreeDots size={30} />
+          <div className="cursor-pointer flex flex-col items-center ">
+            <BsThreeDots size={30} className="hover:scale-105 transition" />
           </div>
 
           <img
-            className="w-[30px] h-[30px] rounded-md cursor-pointer"
+            className="w-[30px] h-[30px] rounded-md cursor-pointer transition hover:outline-blue-500 outline-2"
             src="https://images.pexels.com/photos/220769/pexels-photo-220769.jpeg"
             alt=""
           />
