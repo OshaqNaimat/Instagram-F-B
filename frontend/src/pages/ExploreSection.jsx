@@ -4,7 +4,7 @@ const ExploreSection = () => {
   return (
     <>
       {/* very first row */}
-      <div className="grid grid-cols-  grid-rows-5">
+      <div className="grid grid-cols-3  grid-rows-3">
         {/* <!-- div1 (default position) --> */}
         <div className="">
           <img
