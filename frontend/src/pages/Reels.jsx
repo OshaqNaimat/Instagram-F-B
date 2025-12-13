@@ -7,7 +7,7 @@ const Reels = () => {
   return (
     <div className="w-screen h-screen flex items-center justify-center gap-4">
       {/* Image Wrapper */}
-      <div className="relative w-full lg:w-[30%] sm:w-[60%] md:w-[50%]  lg:h-[96vh] h-full">
+      <div className="relative w-full lg:w-[30%] sm:w-[60%] md:w-[50%]   lg:h-[96vh] h-full">
         <img
           className="rounded-md object-cover w-full h-full"
           src="https://images.pexels.com/photos/220769/pexels-photo-220769.jpeg"
@@ -17,7 +17,7 @@ const Reels = () => {
         {/* Icons (inside for sm & md) */}
         <div
           className="
-            absolute bottom-8 right-3
+            absolute bottom-8 right-3 sm:bottom-8 sm:-right-20 sm:text-black md:text-black md:bottom-8 md:-right-20
             flex flex-col gap-7 
             text-white
 
