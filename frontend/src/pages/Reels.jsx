@@ -14,26 +14,31 @@ const Reels = () => {
         alt=""
       />
       <div className="flex justify-center  flex-col gap-7 mt-20 p-2">
-        <div className="">
-          <FaRegHeart size={30} />
-          <p>Likes</p>
+        <div className="cursor-pointer ">
+          <FaRegHeart size={30} className="hover:scale-105 transition" />
+          <p className="text-sm">Likes</p>
         </div>
-        <div className="">
-          <FaRegComment size={30} />
-          <p>Comments</p>
+        <div className="cursor-pointer ">
+          <FaRegComment size={30} className="hover:scale-105 transition" />
+          <p className="text-sm">if Comments</p>
         </div>
-        <div className="">
-          <FiSend size={30} />
-          <p></p>
+        <div className="cursor-pointer ">
+          <FiSend size={30} className="hover:scale-105 transition" />
+          <p className="text-sm">Send</p>
         </div>
-        <div className="">
-          <FaRegBookmark size={30} />
-          <p></p>
+        <div className="cursor-pointer ">
+          <FaRegBookmark size={30} className="hover:scale-105 transition" />
+          <p className="text-sm"></p>
         </div>
-        <div className="">
-          <BsThreeDots size={30} />
-          <p></p>
+        <div className="cursor-pointer ">
+          <BsThreeDots size={30} className="hover:scale-105 transition" />
+          <p className="text-sm"></p>
         </div>
+        <img
+          className="w-[30px] h-[30px] rounded-md"
+          src="https://images.pexels.com/photos/220769/pexels-photo-220769.jpeg?cs=srgb&dl=pexels-pixabay-220769.jpg&fm=jpg"
+          alt=""
+        />
       </div>
     </div>
   );
