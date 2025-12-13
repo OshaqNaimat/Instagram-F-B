@@ -7,6 +7,7 @@ import Register from "./pages/Register";
 import ProfilePage from "./components/ProfilePage";
 import Messages from "./pages/Messages";
 import ExploreSection from "./pages/ExploreSection";
+import Reels from "./pages/Reels";
 const App = () => {
   return (
     <Router>
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/message" element={<Messages />} />
         <Route path="/Explore" element={<ExploreSection />} />
+        <Route path="/reels" element={<Reels />} />
       </Routes>
     </Router>
   );
