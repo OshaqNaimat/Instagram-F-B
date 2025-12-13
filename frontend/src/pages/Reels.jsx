@@ -1,44 +1,58 @@
 import React from "react";
-import { CiHeart } from "react-icons/ci";
-import { FaRegComment, FaRegHeart } from "react-icons/fa";
+import { FaRegComment, FaRegHeart, FaRegBookmark } from "react-icons/fa";
 import { FiSend } from "react-icons/fi";
-import { FaRegBookmark } from "react-icons/fa";
 import { BsThreeDots } from "react-icons/bs";
 
 const Reels = () => {
   return (
-    <div className="w-screen h-screen flex items-center justify-center p-1 gap-2 releative">
-      <img
-        className="rounded-md object-cover w-[30%] h-[96vh]"
-        src="https://images.pexels.com/photos/220769/pexels-photo-220769.jpeg?cs=srgb&dl=pexels-pixabay-220769.jpg&fm=jpg"
-        alt=""
-      />
-      <div className="flex justify-center flex-col gap-7 mt-20 p-2 absolute right-[27%] bottom-3 ">
-        <div className="cursor-pointer ">
-          <FaRegHeart size={30} className="hover:scale-105 transition" />
-          <p className="text-sm">Likes</p>
-        </div>
-        <div className="cursor-pointer ">
-          <FaRegComment size={30} className="hover:scale-105 transition" />
-          <p className="text-sm">if Comments</p>
-        </div>
-        <div className="cursor-pointer ">
-          <FiSend size={30} className="hover:scale-105 transition" />
-          <p className="text-sm">Send</p>
-        </div>
-        <div className="cursor-pointer ">
-          <FaRegBookmark size={30} className="hover:scale-105 transition" />
-          <p className="text-sm"></p>
-        </div>
-        <div className="cursor-pointer ">
-          <BsThreeDots size={30} className="hover:scale-105 transition" />
-          <p className="text-sm"></p>
-        </div>
+    <div className="w-screen h-screen flex items-center justify-center gap-4">
+      {/* Image Wrapper */}
+      <div className="relative w-[90%] sm:w-[60%] md:w-[30%] h-[96vh]">
         <img
-          className="w-[30px] h-[30px] rounded-md cursor-pointer hover:scale-105 transition"
-          src="https://images.pexels.com/photos/220769/pexels-photo-220769.jpeg?cs=srgb&dl=pexels-pixabay-220769.jpg&fm=jpg"
+          className="rounded-md object-cover w-full h-full"
+          src="https://images.pexels.com/photos/220769/pexels-photo-220769.jpeg"
           alt=""
         />
+
+        {/* Icons (inside for sm & md) */}
+        <div
+          className="
+            absolute bottom-8 right-3
+            flex flex-col gap-7 p-2
+            text-white
+
+            lg:text-black lg:-right-20 lg:bottom-8
+          "
+        >
+          <div className="cursor-pointer text-center">
+            <FaRegHeart size={30} />
+            <p className="text-xs">Likes</p>
+          </div>
+
+          <div className="cursor-pointer text-center">
+            <FaRegComment size={30} />
+            <p className="text-xs">Comments</p>
+          </div>
+
+          <div className="cursor-pointer text-center">
+            <FiSend size={30} />
+            <p className="text-xs">Send</p>
+          </div>
+
+          <div className="cursor-pointer">
+            <FaRegBookmark size={30} />
+          </div>
+
+          <div className="cursor-pointer">
+            <BsThreeDots size={30} />
+          </div>
+
+          <img
+            className="w-[30px] h-[30px] rounded-md cursor-pointer"
+            src="https://images.pexels.com/photos/220769/pexels-photo-220769.jpeg"
+            alt=""
+          />
+        </div>
       </div>
     </div>
   );
