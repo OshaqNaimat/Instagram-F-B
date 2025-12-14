@@ -1,6 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Register = () => {
+  const [formFields, setFormFields] = useState({
+    m_mail: "",
+    password: "",
+    fullName: "",
+    profileName: "",
+  });
+
+  const { m_mail, password, fullName, profileName } = formFields;
+
+  const handleChange = (e) => {
+    setFormFields({ ...formFields, [e.target.name]: e.target.value });
+  };
   return (
     <div className="min-h-screen bg-white flex flex-col items-center justify-center px-4 py-8">
       <div className="max-w-sm w-full space-y-8">
@@ -40,21 +52,33 @@ const Register = () => {
           <form className="space-y-4">
             <input
               type="text"
+              name="m_mail"
+              value={m_mail}
+              onChange={handleChange}
               placeholder="Mobile Number or Email"
               className="w-full  px-3 py-2 border-0 shadow-lg shadow-gray-400 rounded text-sm placeholder-gray-500  focus:outline-blue-500"
             />
             <input
               type="password"
+              name="password"
+              value={password}
+              onChange={handleChange}
               placeholder="Password"
               className="w-full  px-3 py-2 border-0 shadow-lg shadow-gray-400 rounded text-sm placeholder-gray-500  focus:outline-blue-500"
             />
             <input
               type="text"
+              name="fullName"
+              value={fullName}
+              onChange={handleChange}
               placeholder="FullName"
               className="w-full  px-3 py-2 border-0 shadow-lg shadow-gray-400 rounded text-sm placeholder-gray-500  focus:outline-blue-500"
             />
             <input
               type="text"
+              name="profileName"
+              value={profileName}
+              onChange={handleChange}
               placeholder="UserName"
               className="w-full  px-3 py-2 border-0 shadow-lg shadow-gray-400 rounded text-sm placeholder-gray-500  focus:outline-blue-500"
             />
