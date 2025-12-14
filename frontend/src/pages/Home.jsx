@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getDaak } from "../features/posts/postSlice";
 import ProfilePage from "../components/ProfilePage";
 import AllSuggestedPeoples from "../components/AllSuggestedPeoples";
+import PostSkeleton from "../components/PostSkeleton";
 
 const Home = () => {
   const [show, setShow] = useState(false);
@@ -24,6 +25,11 @@ const Home = () => {
   const { posts, postLoading, postError, postSuccess, postMessage } =
     useSelector((state) => state.daak);
 
+  if (postLoading) {
+    return [...Array(5)].map((_, index) => {
+      return <PostSkeleton key={index} />;
+    });
+  }
   return (
     <>
       {/* <Hmessages className="fixed right-5 bottom-5" /> */}

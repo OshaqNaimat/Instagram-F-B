@@ -8,9 +8,14 @@ import { RiSendPlaneFill } from "react-icons/ri";
 import { FiBookmark } from "react-icons/fi";
 import moment from "moment";
 import ClipLoader from "react-spinners/ClipLoader";
+import PostSkeleton from "./PostSkeleton";
+import Skeleton from "react-loading-skeleton";
+import { useSelector } from "react-redux";
 
 const Posts = ({ caption, image, filter, createdAt }) => {
   const [loading, setLoading] = useState(false);
+  const { postLoading } = useSelector((state) => state.daak);
+
   return (
     <>
       <div className="container rounded-md shadow-lg w-[80%] mt-10 mx-auto relative select-none overflow-hidden">
@@ -76,11 +81,10 @@ const Posts = ({ caption, image, filter, createdAt }) => {
         <div className="px-2 m-0 font-semibold">100 likes</div>
 
         <p className="text-gray p-2 ">
-          {" "}
           <span className="font-semibold mx-1">Username</span>
           {caption}
         </p>
-        <div className="flex items-cneter p-2 rounded-md">
+        <div className="flex items-center p-2 rounded-md">
           <input
             type="text"
             placeholder="Add a comment..."

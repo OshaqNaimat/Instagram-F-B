@@ -8,6 +8,8 @@ import ProfilePage from "./components/ProfilePage";
 import Messages from "./pages/Messages";
 import ExploreSection from "./pages/ExploreSection";
 import Reels from "./pages/Reels";
+import "react-loading-skeleton/dist/skeleton.css";
+
 const App = () => {
   return (
     <Router>
