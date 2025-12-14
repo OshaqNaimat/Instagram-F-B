@@ -7,8 +7,8 @@ import ImageFilter from "react-image-filter";
 import { filters } from "../Data/Filters";
 import axios from "axios";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { addDaak } from "../features/posts/postSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { addDaak, getDaak } from "../features/posts/postSlice";
 import ClipLoader from "react-spinners/ClipLoader";
 
 const PostModal = ({ show, setShow }) => {
@@ -20,9 +20,10 @@ const PostModal = ({ show, setShow }) => {
   const [editFilter, setEditFilter] = useState(filters.original);
   const [fourthScreen, setFourthScreen] = useState(false);
   const [caption, setCaption] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [imageLoading, setImageLoading] = useState(false);
 
   const uploadToCloudinary = async () => {
+    setImageLoading(true);
     let data = new FormData();
     data.append("file", image);
     data.append("upload_preset", "instagram");
@@ -30,6 +31,7 @@ const PostModal = ({ show, setShow }) => {
       "http://api.cloudinary.com/v1_1/daaqun6yh/image/upload",
       data
     );
+    setImageLoading(false);
     return response.data.url;
   };
 
@@ -45,6 +47,9 @@ const PostModal = ({ show, setShow }) => {
   }, [range]);
 
   const dispatch = useDispatch();
+  const { postLoading, postSuccess, postError, postMessage } = useSelector(
+    (state) => state.daak
+  );
 
   const handlePostUpload = async () => {
     let myImage = await uploadToCloudinary();
@@ -54,9 +59,9 @@ const PostModal = ({ show, setShow }) => {
       filter: editFilter,
     };
 
-    //  useDispatch
     dispatch(addDaak(postData));
     setShow(false);
+    dispatch(getDaak());
     // setCaption("");
     // setImage(null);
     // setImagePreview(null);
@@ -237,10 +242,15 @@ const PostModal = ({ show, setShow }) => {
                     className="flex-1 border rounded-lg p-3 resize-none outline-none focus:ring-2 focus:ring-purple-500"
                   />
                   <button
+                    disabled={imageLoading || postLoading}
                     onClick={handlePostUpload}
                     className="mt-4 bg-purple-600 cursor-pointer text-white rounded-lg py-2 font-semibold hover:bg-purple-700 transition"
                   >
-                    {loading ? <ClipLoader color="white" size={20} /> : "Post"}
+                    {imageLoading || postLoading ? (
+                      <ClipLoader color="white" size={20} />
+                    ) : (
+                      "Post"
+                    )}
                   </button>
                 </div>
               )}

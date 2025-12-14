@@ -16,6 +16,7 @@ const Home = () => {
   const [allSuggestions, setAllSuggestions] = useState(false);
 
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getDaak());
   }, []);
