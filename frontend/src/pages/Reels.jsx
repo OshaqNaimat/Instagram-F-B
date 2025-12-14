@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   FaRegComment,
   FaRegHeart,
@@ -12,7 +12,7 @@ import { BiRepost } from "react-icons/bi";
 
 const Reels = () => {
   return (
-    <div className="w-screen h-100vh  flex flex-col overflow-y-scroll items-center justify-center ">
+    <div className="w-screen h-100vh  flex flex-col items-center justify-center ">
       {/* Image Wrapper */}
       <div className="relative mb-3 w-full lg:w-[30%] sm:w-[60%] md:w-[50%] lg:h-[96vh] h-full">
         <img
@@ -63,7 +63,7 @@ const Reels = () => {
       <div className="relative mb-3 w-full lg:w-[30%] sm:w-[60%] md:w-[50%] lg:h-[96vh] h-full">
         <img
           className="rounded-md object-cover w-full h-full"
-          src="https://images.pexels.com/photos/220769/pexels-photo-220769.jpeg"
+          src="https://i.pinimg.com/736x/2d/95/e5/2d95e5886fc4c65a6778b5fee94a7d59.jpg"
           alt=""
         />
 
@@ -101,17 +101,20 @@ const Reels = () => {
 
           <img
             className="w-[30px] h-[30px] rounded-md cursor-pointer transition hover:outline-blue-500 outline-2"
-            src="https://images.pexels.com/photos/220769/pexels-photo-220769.jpeg"
+            src="https://i.pinimg.com/736x/2d/95/e5/2d95e5886fc4c65a6778b5fee94a7d59.jpg"
             alt=""
           />
         </div>
       </div>
+
       <div className="flex flex-col gap-2 fixed right-5 top-1/2 transform -translate-y-1/2">
         <FaArrowUp
+          onClick={() => setPrereel(true)}
           size={15}
           className="p-4  bottom-50 bg-gray-200 hover:bg-gray-300 cursor-pointer transition rounded-full w-12 h-12"
         />
         <FaArrowDown
+          onClick={() => setNextreel(true)}
           size={15}
           className="p-4  bottom-50 bg-gray-200 hover:bg-gray-300 cursor-pointer transition rounded-full w-12 h-12"
         />
