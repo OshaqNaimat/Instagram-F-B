@@ -86,7 +86,9 @@ const Posts = ({ caption, image, filter, createdAt }) => {
             placeholder="Add a comment..."
             className="outline-0 w-full  rounded-md"
           />
-          <p className="font-semibold cursor-pointer">Post</p>
+          <p className="font-semibold cursor-pointer">
+            {loading ? <ClipLoader color="gray" size={15} /> : "Post "}
+          </p>
         </div>
       </div>
     </>
