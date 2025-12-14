@@ -6,8 +6,11 @@ import { IoVolumeMute } from "react-icons/io5";
 import Slider from "@mui/material/Slider";
 import { RiSendPlaneFill } from "react-icons/ri";
 import { FiBookmark } from "react-icons/fi";
+import moment from "moment";
+import ClipLoader from "react-spinners/ClipLoader";
 
-const Posts = ({ caption, image, filter }) => {
+const Posts = ({ caption, image, filter, createdAt }) => {
+  const [loading, setLoading] = useState(false);
   return (
     <>
       <div className="container rounded-md shadow-lg w-[80%] mt-10 mx-auto relative select-none overflow-hidden">
@@ -24,7 +27,7 @@ const Posts = ({ caption, image, filter }) => {
                   Username
                 </h4>
                 <GoDotFill size={6} />
-                <p className="text-gray-500">Time</p>
+                <p className="text-gray-500">{moment(createdAt).fromNow()}</p>
               </div>
 
               <p className="text-sm">Audio</p>

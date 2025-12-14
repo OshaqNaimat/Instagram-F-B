@@ -9,6 +9,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { addDaak } from "../features/posts/postSlice";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const PostModal = ({ show, setShow }) => {
   const [imagePreview, setImagePreview] = useState(null);
@@ -19,6 +20,7 @@ const PostModal = ({ show, setShow }) => {
   const [editFilter, setEditFilter] = useState(filters.original);
   const [fourthScreen, setFourthScreen] = useState(false);
   const [caption, setCaption] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const uploadToCloudinary = async () => {
     let data = new FormData();
@@ -238,7 +240,7 @@ const PostModal = ({ show, setShow }) => {
                     onClick={handlePostUpload}
                     className="mt-4 bg-purple-600 cursor-pointer text-white rounded-lg py-2 font-semibold hover:bg-purple-700 transition"
                   >
-                    Post
+                    {loading ? <ClipLoader color="white" size={20} /> : "Post"}
                   </button>
                 </div>
               )}
