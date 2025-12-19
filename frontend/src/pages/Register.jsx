@@ -18,7 +18,8 @@ const Register = () => {
   };
   
   const dispatch = useDispatch()
-   
+  
+  const {user,userLoading,userError,userSuccess,userMessage} = useSelector((state)=>state.auth)
   const handleRegister = (e) => {
     e.preventDefault()
     const myData = {
@@ -30,7 +31,6 @@ const Register = () => {
 
     dispatch(regUser(myData))
 
-    const {user,userLoading,userError,userSuccess,userMessage} = useSelector((state)=>state.auth)
 
     useEffect(()=>{
       if(userError){

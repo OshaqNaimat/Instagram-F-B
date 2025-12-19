@@ -12,6 +12,7 @@ const initialState = {
 export const regUser = createAsyncThunk('user',async(userData,thunkAPI)=>{
     try {
         const response = await axios.post("http://localhost:5000/api/users/register",userData)
+        localStorage.setItem('user',JSON.stringify(response.data))
         return response.data
     } catch (error) {
         return thunkAPI.rejectWithValue(error.response.data)
