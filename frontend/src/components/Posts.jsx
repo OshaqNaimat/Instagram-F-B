@@ -62,7 +62,7 @@ const Posts = ({ caption, image, filter, createdAt }) => {
           <div className="flex gap-3">
             <FaRegHeart
               size={25}
-              className="cursor-pointer hover:text-gray-500 duration-100 "
+              className="cursor-pointer  hover:text-gray-500 duration-100 "
             />
             <FaRegComment
               size={25}
