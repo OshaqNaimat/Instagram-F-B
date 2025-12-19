@@ -30,17 +30,18 @@ const Register = () => {
     }
 
     dispatch(regUser(myData))
+    
 
-
-    useEffect(()=>{
-      if(userError){
-        toast.error(userMessage)
-      }
-
-      dispatch(userReset())
-    },[userError])
 
   }
+    // useEffect(()=>{
+    //   if(userError){
+    //     toast.error(userMessage)
+    //   }
+
+    //   dispatch(userReset())
+    // },[userError])
+
   return (
     <div className="min-h-screen bg-white flex flex-col items-center justify-center px-4 py-8">
       <div className="max-w-sm w-full space-y-8">
