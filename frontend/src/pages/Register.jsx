@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import {useDispatch, useSelector} from 'react-redux'
+import { regUser, userReset } from "../features/users/userSlice";
+import toast from "react-hot-toast";
 
 const Register = () => {
   const [formFields, setFormFields] = useState({
@@ -13,6 +16,31 @@ const Register = () => {
   const handleChange = (e) => {
     setFormFields({ ...formFields, [e.target.name]: e.target.value });
   };
+  
+  const dispatch = useDispatch()
+   
+  const handleRegister = (e) => {
+    e.preventDefault()
+    const myData = {
+      mobile:m_mail,
+      password,
+      fullName,
+      username:profileName
+    }
+
+    dispatch(regUser(myData))
+
+    const {user,userLoading,userError,userSuccess,userMessage} = useSelector((state)=>state.auth)
+
+    useEffect(()=>{
+      if(userError){
+        toast.error(userMessage)
+      }
+
+      dispatch(userReset())
+    },[userError])
+
+  }
   return (
     <div className="min-h-screen bg-white flex flex-col items-center justify-center px-4 py-8">
       <div className="max-w-sm w-full space-y-8">
@@ -108,7 +136,7 @@ const Register = () => {
             </div>
 
             <button
-              type="submit"
+            onClick={handleRegister}
               className="w-full cursor-pointer bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded text-sm transition-colors duration-200"
             >
               Sign Up
