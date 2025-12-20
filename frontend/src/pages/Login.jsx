@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FaFacebook, FaApple } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -155,13 +156,13 @@ const Login = () => {
           <div className="bg-white  border-0 shadow-lg shadow-gray-500 rounded-lg p-6 text-center">
             <p className="text-sm">
               Don't have an account?{" "}
-              <a
+              <Link to={"/Register"}
                 href="./Register"
                 onClick={handleSignUp}
                 className="text-blue-500 font-semibold cursor-pointer hover:text-blue-600 hover:underline"
               >
                 Sign up
-              </a>
+              </Link>
             </p>
           </div>
 

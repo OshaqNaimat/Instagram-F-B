@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import {useDispatch, useSelector} from 'react-redux'
 import { regUser, userReset } from "../features/users/userSlice";
 import toast from "react-hot-toast";
-import {useNavigate} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 const Register = () => {
   const [formFields, setFormFields] = useState({
     m_mail: "",
@@ -158,9 +158,9 @@ const Register = () => {
         <div className="bg-white border-0 shadow-lg shadow-gray-500 rounded-lg p-6 text-center">
           <p className="text-sm">
             Have an account?{" "}
-            <a href="/" className="text-blue-500 font-semibold cursor-pointer">
+            <Link to={'/'}  className="text-blue-500 font-semibold cursor-pointer">
               Log in
-            </a>
+            </Link>
           </p>
         </div>
       </div>
