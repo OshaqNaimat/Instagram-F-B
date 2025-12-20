@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import {useDispatch, useSelector} from 'react-redux'
 import { regUser, userReset } from "../features/users/userSlice";
 import toast from "react-hot-toast";
-
+import {useNavigate} from 'react-router-dom'
 const Register = () => {
   const [formFields, setFormFields] = useState({
     m_mail: "",
@@ -20,6 +20,10 @@ const Register = () => {
   const dispatch = useDispatch()
   
   const {user,userLoading,userError,userSuccess,userMessage} = useSelector((state)=>state.auth)
+
+  const navigate = useNavigate()
+
+
   const handleRegister = (e) => {
     e.preventDefault()
     const myData = {
@@ -34,13 +38,18 @@ const Register = () => {
 
 
   }
-    // useEffect(()=>{
-    //   if(userError){
-    //     toast.error(userMessage)
-    //   }
+      useEffect(()=>{
+        if(userError){
+          toast.error(userMessage)
+        }
 
-    //   dispatch(userReset())
-    // },[userError])
+        if(userSuccess ){
+          toast.success("Successfully logged")
+          navigate('/Home')
+        }
+
+        dispatch(userReset())
+      },[userError,userSuccess])
 
   return (
     <div className="min-h-screen bg-white flex flex-col items-center justify-center px-4 py-8">

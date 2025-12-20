@@ -1,8 +1,10 @@
 import {createSlice,createAsyncThunk} from '@reduxjs/toolkit'
 import axios from 'axios'
 
+let checkUser = JSON.parse(localStorage.getItem('user'))
+
 const initialState = {
-    user :null,
+    user :checkUser? checkUser : null,
     userLoading:false,
     userSuccess:false,
     userError:false,
@@ -13,7 +15,7 @@ const initialState = {
 export const regUser = createAsyncThunk('user',async(userData,thunkAPI)=>{
     try {
         const response = await axios.post("http://localhost:5000/api/users/register",userData)
-        console.log(userData)
+        localStorage.setItem('user',JSON.stringify(response.data))
         return response.data
     } catch (error) {
         return thunkAPI.rejectWithValue(error.response.data)
