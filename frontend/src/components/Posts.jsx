@@ -12,7 +12,7 @@ import PostSkeleton from "./PostSkeleton";
 import Skeleton from "react-loading-skeleton";
 import { useSelector } from "react-redux";
 
-const Posts = ({ caption, image, filter, createdAt }) => {
+const Posts = ({ caption, image, filter, createdAt,user_id }) => {
   const [loading, setLoading] = useState(false);
   const { postLoading } = useSelector((state) => state.daak);
 
@@ -21,15 +21,21 @@ const Posts = ({ caption, image, filter, createdAt }) => {
       <div className="container rounded-md shadow-lg w-[80%] mt-10 mx-auto relative select-none overflow-hidden">
         <div className="flex justify-between p-2 items-center">
           <div className="flex p-2 gap-2 items-center">
-            <img
+           
+           {user_id.image ? <img
+              className="w-[35px] h-[35px] cursor-pointer"
+              src={user_id.image}
+              alt=""
+            />: <img
               className="w-[35px] h-[35px] cursor-pointer"
               src="https://cdn-icons-png.freepik.com/256/10796/10796945.png?semt=ais_white_label"
               alt=""
-            />
+            /> }
+           
             <div className="">
               <div className="flex gap-2 items-center justify-center">
                 <h4 className="font-semibold  text-[14px] cursor-pointer">
-                  Username
+                  {user_id.username}
                 </h4>
                 <GoDotFill size={6} />
                 <p className="text-gray-500">{moment(createdAt).fromNow()}</p>
@@ -81,7 +87,7 @@ const Posts = ({ caption, image, filter, createdAt }) => {
         <div className="px-2 m-0 font-semibold">100 likes</div>
 
         <p className="text-gray p-2 ">
-          <span className="font-semibold mx-1">Username</span>
+          <span className="font-semibold mx-1">{user_id.username}</span>
           {caption}
         </p>
         <div className="flex items-center p-2 rounded-md">
