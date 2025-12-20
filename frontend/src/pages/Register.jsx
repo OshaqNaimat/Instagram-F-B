@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import { regUser, userReset } from "../features/users/userSlice";
 import toast from "react-hot-toast";
 import {Link, useNavigate} from 'react-router-dom'
+import {CircleLoader, ClockLoader, MoonLoader} from 'react-spinners'
 const Register = () => {
   const [formFields, setFormFields] = useState({
     m_mail: "",
@@ -146,10 +147,14 @@ const Register = () => {
             </div>
 
             <button
+            disabled={userLoading}
             onClick={handleRegister}
               className="w-full cursor-pointer bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded text-sm transition-colors duration-200"
             >
-              Sign Up
+
+              {
+                userLoading ? <ClockLoader size={20} color="white"/> : "Register"
+              }
             </button>
           </form>
         </div>

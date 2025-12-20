@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import sidebarItems from "./Data";
 
-const user = JSON.parse(localStorage.getItem("user")) || {};
-
 const Sidebar = ({ isMobile, setShow, setPpage }) => {
+  const [user, setUser] = useState({});
+
+  // Load user from localStorage reactively
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem("user")) || {};
+    setUser(storedUser);
+  }, []);
+
   // Titles allowed on mobile
   const mobileVisibleTitles = [
     "Home",
@@ -14,14 +20,14 @@ const Sidebar = ({ isMobile, setShow, setPpage }) => {
     user.fullName,
   ];
 
-  // Replace "Profile" title with user's full name
+  // Replace "Profile" with user's name
   const updatedSidebarItems = sidebarItems.map((item) =>
     item.title === "Profile"
       ? { ...item, title: user.fullName || "Profile" }
       : item
   );
 
-  // Filter for mobile view
+  // Filter for mobile
   const filteredItems = isMobile
     ? updatedSidebarItems.filter((item) =>
         mobileVisibleTitles.includes(item.title)
@@ -37,7 +43,6 @@ const Sidebar = ({ isMobile, setShow, setPpage }) => {
           : "min-h-screen w-max border-r border-gray-500"
       }`}
     >
-      {/* Instagram logo hidden on mobile */}
       {!isMobile && (
         <img
           className="hidden sm:block w-[70px] h-[70px]"
@@ -63,8 +68,9 @@ const Sidebar = ({ isMobile, setShow, setPpage }) => {
               ${isMobile && "!my-0"}`}
           >
             {item.icon}
-            {/* Text only on large screens */}
-            <span className="hidden lg:block">{item.title}</span>
+            <span className="hidden lg:block">
+              {item.title || "Profile"}
+            </span>
           </li>
         ))}
       </ul>

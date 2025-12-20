@@ -13,7 +13,7 @@ export const addDaak = createAsyncThunk(
   async (postData, thunkapi) => {
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/posts/addPost",
+        `http://localhost:5000/api/posts/addPost/${postData.user_id}`,
         postData
       );
       return response.data;
