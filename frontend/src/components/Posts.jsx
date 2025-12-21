@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { BsThreeDots } from "react-icons/bs";
 import { FaHeart, FaRegComment, FaRegHeart } from "react-icons/fa";
 import { GoDotFill } from "react-icons/go";
-import { IoVolumeMute } from "react-icons/io5";
+import { IoSend, IoVolumeMute } from "react-icons/io5";
 import Slider from "@mui/material/Slider";
 import { RiSendPlaneFill } from "react-icons/ri";
 import { FiBookmark } from "react-icons/fi";
@@ -30,12 +30,13 @@ const Posts = ({ caption, image, filter, createdAt,user_id,_id }) => {
 
      dispatch(addCommentData(commentData))
      toast.success("Comment Added")
+     setComment('')
 
   }
 
   return (
     <>
-      <div className="container rounded-md shadow-lg w-[80%] mt-10 mx-auto relative select-none overflow-hidden">
+      <div className="container rounded-md mb-10  shadow-lg w-[80%] mt-10 mx-auto relative select-none overflow-hidden">
         <div className="flex justify-between p-2 items-center">
           <div className="flex p-2 gap-2 items-center">
            
@@ -107,18 +108,35 @@ const Posts = ({ caption, image, filter, createdAt,user_id,_id }) => {
           <span className="font-semibold mx-1">{user_id.username}</span>
           {caption}
         </p>
-        <div className="flex items-center p-2 rounded-md">
-          <input
-          value={comment}
-          onChange={(e)=>setComment(e.target.value)}
-            type="text"
-            placeholder="Add a comment..."
-            className="outline-0 w-full  rounded-md"
-          />
-          <p onClick={handleComment} className="font-semibold cursor-pointer">
-            {commentLoading ? <ClockLoader  color="blue" size={20} /> : "Post "}
-          </p>
-        </div>
+       <div className="flex items-center p-2 rounded-md">
+  <input
+    value={comment}
+    onChange={(e) => setComment(e.target.value)}
+    type="text"
+    placeholder="Add a comment..."
+    className="border border-gray-100 w-full py-2 rounded-md
+               focus:outline-none focus:ring-1 focus:ring-cyan-500 focus:border-cyan-500
+               transition"
+  />
+
+  <button
+    onClick={handleComment}
+    disabled={comment.trim() === "" || commentLoading}
+    className={`font-semibold px-1 transition
+      ${
+        comment.trim() === "" || commentLoading
+          ? "text-gray-400 cursor-not-allowed"
+          : "text-cyan-600 hover:text-cyan-700"
+      }`}
+  >
+    {commentLoading ? (
+      <ClockLoader color="blue" size={20} />
+    ) : (
+      <IoSend size={30} />
+    )}
+  </button>
+</div>
+
       </div>
     </>
   );
