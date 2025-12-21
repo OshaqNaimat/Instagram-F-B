@@ -40,7 +40,7 @@ export const getDaak = createAsyncThunk("get-daaks", async (_, thunkapi) => {
 
 export const addCommentData = createAsyncThunk("add-comment",async(CommentData,thunkApi)=>{
   try {
-    const response = await axios.post(`http://localhost:5000/api/posts/add-comment/${CommentData.post_id}/${CommentData.user_id}`)
+    const response = await axios.post(`http://localhost:5000/api/posts/add-comment/${CommentData.post_id}/${CommentData.user_id}`,CommentData)
     return response.data
   } catch (error) {
          return thunkApi.rejectWithValue(error.response.data)    

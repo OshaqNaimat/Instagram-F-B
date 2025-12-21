@@ -7,14 +7,29 @@ import Slider from "@mui/material/Slider";
 import { RiSendPlaneFill } from "react-icons/ri";
 import { FiBookmark } from "react-icons/fi";
 import moment from "moment";
-import ClockLoader from "react-spinners/ClipLoader";
+import ClockLoader from "react-spinners/ClockLoader";
 import PostSkeleton from "./PostSkeleton";
 import Skeleton from "react-loading-skeleton";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addCommentData } from "../features/posts/postSlice";
 
-const Posts = ({ caption, image, filter, createdAt,user_id }) => {
-  const [loading, setLoading] = useState(false);
-  const { postLoading } = useSelector((state) => state.daak);
+const Posts = ({ caption, image, filter, createdAt,user_id,_id }) => {
+  const { postLoading,commentLoading } = useSelector((state) => state.daak);
+  const [comment,setComment] = useState('')
+
+
+  const dispatch = useDispatch()
+
+  const handleComment = ()=>{
+    const commentData = {
+      post_id:_id,
+      user_id:user_id._id,
+      comment
+    }
+
+     dispatch(addCommentData(commentData))
+
+  }
 
   return (
     <>
@@ -92,12 +107,14 @@ const Posts = ({ caption, image, filter, createdAt,user_id }) => {
         </p>
         <div className="flex items-center p-2 rounded-md">
           <input
+          value={comment}
+          onChange={(e)=>setComment(e.target.value)}
             type="text"
             placeholder="Add a comment..."
             className="outline-0 w-full  rounded-md"
           />
-          <p className="font-semibold cursor-pointer">
-            {loading ? <ClockLoader color="gray" size={15} /> : "Post "}
+          <p onClick={handleComment} className="font-semibold cursor-pointer">
+            {commentLoading ? <ClockLoader  color="blue" size={20} /> : "Post "}
           </p>
         </div>
       </div>
