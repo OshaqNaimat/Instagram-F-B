@@ -12,9 +12,10 @@ import PostSkeleton from "./PostSkeleton";
 import Skeleton from "react-loading-skeleton";
 import { useDispatch, useSelector } from "react-redux";
 import { addCommentData } from "../features/posts/postSlice";
+import {toast} from 'react-hot-toast'
 
 const Posts = ({ caption, image, filter, createdAt,user_id,_id }) => {
-  const { postLoading,commentLoading } = useSelector((state) => state.daak);
+  const { postLoading,commentLoading,commentSuccess,commentError } = useSelector((state) => state.daak);
   const [comment,setComment] = useState('')
 
 
@@ -28,6 +29,7 @@ const Posts = ({ caption, image, filter, createdAt,user_id,_id }) => {
     }
 
      dispatch(addCommentData(commentData))
+     toast.success("Comment Added")
 
   }
 

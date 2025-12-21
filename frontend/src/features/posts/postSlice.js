@@ -87,6 +87,11 @@ export const postSlice = createSlice({
       state.commentError = true,
       state.commentMessage = action.paylaod
     })
+    builder.addCase(addCommentData.fulfilled, (state,action)=>{
+      state.commentLoading = false,
+      state.commentError = false,
+      state.commentSucces = true
+    })
   },
 });
 
