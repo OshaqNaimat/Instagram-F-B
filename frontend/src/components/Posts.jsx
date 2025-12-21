@@ -126,7 +126,7 @@ const Posts = ({ caption, image, filter, createdAt,user_id,_id }) => {
       ${
         comment.trim() === "" || commentLoading
           ? "text-gray-400 cursor-not-allowed"
-          : "text-cyan-600 hover:text-cyan-700"
+          : "text-cyan-500 hover:text-cyan-700"
       }`}
   >
     {commentLoading ? (

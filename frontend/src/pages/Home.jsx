@@ -11,6 +11,7 @@ import { getDaak } from "../features/posts/postSlice";
 import ProfilePage from "../components/ProfilePage";
 import AllSuggestedPeoples from "../components/AllSuggestedPeoples";
 import PostSkeleton from "../components/PostSkeleton";
+import CommentPopUp from "../components/CommentPopUp";
 
 const Home = () => {
   const [show, setShow] = useState(false);
@@ -38,6 +39,8 @@ const Home = () => {
         allSuggestions={allSuggestions}
         setAllSuggestion={setAllSuggestions}
       />
+      {/* all comments */}
+      <CommentPopUp/>
       {/* </div> */}
       <PostModal show={show} setShow={setShow} />
       <div className="grid grid-cols-4 min-h-screen">
