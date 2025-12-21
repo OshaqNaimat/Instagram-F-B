@@ -6,6 +6,10 @@ const initialState = {
   postError: false,
   postMessage: "",
   postLoading: false,
+  commentLoading:false,
+  commentError:false,
+  commentSucces:false,
+  commentMessage:""
 };
 
 export const addDaak = createAsyncThunk(
@@ -33,6 +37,15 @@ export const getDaak = createAsyncThunk("get-daaks", async (_, thunkapi) => {
     return thunkapi.rejectWithValue(error.response.data.error);
   }
 });
+
+export const addCommentData = createAsyncThunk("add-comment",async(CommentData,thunkApi)=>{
+  try {
+    const response = await axios.post(`http://localhost:5000/api/posts/add-comment/${CommentData.post_id}/${CommentData.user_id}`)
+    return response.data
+  } catch (error) {
+         return thunkApi.rejectWithValue(error.response.data)    
+  }
+})
 
 export const postSlice = createSlice({
   name: "daak",
@@ -66,6 +79,14 @@ export const postSlice = createSlice({
       state.postLoading = false;
       state.posts = action.payload;
     });
+    builder.addCase(addCommentData.pending, (state,action)=>{
+      state.commentLoading = true
+    })
+    builder.addCase(addCommentData.rejected,(state,action)=>{
+      state.commentLoading = false,
+      state.commentError = true,
+      state.commentMessage = action.paylaod
+    })
   },
 });
 

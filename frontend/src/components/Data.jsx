@@ -5,7 +5,7 @@ import * as IoIcons from "react-icons/io";
 import * as FiIcons from "react-icons/fi";
 import * as BsIcons from "react-icons/bs";
 import * as FaIcons from "react-icons/fa";
-import Link from "react-redux";
+// import Link from "react-redux";
 
 export const sidebarItems = [
   {
@@ -49,13 +49,13 @@ export const sidebarItems = [
     id: 7,
     title: "Create",
     icon: <MdIcons.MdOutlineAddBox />,
-    Link: "/create",
+    link: "/create",
   },
   {
     id: 8,
     title: "Profile",
     icon: <FaIcons.FaRegUserCircle />,
-    Link : "/profile-page",
+    link : "/profile-page",
   },
   {
     id: 9,

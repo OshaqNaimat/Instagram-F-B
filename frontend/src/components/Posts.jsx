@@ -7,7 +7,7 @@ import Slider from "@mui/material/Slider";
 import { RiSendPlaneFill } from "react-icons/ri";
 import { FiBookmark } from "react-icons/fi";
 import moment from "moment";
-import ClipLoader from "react-spinners/ClipLoader";
+import ClockLoader from "react-spinners/ClipLoader";
 import PostSkeleton from "./PostSkeleton";
 import Skeleton from "react-loading-skeleton";
 import { useSelector } from "react-redux";
@@ -97,7 +97,7 @@ const Posts = ({ caption, image, filter, createdAt,user_id }) => {
             className="outline-0 w-full  rounded-md"
           />
           <p className="font-semibold cursor-pointer">
-            {loading ? <ClipLoader color="gray" size={15} /> : "Post "}
+            {loading ? <ClockLoader color="gray" size={15} /> : "Post "}
           </p>
         </div>
       </div>
