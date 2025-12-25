@@ -54,7 +54,7 @@ export const addCommentData = createAsyncThunk("add-comment",async(CommentData,t
 
 export const addLikeData = createAsyncThunk("add-likes",async(LikesData,thunkapi)=>{
   try {
-    const response = await axios.post(`http://localhost:5000/api/posts/add-likes/${LikesData.post_id}/${LikesData.user_id}`,LikesData)
+    const response = await axios.post(`http://localhost:5000/api/posts/add-likes/${LikesData.post_id}/${LikesData.user_id}`)
     return response.data
   } catch (error) {
         return thunkapi.rejectWithValue(error.response.data)
@@ -113,15 +113,15 @@ export const postSlice = createSlice({
         return item
       }) 
     })
-    builder.addCase(addLikes.pending, (state,action)=>{
+    builder.addCase(addLikeData.pending, (state,action)=>{
       state.likesLoading = true
     })
-    builder.addCase(addLikes.rejected,(state,action)=>{
+    builder.addCase(addLikeData.rejected,(state,action)=>{
       state.likesLoading = false,
       state.likesError = true,cs
       state.likesMessage = action.paylaod
     })
-    builder.addCase(addLikes.fulfilled, (state,action)=>{
+    builder.addCase(addLikeData.fulfilled, (state,action)=>{
       state.likesLoading = false,
       state.likesError = false,
       state.likesSucces = true,

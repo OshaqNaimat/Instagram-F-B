@@ -9,8 +9,9 @@ import { FiBookmark } from "react-icons/fi";
 import moment from "moment";
 import ClockLoader from "react-spinners/ClockLoader";
 import { useDispatch, useSelector } from "react-redux";
-import { addCommentData } from "../features/posts/postSlice";
+import { addCommentData, addLikeData } from "../features/posts/postSlice";
 import {toast} from 'react-hot-toast'
+import { addLikes } from "../../../backend/controller/PostController";
 
 const Posts = ({ caption, image, filter, createdAt,user_id,_id,comment,likes }) => {
   const { postLoading,commentLoading,commentSuccess,commentError } = useSelector((state) => state.daak);
@@ -29,6 +30,17 @@ const Posts = ({ caption, image, filter, createdAt,user_id,_id,comment,likes }) 
      dispatch(addCommentData(commentData))
      toast.success("Comment Added")
      setComments('')
+
+  }
+
+  const handleLike = () =>{
+    const likeData = {
+      post_id:_id,
+      user_id:user_id._id
+    }
+
+
+    dispatch(addLikeData(likeData))
 
   }
 
@@ -83,6 +95,7 @@ const Posts = ({ caption, image, filter, createdAt,user_id,_id,comment,likes }) 
         <div className="flex justify-between items-center w-full my-3 p-2 ">
           <div className="flex gap-3">
             <FaRegHeart
+            onClick={handleLike}
               size={25}
               className="cursor-pointer  hover:text-gray-500 duration-100 "
             />
