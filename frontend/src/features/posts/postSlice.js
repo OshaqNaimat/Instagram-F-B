@@ -90,7 +90,14 @@ export const postSlice = createSlice({
     builder.addCase(addCommentData.fulfilled, (state,action)=>{
       state.commentLoading = false,
       state.commentError = false,
-      state.commentSucces = true
+      state.commentSucces = true,
+      state.posts = state.posts.map((item,index)=>{
+        if(item._id == action.payload._id){
+          item.comment = action.payload.comment
+        }
+
+        return item
+      }) 
     })
   },
 });

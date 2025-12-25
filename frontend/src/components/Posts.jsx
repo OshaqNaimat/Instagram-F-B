@@ -11,12 +11,12 @@ import ClockLoader from "react-spinners/ClockLoader";
 import PostSkeleton from "./PostSkeleton";
 import Skeleton from "react-loading-skeleton";
 import { useDispatch, useSelector } from "react-redux";
-import { addCommentData } from "../features/posts/postSlice";
+import { addCommentData } from "../features/posts/postSlice.js";
 import {toast} from 'react-hot-toast'
 
-const Posts = ({ caption, image, filter, createdAt,user_id,_id }) => {
+const Posts = ({ caption, image, filter, createdAt,user_id,_id,comment }) => {
   const { postLoading,commentLoading,commentSuccess,commentError } = useSelector((state) => state.daak);
-  const [comment,setComment] = useState('')
+  const [comments,setComments] = useState('')
 
 
   const dispatch = useDispatch()
@@ -25,12 +25,12 @@ const Posts = ({ caption, image, filter, createdAt,user_id,_id }) => {
     const commentData = {
       post_id:_id,
       user_id:user_id._id,
-      comment
+      comments
     }
 
      dispatch(addCommentData(commentData))
      toast.success("Comment Added")
-     setComment('')
+     setComments('')
 
   }
 
@@ -65,7 +65,7 @@ const Posts = ({ caption, image, filter, createdAt,user_id,_id }) => {
           <BsThreeDots size={25} className="cursor-pointer" />
         </div>
         <div className="relative">
-          <img className="w-full object-fit-cover " src={image} alt="" />
+          <img className="w-full object-cover" src={image} alt="" />
         </div>
         {/* <div className="absolute bottom-3 right-3 ">
                  <IoVolumeMute  size={25} className='bg-black/50 p-1 cursor-pointer text-white rounded-full  '/> */}
@@ -108,10 +108,15 @@ const Posts = ({ caption, image, filter, createdAt,user_id,_id }) => {
           <span className="font-semibold mx-1">{user_id.username}</span>
           {caption}
         </p>
+        <p className="text-sm ps-3 text-gray-400 cursor-pointer">
+          {
+            comment?.length > 1 ? `View all ${comment?.length} comments` : comment.length == 1 ? 'View Comment' : 'Koi Rae Nahi '
+          }
+        </p>
        <div className="flex items-center p-2 rounded-md">
   <input
-    value={comment}
-    onChange={(e) => setComment(e.target.value)}
+    value={comments}
+    onChange={(e) => setComments(e.target.value)}
     type="text"
     placeholder="Add a comment..."
     className="border border-gray-100 w-full py-2 rounded-md
@@ -121,10 +126,10 @@ const Posts = ({ caption, image, filter, createdAt,user_id,_id }) => {
 
   <button
     onClick={handleComment}
-    disabled={comment.trim() === "" || commentLoading}
+    disabled={comments.trim() === "" || commentLoading}
     className={`font-semibold px-1 transition
       ${
-        comment.trim() === "" || commentLoading
+        comments.trim() === "" || commentLoading
           ? "text-gray-400 cursor-not-allowed"
           : "text-cyan-500 hover:text-cyan-700"
       }`}
