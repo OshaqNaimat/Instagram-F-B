@@ -12,6 +12,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { addCommentData, addLikeData } from "../features/posts/postSlice";
 import {toast} from 'react-hot-toast'
 import { addLikes } from "../../../backend/controller/PostController";
+import { motion, AnimatePresence } from "framer-motion";
+
 
 const Posts = ({ caption, image, filter, createdAt,user_id,_id,comment,likes }) => {
   const { postLoading,commentLoading,commentSuccess,commentError } = useSelector((state) => state.daak);
@@ -43,6 +45,8 @@ const Posts = ({ caption, image, filter, createdAt,user_id,_id,comment,likes }) 
     dispatch(addLikeData(likeData))
 
   }
+
+  const isLiked = likes.includes(user_id._id);
 
   return (
     <>
@@ -94,11 +98,35 @@ const Posts = ({ caption, image, filter, createdAt,user_id,_id,comment,likes }) 
         {/* </div> */}
         <div className="flex justify-between items-center w-full my-3 p-2 ">
           <div className="flex gap-3">
-            <FaRegHeart
+          <div className="relative w-8 h-8 overflow-hidden">
+      <AnimatePresence mode="wait">
+        {isLiked ? (
+          <motion.div
+            key="liked"
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: -20, opacity: 0 }}
+            transition={{ duration: 0.25 }}
             onClick={handleLike}
-              size={25}
-              className="cursor-pointer  hover:text-gray-500 duration-100 "
-            />
+            className="absolute cursor-pointer"
+          >
+            <FaHeart size={25} color="purple" />
+          </motion.div>
+        ) : (
+          <motion.div
+            key="unliked"
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: -20, opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            onClick={handleLike}
+            className="absolute cursor-pointer"
+          >
+            <FaRegHeart size={25} />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
             <FaRegComment
               size={25}
               className="cursor-pointer hover:text-gray-500 duration-100"
