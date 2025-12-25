@@ -20,6 +20,7 @@ import { IoIosSend } from "react-icons/io";
 const Posts = ({ caption, image, filter, createdAt,user_id,_id,comment,likes }) => {
   const { postLoading,commentLoading,commentSuccess,commentError } = useSelector((state) => state.daak);
   const [comments,setComments] = useState('')
+  const [liked,setLiked] = useState(false)
 
 
   const dispatch = useDispatch()
@@ -45,7 +46,11 @@ const Posts = ({ caption, image, filter, createdAt,user_id,_id,comment,likes }) 
 
 
     dispatch(addLikeData(likeData))
-
+    setLiked(true)
+     
+    setTimeout(() => {
+      setLiked(false)
+    }, 900);
   }
 
   const isLiked = likes.includes(user_id._id);
@@ -82,22 +87,27 @@ const Posts = ({ caption, image, filter, createdAt,user_id,_id,comment,likes }) 
         </div>
         <div className="relative">
           <img className="w-full object-cover" src={image} alt="" />
+          
+    
+
+<svg width="0" height="0" >
+  <defs>
+    <linearGradient id="heartGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style={{ stopColor: "red", stopOpacity: 2 }} />
+      <stop offset="100%" style={{ stopColor: "pink", stopOpacity: 1 }} />
+    </linearGradient>
+  </defs>
+</svg>
+
+<FaHeart
+  size={100}
+  style={{ fill: "url(#heartGradient)" }}
+  className={`transition duration-400 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ${liked ? 'scale-100' : 'scale-0'} `}
+/>
+
+
         </div>
-        {/* <div className="absolute bottom-3 right-3 ">
-                 <IoVolumeMute  size={25} className='bg-black/50 p-1 cursor-pointer text-white rounded-full  '/> */}
-        {/* <input type="range" name='volume' id='volume'  className='' /> */}
-        {/* <label htmlFor="volume"> */}
-        {/* <div onClick={()=>setVolume(true)} className="h-[90px] bg-black/50 py-2 rounded-full absolute right-2 bottom-9">
-                   <Slider
-        aria-label="Temperature"
-        orientation="vertical"
-        // getAriaValueText={getAriaValueText}
-        valueLabelDisplay="auto"
-        defaultValue={0}
-      />
-                </div> */}
-        {/* </label> */}
-        {/* </div> */}
+      
         <div className="flex justify-between items-center w-full my-3 p-2 ">
           <div className="flex gap-3">
           <div className="relative w-8 h-8 overflow-hidden">
