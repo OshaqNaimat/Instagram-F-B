@@ -13,6 +13,8 @@ import { addCommentData, addLikeData } from "../features/posts/postSlice";
 import {toast} from 'react-hot-toast'
 import { addLikes } from "../../../backend/controller/PostController";
 import { motion, AnimatePresence } from "framer-motion";
+import { IoIosSend } from "react-icons/io";
+
 
 
 const Posts = ({ caption, image, filter, createdAt,user_id,_id,comment,likes }) => {
@@ -110,7 +112,7 @@ const Posts = ({ caption, image, filter, createdAt,user_id,_id,comment,likes }) 
             onClick={handleLike}
             className="absolute cursor-pointer"
           >
-            <FaHeart size={25} color="purple" />
+            <FaHeart size={25} color="red" />
           </motion.div>
         ) : (
           <motion.div
@@ -159,7 +161,7 @@ const Posts = ({ caption, image, filter, createdAt,user_id,_id,comment,likes }) 
     type="text"
     placeholder="Add a comment..."
     className="border border-gray-100 w-full py-2 rounded-md
-               focus:outline-none focus:ring-1 focus:ring-cyan-500 focus:border-cyan-500
+               focus:outline-none focus:ring-1 focus:ring-cyan-200 focus:border-cyan-200
                transition"
   />
 
@@ -176,7 +178,7 @@ const Posts = ({ caption, image, filter, createdAt,user_id,_id,comment,likes }) 
     {commentLoading ? (
       <ClockLoader color="blue" size={20} />
     ) : (
-      <IoSend size={30} />
+      <IoIosSend  size={25} />
     )}
   </button>
 </div>
