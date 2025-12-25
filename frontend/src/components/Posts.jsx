@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addCommentData } from "../features/posts/postSlice";
 import {toast} from 'react-hot-toast'
 
-const Posts = ({ caption, image, filter, createdAt,user_id,_id,comment }) => {
+const Posts = ({ caption, image, filter, createdAt,user_id,_id,comment,likes }) => {
   const { postLoading,commentLoading,commentSuccess,commentError } = useSelector((state) => state.daak);
   const [comments,setComments] = useState('')
 
@@ -100,7 +100,7 @@ const Posts = ({ caption, image, filter, createdAt,user_id,_id,comment }) => {
             className="cursor-pointer hover:text-gray-500 duration-100"
           />
         </div>
-        <div className="px-2 m-0 font-semibold">100 likes</div>
+        <div className="px-2 m-0 font-semibold">{likes.length} likes</div>
 
         <p className="text-gray p-2 ">
           <span className="font-semibold mx-1">{user_id.username}</span>

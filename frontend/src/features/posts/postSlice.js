@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { addLikes } from "../../../../backend/controller/PostController";
 const initialState = {
   posts: [],
   postSuccess: false,
@@ -9,7 +10,11 @@ const initialState = {
   commentLoading:false,
   commentError:false,
   commentSucces:false,
-  commentMessage:""
+  commentMessage:"",
+  likesLoading:false,
+  likesError:false,
+  likesSucces:false,
+  likesMessage:""
 };
 
 export const addDaak = createAsyncThunk(
@@ -44,6 +49,15 @@ export const addCommentData = createAsyncThunk("add-comment",async(CommentData,t
     return response.data
   } catch (error) {
          return thunkApi.rejectWithValue(error.response.data)    
+  }
+})
+
+export const addLikeData = createAsyncThunk("add-likes",async(LikesData,thunkapi)=>{
+  try {
+    const response = await axios.post(`http://localhost:5000/api/posts/add-likes/${LikesData.post_id}/${LikesData.user_id}`,LikesData)
+    return response.data
+  } catch (error) {
+        return thunkapi.rejectWithValue(error.response.data)
   }
 })
 
@@ -93,7 +107,27 @@ export const postSlice = createSlice({
       state.commentSucces = true,
       state.posts = state.posts.map((item,index)=>{
         if(item._id == action.payload._id){
-          item.comment = action.payload.comment
+          item.comment = action.payload.comment 
+        }
+
+        return item
+      }) 
+    })
+    builder.addCase(addLikes.pending, (state,action)=>{
+      state.likesLoading = true
+    })
+    builder.addCase(addLikes.rejected,(state,action)=>{
+      state.likesLoading = false,
+      state.likesError = true,cs
+      state.likesMessage = action.paylaod
+    })
+    builder.addCase(addLikes.fulfilled, (state,action)=>{
+      state.likesLoading = false,
+      state.likesError = false,
+      state.likesSucces = true,
+      state.posts = state.posts.map((item,index)=>{
+        if(item._id == action.payload._id){
+          item.likes = action.payload.likes 
         }
 
         return item
