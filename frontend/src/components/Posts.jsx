@@ -8,10 +8,8 @@ import { RiSendPlaneFill } from "react-icons/ri";
 import { FiBookmark } from "react-icons/fi";
 import moment from "moment";
 import ClockLoader from "react-spinners/ClockLoader";
-import PostSkeleton from "./PostSkeleton";
-import Skeleton from "react-loading-skeleton";
 import { useDispatch, useSelector } from "react-redux";
-import { addCommentData } from "../features/posts/postSlice.js";
+import { addCommentData } from "../features/posts/postSlice";
 import {toast} from 'react-hot-toast'
 
 const Posts = ({ caption, image, filter, createdAt,user_id,_id,comment }) => {

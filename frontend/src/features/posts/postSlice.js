@@ -84,7 +84,7 @@ export const postSlice = createSlice({
     })
     builder.addCase(addCommentData.rejected,(state,action)=>{
       state.commentLoading = false,
-      state.commentError = true,
+      state.commentError = true,cs
       state.commentMessage = action.paylaod
     })
     builder.addCase(addCommentData.fulfilled, (state,action)=>{
