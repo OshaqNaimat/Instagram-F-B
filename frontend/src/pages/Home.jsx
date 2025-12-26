@@ -16,6 +16,7 @@ import CommentPopUp from "../components/CommentPopUp";
 const Home = () => {
   const [show, setShow] = useState(false);
   const [allSuggestions, setAllSuggestions] = useState(false);
+  const [allComments,setAllComments]  =useState(false)
 
   const dispatch = useDispatch();
 
@@ -40,7 +41,10 @@ const Home = () => {
         setAllSuggestion={setAllSuggestions}
       />
       {/* all comments */}
-      <CommentPopUp/>
+      <CommentPopUp
+      allComments={allComments}
+      setAllComments={setAllComments}
+      />
       {/* </div> */}
       <PostModal show={show} setShow={setShow} />
       <div className="grid grid-cols-4 min-h-screen">

@@ -1,49 +1,49 @@
-import React from "react";
-import { BsThreeDots } from "react-icons/bs";
-import { GoDotFill } from "react-icons/go";
-import Fpeoples from "./Fpeoples";
-import { IoClose } from "react-icons/io5";
+import moment from 'moment'
+import React from 'react'
+import { BsThreeDots } from 'react-icons/bs'
+import { GoDotFill } from 'react-icons/go'
 
-const CommentPopUp = ({ allSuggestions, setAllSuggestion }) => {
+const CommentPopUp = ({user_id}) => {
   return (
-    <>
-      <div
-        className={`bg-black/50 min-h-screen w-full fixed top-0 z-100 ${
-          allSuggestions ? "" : "hidden"
-        }`}
-      >
-        <div
-          className="
-         container w-[50%] mx-auto shadow-lg overflow-x-hidden rounded-md mt-9 p-3 z-100 overflow-y-scroll h-[600px] bg-white"
-        >
-          <div className="flex my-2 justify-center">
-            <h4 className="text-gray-500 font-semibold">Suggested for you</h4>
-          </div>
+    <div>
+      <div className="bg-black/50 min-h-screen flex justify-center items-center w-full fixed top-0 z-100">
+       <div className="grid grid-cols-2 bg-white w-[60%] h-[80vh] rounded-md shadow-xl">
+                 {/* reels */}
+                 <div className="h-[469px] overflow-hidden object-contain">
+                    <img width='100%' height='100%' className='col-span-1 object-contain ' src="https://images.pexels.com/photos/1157255/pexels-photo-1157255.jpeg?cs=srgb&dl=pexels-camcasey-1157255.jpg&fm=jpg" alt="" />
+                 </div>
+                 {/* comments */}
+                {/* main user */}
+                <div className="col-span-1">
 
-          <Fpeoples />
-          <Fpeoples />
-          <Fpeoples />
-          <Fpeoples />
-          <Fpeoples />
-          <Fpeoples />
-          <Fpeoples />
-          <Fpeoples />
-          <Fpeoples />
-          <Fpeoples />
-          <Fpeoples />
-          <Fpeoples />
-          <Fpeoples />
-          <Fpeoples />
-          <Fpeoples />
-          <Fpeoples />
-        </div>
-        <IoClose
-          onClick={() => setAllSuggestion(false)}
-          className="z-100 text-white text-4xl fixed top-10 right-10 cursor-pointer"
-        />
+                <div className="flex">
+                       <div className="flex p-2 gap-2 items-center">
+                             
+                               <img
+                                className="w-[35px] h-[35px] cursor-pointer"
+                                src="https://cdn-icons-png.freepik.com/256/10796/10796945.png?semt=ais_white_label"
+                                alt=""
+                              />
+
+                              <div className="">
+                                <div className="flex gap-2 items-center justify-center">
+                                  <h4 className="font-semibold  text-[14px] cursor-pointer">
+                                    username
+                                  </h4>
+                                  <GoDotFill size={6} />
+                                  <p className="text-gray-500">Time</p>
+                                </div>
+                  
+                                <p className="text-sm">Followers</p>
+                              </div>
+                <BsThreeDots size={25} className="cursor-pointer" />
+                            </div>
+                </div>
+            </div>
+       </div>
       </div>
-    </>
-  );
-};
+    </div>
+  )
+}
 
-export default CommentPopUp;
+export default CommentPopUp
