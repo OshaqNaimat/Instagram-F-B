@@ -93,9 +93,11 @@ const Posts = ({ caption, image, filter, createdAt,user_id,_id,comment,likes }) 
 <svg width="0" height="0" >
   <defs>
     <linearGradient id="heartGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style={{ stopColor: "red", stopOpacity: 2 }} />
-      <stop offset="100%" style={{ stopColor: "pink", stopOpacity: 1 }} />
-    </linearGradient>
+  <stop offset="0%" stop-color="#ffc0cb" />
+  <stop offset="50%" stop-color="#d68cff" />
+  <stop offset="100%" stop-color="#8a2be2" />
+</linearGradient>
+
   </defs>
 </svg>
 
