@@ -20,15 +20,16 @@ const CommentPopUp = ({ user_id }) => {
           </div>
           {/* comments */}
           {/* main user */}
-          <div className="col-span-1 p-5">
-            <div className="flex items-center gap-2">
-              <img
-                src="https://images.pexels.com/photos/1157255/pexels-photo-1157255.jpeg?cs=srgb&dl=pexels-camcasey-1157255.jpg&fm=jpg"
-                className="h-10 w-10 rounded-full"
-                alt=""
-              />
-              <div className="">
-                <div className="flex flex-col">
+          <div className="col-span-1  p-5">
+            <div className="flex items-center justify-between ">
+              <div className="flex gap-2">
+                <img
+                  src="https://images.pexels.com/photos/1157255/pexels-photo-1157255.jpeg?cs=srgb&dl=pexels-camcasey-1157255.jpg&fm=jpg"
+                  className="h-10 w-10 rounded-full"
+                  alt=""
+                />
+
+                <div className="flex flex-col justify-center ">
                   <h4 className=" font-semibold">
                     Username .{" "}
                     <span className="text-blue-500 font-semibold cursor-pointer hover:underline">
@@ -38,10 +39,12 @@ const CommentPopUp = ({ user_id }) => {
                   <p className="text-sm">Audio</p>
                 </div>
               </div>
-              {/* <p className="text-blue-500 font-semibold cursor-pointer hover:underline"> */}
-              {/* Follow */}
-              {/* </p> */}
+              <BsThreeDots
+                size={20}
+                className="cursor-pointer hover:text-gray-400 hover:scale-110x transition  duration-100"
+              />
             </div>
+            {/* All commented comments */}
           </div>
         </div>
       </div>
