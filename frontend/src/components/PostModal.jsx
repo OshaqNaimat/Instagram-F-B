@@ -51,7 +51,7 @@ const PostModal = ({ show, setShow }) => {
     (state) => state.daak
   );
 
-  const {user} = useSelector((state)=>state.auth)
+  const { user } = useSelector((state) => state.auth);
 
   const handlePostUpload = async () => {
     let myImage = await uploadToCloudinary();
@@ -59,7 +59,7 @@ const PostModal = ({ show, setShow }) => {
       caption,
       image: myImage,
       filter: editFilter,
-      user_id:user?._id
+      user_id: user?._id,
     };
 
     dispatch(addDaak(postData));
