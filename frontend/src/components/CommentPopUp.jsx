@@ -21,12 +21,26 @@ const CommentPopUp = ({ user_id }) => {
           {/* comments */}
           {/* main user */}
           <div className="col-span-1 p-5">
-            <div className="flex">
+            <div className="flex items-center gap-2">
               <img
                 src="https://images.pexels.com/photos/1157255/pexels-photo-1157255.jpeg?cs=srgb&dl=pexels-camcasey-1157255.jpg&fm=jpg"
-                className="h-7 w-7 rounded-full"
+                className="h-10 w-10 rounded-full"
                 alt=""
               />
+              <div className="">
+                <div className="flex flex-col">
+                  <h4 className=" font-semibold">
+                    Username .{" "}
+                    <span className="text-blue-500 font-semibold cursor-pointer hover:underline">
+                      Follow
+                    </span>
+                  </h4>
+                  <p className="text-sm">Audio</p>
+                </div>
+              </div>
+              {/* <p className="text-blue-500 font-semibold cursor-pointer hover:underline"> */}
+              {/* Follow */}
+              {/* </p> */}
             </div>
           </div>
         </div>
