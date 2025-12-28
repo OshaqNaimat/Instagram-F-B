@@ -8,7 +8,7 @@ import Hmessages from "../components/Hmessages";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getDaak } from "../features/posts/postSlice";
-import ProfilePage from "../components/ProfilePage";
+import ProfilePage from "./ProfilePage";
 import AllSuggestedPeoples from "../components/AllSuggestedPeoples";
 import PostSkeleton from "../components/PostSkeleton";
 import CommentPopUp from "../components/CommentPopUp";

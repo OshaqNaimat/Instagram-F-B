@@ -5,6 +5,7 @@ import * as IoIcons from "react-icons/io";
 import * as FiIcons from "react-icons/fi";
 import * as BsIcons from "react-icons/bs";
 import * as FaIcons from "react-icons/fa";
+import { Link, Links } from "react-router-dom";
 // import Link from "react-redux";
 
 export const sidebarItems = [
@@ -12,50 +13,50 @@ export const sidebarItems = [
     id: 1,
     title: "Home",
     icon: <AiIcons.AiFillHome />,
-    link: "/Home",
+    Link: "/Home",
   },
   {
     id: 2,
     title: "Search",
     icon: <AiIcons.AiOutlineSearch />,
-    link: "/search",
+    // have to make the Search page
   },
   {
     id: 3,
     title: "Explore",
     icon: <MdIcons.MdOutlineExplore />,
-    link: "/explore",
+    Link: "/Explore",
   },
   {
     id: 4,
     title: "Reels",
     icon: <BiIcons.BiMoviePlay />,
-    link: "/reels",
+    Link: "/reels",
   },
   {
     id: 5,
     title: "Messages",
     icon: <BsIcons.BsMessenger />,
     badge: 3,
-    link: "/messages",
+    Link: "/message",
   },
   {
     id: 6,
     title: "Notifications",
     icon: <IoIcons.IoMdHeartEmpty />,
-    link: "/notifications",
+    //  have to make the notification page
   },
   {
     id: 7,
     title: "Create",
     icon: <MdIcons.MdOutlineAddBox />,
-    link: "/create",
+    // already given in the sidebar
   },
   {
     id: 8,
     title: "Profile",
     icon: <FaIcons.FaRegUserCircle />,
-    link : "/profile-page",
+    Link: "/profile ",
   },
   {
     id: 9,
