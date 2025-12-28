@@ -16,7 +16,7 @@ const currentUser = {
   avatar: "https://i.pravatar.cc/150?img=1",
 };
 
-const CommentPopUp = ({ user, comment, setAllComments }) => {
+const CommentPopUp = ({ user, comment, show }) => {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState("");
   const [isLiked, setIsLiked] = useState(false);
@@ -82,7 +82,7 @@ const CommentPopUp = ({ user, comment, setAllComments }) => {
         className={`bg-black/50 min-h-screen w-full left-0 fixed top-0 z-100  `}
       >
         <X
-          onClick={() => setAllComments(false)}
+          onClick={() => show(false)}
           size={30}
           className="fixed right-8 top-5 shadow-xl  text-white cursor-pointer hover:scale-110 transition duration-100"
         />
@@ -154,7 +154,7 @@ const CommentPopUp = ({ user, comment, setAllComments }) => {
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-1">
                           <span className="font-semibold text-sm">
-                            {comment.username}
+                            {user?.username}
                           </span>
                           <span className="text-xs text-gray-500">
                             {comment.timestamp}

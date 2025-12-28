@@ -69,12 +69,7 @@ const Posts = ({
   return (
     <>
       {allComments && (
-        <CommentPopUp
-          user={user_id}
-          setAllComments={setAllComments}
-          comments={comment}
-          show={allComments}
-        />
+        <CommentPopUp user={user_id} comments={comment} show={setAllComments} />
       )}
       <div className="container rounded-md mb-10  shadow-lg w-[80%] mt-10 mx-auto relative select-none overflow-hidden">
         <div className="flex justify-between p-2 items-center">
