@@ -9,43 +9,47 @@ import { MdOutlineExplore } from "react-icons/md";
 const IconSidebar = () => {
   return (
     <>
-      <div className="flex flex-col bg-blue-500 gap-4 items-center min-h-screen">
-        <img src="" alt="" />
+      <div className="flex flex-col border-r border-gray-300 gap-4 items-center min-h-screen">
+        <img
+          className="cursor-pointer"
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1280px-Instagram_logo.svg.png"
+          alt=""
+        />
         <IoIosHome
           size={50}
-          className="cursor-pointer hover:scale-105 transition hover:bg-gray-500 rounded-md p-3"
+          className="cursor-pointer hover:scale-105 transition hover:bg-gray-300 rounded-md p-3"
         />
         <IoMdSearch
           size={50}
-          className="cursor-pointer hover:scale-105 transition hover:bg-gray-500 rounded-md p-3"
+          className="cursor-pointer hover:scale-105 transition hover:bg-gray-300 rounded-md p-3"
         />
         <MdOutlineExplore
           size={50}
-          className="cursor-pointer hover:scale-105 transition hover:bg-gray-500 rounded-md p-3"
+          className="cursor-pointer hover:scale-105 transition hover:bg-gray-300 rounded-md p-3"
         />
         <BiMoviePlay
           size={50}
-          className="cursor-pointer hover:scale-105 transition hover:bg-gray-500 rounded-md p-3"
+          className="cursor-pointer hover:scale-105 transition hover:bg-gray-300 rounded-md p-3"
         />
         <FaFacebookMessenger
           size={50}
-          className="cursor-pointer hover:scale-105 transition hover:bg-gray-500 rounded-md p-3"
+          className="cursor-pointer hover:scale-105 transition hover:bg-gray-300 rounded-md p-3"
         />
         <FaRegHeart
           size={50}
-          className="cursor-pointer hover:scale-105 transition hover:bg-gray-500 rounded-md p-3"
+          className="cursor-pointer hover:scale-105 transition hover:bg-gray-300 rounded-md p-3"
         />
         <FaRegPlusSquare
           size={50}
-          className="cursor-pointer hover:scale-105 transition hover:bg-gray-500 rounded-md p-3"
+          className="cursor-pointer hover:scale-105 transition hover:bg-gray-300 rounded-md p-3"
         />
         <IoPersonCircleOutline
           size={50}
-          className="cursor-pointer hover:scale-105 transition hover:bg-gray-500 rounded-md p-3"
+          className="cursor-pointer hover:scale-105 transition hover:bg-gray-300 rounded-md p-3"
         />
         <IoList
           size={50}
-          className="cursor-pointer hover:scale-105 transition hover:bg-gray-500 rounded-md p-3"
+          className="cursor-pointer hover:scale-105 transition hover:bg-gray-300 rounded-md p-3"
         />
       </div>
     </>
