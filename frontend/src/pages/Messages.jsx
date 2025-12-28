@@ -8,7 +8,7 @@ import { FaRegSmile } from "react-icons/fa";
 import { TiMicrophoneOutline } from "react-icons/ti";
 import { PiStickerBold } from "react-icons/pi";
 import { TbSend } from "react-icons/tb";
-import Sidebar from "../components/Sidebar";
+import IconSidebar from "../components/IconSidebar";
 
 /**
  * Fixed version:
@@ -34,8 +34,8 @@ const Messages = () => {
     <>
       <div className="grid grid-cols-13  h-screen select-none overflow-hidden">
         {/* sidebar */}
-        <div className="hidden  md:block md:col-span-1 lg:col-span-1">
-          <Sidebar />
+        <div className="col-span-1">
+          <IconSidebar />
         </div>
 
         {/* LEFT PANEL */}
