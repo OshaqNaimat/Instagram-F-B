@@ -1,5 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
-import { X, Heart, Send, MoreVertical, Verified } from "lucide-react";
+import {
+  X,
+  Heart,
+  Send,
+  MoreVertical,
+  Verified,
+  MessageCircle,
+} from "lucide-react";
 import { useSelector } from "react-redux";
 
 // Mock data
@@ -9,31 +16,8 @@ const currentUser = {
   avatar: "https://i.pravatar.cc/150?img=1",
 };
 
-const initialComments = [
-  {
-    id: "1",
-    userId: "user2",
-    username: "sarah_jones",
-    avatar: "https://i.pravatar.cc/150?img=2",
-    comment: "This is amazing! Love the colors 😍",
-    timestamp: "2h ago",
-    likes: 0,
-    isLiked: false,
-  },
-  {
-    id: "2",
-    userId: "user3",
-    username: "alex_wanderer",
-    avatar: "https://i.pravatar.cc/150?img=3",
-    comment: "Beautiful composition! Where was this taken?",
-    timestamp: "3h ago",
-    likes: 0,
-    isLiked: true,
-  },
-];
-
-const CommentPopUp = ({ users, comment, setAllComments }) => {
-  const [comments, setComments] = useState(initialComments);
+const CommentPopUp = ({ user, comment, setAllComments }) => {
+  const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState("");
   const [isLiked, setIsLiked] = useState(false);
   const [likesCount, setLikesCount] = useState(1500);
@@ -137,10 +121,12 @@ const CommentPopUp = ({ users, comment, setAllComments }) => {
                 />
                 <div>
                   <div className="flex items-center gap-1">
-                    <span className="font-semibold">photography_world</span>
+                    <span className="font-semibold">{user?.username}</span>
                     <Verified className="w-4 h-4 text-blue-500 fill-blue-500" />
                   </div>
-                  <span className="text-sm text-gray-500">Paris, France</span>
+                  <span className="text-sm text-gray-500">
+                    {user?.fullName}
+                  </span>
                 </div>
               </div>
               <button className="p-2 hover:bg-gray-100 rounded-full">
