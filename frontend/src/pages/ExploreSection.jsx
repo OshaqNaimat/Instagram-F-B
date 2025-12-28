@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
+import Sidebar from "../components/Sidebar";
 
 const ExploreSection = () => {
+  const [show, setShow] = useState(false);
   return (
     <>
+      <div className="grid grid-cols-4 min-h-screen">
+        {/* Sidebar */}
+        <div className="hidden md:block md:col-span-1 lg:col-span-1">
+          <Sidebar show={show} setShow={setShow} isMobile={false} />
+        </div>
+      </div>
       {/* very first row */}
       <div className="grid grid-cols-3  grid-rows-3   ">
         {/* <!-- div1 (default position) --> */}
