@@ -183,11 +183,13 @@ const Posts = ({
           {caption}
         </p>
         <p className="text-sm ps-3 text-gray-400 cursor-pointer">
-          {comment?.length > 1
-            ? `View all ${comment?.length} comments`
-            : comment.length == 1
-            ? "View Comment"
-            : "Koi Rae Nahi "}
+          {comment?.length > 1 ? (
+            `View all ${comment?.length} comments`
+          ) : comment.length == 1 ? (
+            <p onClick={() => setAllComments(true)}>View Comment</p>
+          ) : (
+            "Koi Rae Nahi "
+          )}
         </p>
         <div className="flex items-center p-2 rounded-md">
           <input
