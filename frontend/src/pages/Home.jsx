@@ -16,7 +16,6 @@ import CommentPopUp from "../components/CommentPopUp";
 const Home = () => {
   const [show, setShow] = useState(false);
   const [allSuggestions, setAllSuggestions] = useState(false);
-  const [allComments, setAllComments] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -41,7 +40,6 @@ const Home = () => {
         setAllSuggestion={setAllSuggestions}
       />
       {/* all comments */}
-      <CommentPopUp allComments={allComments} setAllComments={setAllComments} />
       {/* </div> */}
       <PostModal show={show} setShow={setShow} />
       <div className="grid grid-cols-4 min-h-screen">
@@ -55,14 +53,7 @@ const Home = () => {
         <div className="col-span-4 md:col-span-3 lg:col-span-2 p-3 rounded-md">
           {/* <Stories /> */}
           {posts?.map((item, index) => {
-            return (
-              <Posts
-                allComments={allComments}
-                setAllComments={setAllComments}
-                {...item}
-                key={item._id}
-              />
-            );
+            return <Posts {...item} key={item._id} />;
           })}
         </div>
 

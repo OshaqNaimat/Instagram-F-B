@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { X, Heart, Send, MoreVertical, Verified } from "lucide-react";
+import { useSelector } from "react-redux";
 
 // Mock data
 const currentUser = {
@@ -31,12 +32,14 @@ const initialComments = [
   },
 ];
 
-const CommentPopUp = ({ allComments, setAllComments }) => {
+const CommentPopUp = ({ users, comment }) => {
   const [comments, setComments] = useState(initialComments);
   const [newComment, setNewComment] = useState("");
   const [isLiked, setIsLiked] = useState(false);
   const [likesCount, setLikesCount] = useState(1500);
   const commentsEndRef = useRef(null);
+
+  const { image } = useSelector((state) => state.daak);
 
   useEffect(() => {
     commentsEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -86,16 +89,12 @@ const CommentPopUp = ({ allComments, setAllComments }) => {
     return num.toString();
   };
 
-  const handleClose = () => {
-    setAllComments(false);
-  };
+  // const handleClose = () => {
+  //   setAllComments(false);
+  // };
   return (
     <div>
-      <div
-        className={`bg-black/50 min-h-screen w-full fixed top-0 z-100 ${
-          allComments ? "" : "hidden"
-        }`}
-      >
+      <div className={`bg-black/50 min-h-screen w-full fixed top-0 z-100}`}>
         <div className="flex bg-white w-[60%] h-[500px] mt-10 m-auto rounded-md shadow-xl">
           {/* Left side - Video/Image */}
           <div className="w-[35%] border-r">
@@ -124,7 +123,7 @@ const CommentPopUp = ({ allComments, setAllComments }) => {
               {/* Video/Image placeholder */}
               <div className="h-[calc(100%-120px)] flex items-center justify-center bg-black">
                 <div className="text-center">
-                  <h2 className="text-6xl text-white mb-4">🎥</h2>
+                  <img src={image} className="h-full w-[200px]" alt="" />
                   <p className="text-white text-lg">Reel playing...</p>
                 </div>
               </div>
@@ -159,7 +158,7 @@ const CommentPopUp = ({ allComments, setAllComments }) => {
               <h2 className="text-xl font-semibold">All comments</h2>
               <button className="p-2 hover:bg-gray-100 rounded-full">
                 <X
-                  onClick={handleClose}
+                  // onClick={handleClose}
                   className="w-5 h-5 text-gray-600 cursor-pointer hover:scale-110 transition duration-100"
                 />
               </button>

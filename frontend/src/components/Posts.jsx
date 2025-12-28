@@ -14,6 +14,7 @@ import { toast } from "react-hot-toast";
 import { addLikes } from "../../../backend/controller/PostController";
 import { motion, AnimatePresence } from "framer-motion";
 import { IoIosSend } from "react-icons/io";
+import CommentPopUp from "./CommentPopUp";
 
 const Posts = ({
   caption,
@@ -24,13 +25,12 @@ const Posts = ({
   _id,
   comment,
   likes,
-  allComments,
-  setAllComments,
 }) => {
   const { postLoading, commentLoading, commentSuccess, commentError } =
     useSelector((state) => state.daak);
   const [comments, setComments] = useState("");
   const [liked, setLiked] = useState(false);
+  const [allComments, setAllComments] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -62,12 +62,15 @@ const Posts = ({
 
   const isLiked = likes.includes(user_id._id);
 
-  const handleOpen = () => {
-    setAllComments(true);
-  };
+  // const handleOpen = () => {
+  //   setAllComments(true);
+  // };
 
   return (
     <>
+      {allComments && (
+        <CommentPopUp user={user_id} comments={comment} show={allComments} />
+      )}
       <div className="container rounded-md mb-10  shadow-lg w-[80%] mt-10 mx-auto relative select-none overflow-hidden">
         <div className="flex justify-between p-2 items-center">
           <div className="flex p-2 gap-2 items-center">
@@ -159,7 +162,7 @@ const Posts = ({
               </AnimatePresence>
             </div>
             <FaRegComment
-              onClick={handleOpen}
+              onClick={() => setAllComments(true)}
               size={25}
               className="cursor-pointer hover:text-gray-500 duration-100"
             />
