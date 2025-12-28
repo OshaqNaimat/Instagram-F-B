@@ -37,7 +37,7 @@ const Sidebar = ({ isMobile, setShow, setPpage }) => {
 
   return (
     <div
-      className={`flex flex-col p-5 select-none xl:fixed left-0 md:fixed bottom-0 font-semibold
+      className={`flex flex-col p-4  select-none xl:fixed left-0 md:fixed bottom-0 font-semibold
       ${
         isMobile
           ? "flex-row justify-around w-full p-2"
