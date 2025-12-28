@@ -17,7 +17,7 @@ const initialComments = [
     avatar: "https://i.pravatar.cc/150?img=2",
     comment: "This is amazing! Love the colors 😍",
     timestamp: "2h ago",
-    likes: 24,
+    likes: 0,
     isLiked: false,
   },
   {
@@ -27,12 +27,12 @@ const initialComments = [
     avatar: "https://i.pravatar.cc/150?img=3",
     comment: "Beautiful composition! Where was this taken?",
     timestamp: "3h ago",
-    likes: 18,
+    likes: 0,
     isLiked: true,
   },
 ];
 
-const CommentPopUp = ({ users, comment }) => {
+const CommentPopUp = ({ users, comment, setAllComments }) => {
   const [comments, setComments] = useState(initialComments);
   const [newComment, setNewComment] = useState("");
   const [isLiked, setIsLiked] = useState(false);
@@ -94,58 +94,33 @@ const CommentPopUp = ({ users, comment }) => {
   // };
   return (
     <div>
-      <div className={`bg-black/50 min-h-screen w-full fixed top-0 z-100}`}>
+      <div
+        className={`bg-black/50 min-h-screen w-full left-0 fixed top-0 z-100  `}
+      >
+        <X
+          onClick={() => setAllComments(false)}
+          size={30}
+          className="fixed right-8 top-5 shadow-xl  text-white cursor-pointer hover:scale-110 transition duration-100"
+        />
         <div className="flex bg-white w-[60%] h-[500px] mt-10 m-auto rounded-md shadow-xl">
           {/* Left side - Video/Image */}
           <div className="w-[35%] border-r">
             <div className="relative h-full">
               {/* Post header */}
-              <div className="flex items-center justify-between p-4 border-b">
-                <div className="flex items-center gap-3">
-                  <img
-                    src="https://i.pravatar.cc/150?img=8"
-                    alt="User"
-                    className="w-8 h-8 rounded-full"
-                  />
-                  <div>
-                    <div className="flex items-center gap-1">
-                      <span className="font-semibold">photography_world</span>
-                      <Verified className="w-4 h-4 text-blue-500 fill-blue-500" />
-                    </div>
-                    <span className="text-sm text-gray-500">Paris, France</span>
-                  </div>
-                </div>
-                <button className="p-2 hover:bg-gray-100 rounded-full">
-                  <MoreVertical className="w-5 h-5 text-gray-600" />
-                </button>
-              </div>
 
               {/* Video/Image placeholder */}
-              <div className="h-[calc(100%-120px)] flex items-center justify-center bg-black">
-                <div className="text-center">
-                  <img src={image} className="h-full w-[200px]" alt="" />
-                  <p className="text-white text-lg">Reel playing...</p>
-                </div>
+              <div className="h-full object-contain flex items-center justify-center ">
+                <img
+                  src="https://www.pixelstalk.net/wp-content/uploads/images6/Portrait-Wallpaper-HD-Free-download.jpg "
+                  className="h-full w-full object-"
+                  alt=""
+                />
               </div>
 
               {/* Action buttons below video */}
-              <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/20 to-transparent">
+              <div className="absolute bottom-0 left-0 right-0 p-4">
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-4">
-                    <button
-                      onClick={handleLikePost}
-                      className={`flex items-center gap-2 ${
-                        isLiked ? "text-red-500" : "text-white"
-                      }`}
-                    >
-                      <Heart
-                        className={`w-6 h-6 ${isLiked ? "fill-red-500" : ""}`}
-                      />
-                      <span className="font-semibold">
-                        {formatLikes(likesCount)}
-                      </span>
-                    </button>
-                  </div>
+                  <img src="" alt="" />
                 </div>
               </div>
             </div>
@@ -153,14 +128,23 @@ const CommentPopUp = ({ users, comment }) => {
 
           {/* Right side - Comments */}
           <div className="w-[65%] flex flex-col">
-            {/* Comments header */}
-            <div className="flex items-center justify-between p-4 border-b">
-              <h2 className="text-xl font-semibold">All comments</h2>
-              <button className="p-2 hover:bg-gray-100 rounded-full">
-                <X
-                  // onClick={handleClose}
-                  className="w-5 h-5 text-gray-600 cursor-pointer hover:scale-110 transition duration-100"
+            <div className="flex items-center justify-between p-4 border-gray-300 border-b">
+              <div className="flex items-center gap-3">
+                <img
+                  src="https://i.pravatar.cc/150?img=8"
+                  alt="User"
+                  className="w-8 h-8 rounded-full"
                 />
+                <div>
+                  <div className="flex items-center gap-1">
+                    <span className="font-semibold">photography_world</span>
+                    <Verified className="w-4 h-4 text-blue-500 fill-blue-500" />
+                  </div>
+                  <span className="text-sm text-gray-500">Paris, France</span>
+                </div>
+              </div>
+              <button className="p-2 hover:bg-gray-100 rounded-full">
+                <MoreVertical className="w-5 h-5 text-gray-600" />
               </button>
             </div>
 
