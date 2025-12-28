@@ -116,12 +116,12 @@ const Reels = () => {
           <FaArrowUp
             onClick={() => setPrereel(true)}
             size={15}
-            className="p-4  bottom-50 bg-gray-200 hover:bg-gray-300 cursor-pointer transition rounded-full w-12 h-12"
+            className="p-4 hidden md:block lg:block bottom-50 bg-gray-200 hover:bg-gray-300 cursor-pointer transition rounded-full w-12 h-12"
           />
           <FaArrowDown
             onClick={() => setNextreel(true)}
             size={15}
-            className="p-4  bottom-50 bg-gray-200 hover:bg-gray-300 cursor-pointer transition rounded-full w-12 h-12"
+            className="p-4 hidden md:block lg:block bottom-50 bg-gray-200 hover:bg-gray-300 cursor-pointer transition rounded-full w-12 h-12"
           />
         </div>
       </div>
