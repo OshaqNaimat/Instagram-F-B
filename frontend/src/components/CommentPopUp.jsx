@@ -1,4 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
+import { toast } from "react-hot-toast";
+
 import {
   X,
   Heart,
@@ -8,6 +10,8 @@ import {
   MessageCircle,
 } from "lucide-react";
 import { useSelector } from "react-redux";
+import { IoIosSend } from "react-icons/io";
+import ClockLoader from "react-spinners/ClockLoader";
 
 // Mock data
 const currentUser = {
@@ -18,39 +22,40 @@ const currentUser = {
 
 const CommentPopUp = ({ user, comment, show }) => {
   const [comments, setComments] = useState([]);
+  const [Pcomment, setPcomment] = useState("");
   const [newComment, setNewComment] = useState("");
   const [isLiked, setIsLiked] = useState(false);
   const [likesCount, setLikesCount] = useState(1500);
   const commentsEndRef = useRef(null);
 
-  const { image } = useSelector((state) => state.daak);
+  const { commentLoading } = useSelector((state) => state.daak);
 
   useEffect(() => {
     commentsEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [comments]);
 
-  const handleSubmitComment = (e) => {
-    e.preventDefault();
-    if (!newComment.trim()) return;
+  // const handleSubmitComment = (e) => {
+  //   e.preventDefault();
+  //   if (!newComment.trim()) return;
 
-    const comment = {
-      id: Date.now().toString(),
-      userId: currentUser.id,
-      username: currentUser.username,
-      avatar: currentUser.avatar,
-      comment: newComment,
-      timestamp: "Just now",
-      likes: 0,
-      isLiked: false,
-    };
+  //   const comment = {
+  //     id: Date.now().toString(),
+  //     userId: currentUser.id,
+  //     username: currentUser.username,
+  //     avatar: currentUser.avatar,
+  //     comment: newComment,
+  //     timestamp: "Just now",
+  //     likes: 0,
+  //     isLiked: false,
+  //   };
 
-    setComments([...comments, comment]);
-    setNewComment("");
-  };
+  //   setComments([...comments, comment]);
+  //   setNewComment("");
+  // };
 
   const handleLikeComment = (commentId) => {
     setComments(
-      comments.map((comment) =>
+      Pcomment.map((comment) =>
         comment.id === commentId
           ? {
               ...comment,
@@ -71,6 +76,17 @@ const CommentPopUp = ({ user, comment, show }) => {
     if (num >= 1000000) return `${(num / 1000000).toFixed(1)}M`;
     if (num >= 1000) return `${(num / 1000).toFixed(1)}K`;
     return num.toString();
+  };
+  const handleComment = () => {
+    const commentData = {
+      post_id: _id,
+      user_id: user_id._id,
+      comments,
+    };
+
+    dispatch(addCommentData(commentData));
+    toast.success("Comment Added");
+    setComments("");
   };
 
   // const handleClose = () => {
@@ -121,8 +137,10 @@ const CommentPopUp = ({ user, comment, show }) => {
                 />
                 <div>
                   <div className="flex items-center gap-1">
-                    <span className="font-semibold">{user?.username}</span>
-                    <Verified className="w-4 h-4 text-blue-500 fill-blue-500" />
+                    <span className="font-semibold">{user?.username} .</span>
+                    <p className="text-blue-500 font-bold hover:underline cursor-pointer ">
+                      Follow
+                    </p>
                   </div>
                   <span className="text-sm text-gray-500">
                     {user?.fullName}
@@ -144,7 +162,7 @@ const CommentPopUp = ({ user, comment, show }) => {
                 </div>
               ) : (
                 <div className="space-y-4">
-                  {comments.map((comment) => (
+                  {comments?.map((comment) => (
                     <div key={comment.id} className="flex gap-3">
                       <img
                         src={comment.avatar}
@@ -160,7 +178,7 @@ const CommentPopUp = ({ user, comment, show }) => {
                             {comment.timestamp}
                           </span>
                         </div>
-                        <p className="text-sm mb-2">{comment.comment}</p>
+                        <p className="text-sm mb-2">{comment?.comment}</p>
                         <div className="flex items-center gap-4">
                           <button
                             onClick={() => handleLikeComment(comment.id)}
@@ -188,7 +206,7 @@ const CommentPopUp = ({ user, comment, show }) => {
             </div>
 
             {/* Comment input */}
-            <div className="border-t p-4">
+            {/* <div className="border-t p-4">
               <form
                 onSubmit={handleSubmitComment}
                 className="flex items-center gap-3"
@@ -219,6 +237,34 @@ const CommentPopUp = ({ user, comment, show }) => {
                   Post
                 </button>
               </form>
+            </div> */}
+            <div className="flex items-center p-2 rounded-md">
+              <input
+                value={Pcomment}
+                onChange={(e) => setComments(e.target.value)}
+                type="text"
+                placeholder="Add a comment..."
+                className="border border-gray-100 w-full py-2 rounded-md
+               focus:outline-none focus:ring-1 focus:ring-cyan-200 focus:border-cyan-200
+               transition"
+              />
+
+              <button
+                onClick={handleComment}
+                disabled={Pcomment.trim() === "" || commentLoading}
+                className={`font-semibold px-1 transition
+      ${
+        Pcomment.trim() === "" || commentLoading
+          ? "text-gray-400 cursor-not-allowed"
+          : "text-cyan-500 hover:text-cyan-700"
+      }`}
+              >
+                {commentLoading ? (
+                  <ClockLoader color="blue" size={20} />
+                ) : (
+                  <IoIosSend size={25} />
+                )}
+              </button>
             </div>
           </div>
         </div>
