@@ -52,24 +52,23 @@ const IconSidebar = () => {
             className="cursor-pointer hover:scale-105 transition hover:bg-gray-300 rounded-md p-3"
           />
         </Link>
-        <Link to="/create" className="">
+        {/* <Link to="/create" className="">
           <FaRegPlusSquare
             size={50}
             className="cursor-pointer hover:scale-105 transition hover:bg-gray-300 rounded-md p-3"
           />
-        </Link>
+        </Link> */}
         <Link to="/profile" className="">
           <IoPersonCircleOutline
             size={50}
             className="cursor-pointer hover:scale-105 transition hover:bg-gray-300 rounded-md p-3"
           />
         </Link>
-        <Link to="" className="">
-          <IoList
-            size={50}
-            className="cursor-pointer hover:scale-105 transition hover:bg-gray-300 rounded-md p-3"
-          />
-        </Link>
+
+        <IoList
+          size={50}
+          className="cursor-pointer hover:scale-105 transition hover:bg-gray-300 rounded-md p-3"
+        />
       </div>
     </>
   );
