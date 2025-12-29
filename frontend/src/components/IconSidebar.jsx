@@ -5,6 +5,7 @@ import { FaFacebookMessenger, FaRegHeart } from "react-icons/fa6";
 import { IoIosHome, IoMdSearch } from "react-icons/io";
 import { IoList, IoPersonCircleOutline } from "react-icons/io5";
 import { MdOutlineExplore } from "react-icons/md";
+import { Link, Links } from "react-router-dom";
 
 const IconSidebar = () => {
   return (
@@ -15,42 +16,60 @@ const IconSidebar = () => {
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1280px-Instagram_logo.svg.png"
           alt=""
         />
-        <IoIosHome
-          size={50}
-          className="cursor-pointer hover:scale-105 transition hover:bg-gray-300 rounded-md p-3"
-        />
-        <IoMdSearch
-          size={50}
-          className="cursor-pointer hover:scale-105 transition hover:bg-gray-300 rounded-md p-3"
-        />
-        <MdOutlineExplore
-          size={50}
-          className="cursor-pointer hover:scale-105 transition hover:bg-gray-300 rounded-md p-3"
-        />
-        <BiMoviePlay
-          size={50}
-          className="cursor-pointer hover:scale-105 transition hover:bg-gray-300 rounded-md p-3"
-        />
-        <FaFacebookMessenger
-          size={50}
-          className="cursor-pointer hover:scale-105 transition hover:bg-gray-300 rounded-md p-3"
-        />
-        <FaRegHeart
-          size={50}
-          className="cursor-pointer hover:scale-105 transition hover:bg-gray-300 rounded-md p-3"
-        />
-        <FaRegPlusSquare
-          size={50}
-          className="cursor-pointer hover:scale-105 transition hover:bg-gray-300 rounded-md p-3"
-        />
-        <IoPersonCircleOutline
-          size={50}
-          className="cursor-pointer hover:scale-105 transition hover:bg-gray-300 rounded-md p-3"
-        />
-        <IoList
-          size={50}
-          className="cursor-pointer hover:scale-105 transition hover:bg-gray-300 rounded-md p-3"
-        />
+        <Link to="/Home" className="">
+          <IoIosHome
+            size={50}
+            className="cursor-pointer hover:scale-105 transition hover:bg-gray-300 rounded-md p-3"
+          />
+        </Link>
+        <Link to="/search" className="">
+          <IoMdSearch
+            size={50}
+            className="cursor-pointer hover:scale-105 transition hover:bg-gray-300 rounded-md p-3"
+          />
+        </Link>
+        <Link to="/explore" className="">
+          <MdOutlineExplore
+            size={50}
+            className="cursor-pointer hover:scale-105 transition hover:bg-gray-300 rounded-md p-3"
+          />
+        </Link>
+        <Link to="/reels" className="">
+          <BiMoviePlay
+            size={50}
+            className="cursor-pointer hover:scale-105 transition hover:bg-gray-300 rounded-md p-3"
+          />
+        </Link>
+        <Link to="/message" className="">
+          <FaFacebookMessenger
+            size={50}
+            className="cursor-pointer hover:scale-105 transition hover:bg-gray-300 rounded-md p-3"
+          />
+        </Link>
+        <Link to="/notification" className="">
+          <FaRegHeart
+            size={50}
+            className="cursor-pointer hover:scale-105 transition hover:bg-gray-300 rounded-md p-3"
+          />
+        </Link>
+        <Link to="/create" className="">
+          <FaRegPlusSquare
+            size={50}
+            className="cursor-pointer hover:scale-105 transition hover:bg-gray-300 rounded-md p-3"
+          />
+        </Link>
+        <Link to="/profile" className="">
+          <IoPersonCircleOutline
+            size={50}
+            className="cursor-pointer hover:scale-105 transition hover:bg-gray-300 rounded-md p-3"
+          />
+        </Link>
+        <Link to="" className="">
+          <IoList
+            size={50}
+            className="cursor-pointer hover:scale-105 transition hover:bg-gray-300 rounded-md p-3"
+          />
+        </Link>
       </div>
     </>
   );

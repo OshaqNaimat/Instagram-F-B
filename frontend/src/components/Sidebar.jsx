@@ -61,10 +61,10 @@ const Sidebar = ({ isMobile, setShow, setPpage }) => {
           <Link
             to={item.Link}
             key={item.id}
-            //  onClick={() => {
-            //     if  (item.title === "Create") setShow(true);
-            //     if (item.title === user.fullName) setPpage(true);
-            //   }}
+            onClick={() => {
+              if (item.title === "Create") setShow(true);
+              if (item.title === user.fullName) setPpage(true);
+            }}
             className={`flex items-center md:justify-center lg:justify-start gap-3 py-3 px-2 my-2 text-[20px] cursor-pointer
               rounded-md hover:bg-gray-200 duration-100 active:scale-95
               ${isMobile && "my-!"}`}
