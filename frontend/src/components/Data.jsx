@@ -56,7 +56,7 @@ export const sidebarItems = [
     id: 8,
     title: "Profile",
     icon: <FaIcons.FaRegUserCircle />,
-    Link: "/profile ",
+    Link: `/profile/${user?._id} `,
   },
   {
     id: 9,
