@@ -34,12 +34,12 @@ const Messages = () => {
     <>
       <div className="grid grid-cols-13  h-screen select-none overflow-hidden">
         {/* sidebar */}
-        <div className="lg:col-span-1 ">
+        <div className="col-span-1 icon-sidebar">
           <IconSidebar />
         </div>
 
         {/* LEFT PANEL */}
-        <div className="lg:col-span-4 border-r hidden sm:flex flex-col p-4 overflow-hidden">
+        <div className="col-span-4  border-r hidden sm:flex flex-col p-4 overflow-hidden">
           {/* Top Username Row */}
           <div className="flex justify-between items-center mb-3">
             <div className="flex gap-1 items-center cursor-pointer">
