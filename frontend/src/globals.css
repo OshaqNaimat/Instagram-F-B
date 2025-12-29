@@ -8,3 +8,9 @@ body{
   margin: 0;
   user-select: none;
 }
+
+@media (max-width:640px){
+  .icon-sidebar{
+    display: none;
+  }
+}

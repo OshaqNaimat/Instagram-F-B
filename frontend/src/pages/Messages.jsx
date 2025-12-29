@@ -39,7 +39,7 @@ const Messages = () => {
         </div>
 
         {/* LEFT PANEL */}
-        <div className="col-span-4  border-r hidden sm:flex flex-col p-4 overflow-hidden">
+        <div className="col-span-4 border-r hidden sm:flex flex-col p-4 overflow-hidden">
           {/* Top Username Row */}
           <div className="flex justify-between items-center mb-3">
             <div className="flex gap-1 items-center cursor-pointer">
