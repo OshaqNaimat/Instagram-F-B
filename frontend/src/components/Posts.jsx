@@ -15,6 +15,7 @@ import { addLikes } from "../../../backend/controller/PostController";
 import { motion, AnimatePresence } from "framer-motion";
 import { IoIosSend } from "react-icons/io";
 import CommentPopUp from "./CommentPopUp";
+import { Link } from "react-router-dom";
 
 const Posts = ({
   caption,
@@ -90,9 +91,12 @@ const Posts = ({
 
             <div className="">
               <div className="flex gap-2 items-center justify-center">
-                <h4 className="font-semibold  text-[14px] cursor-pointer">
+                <Link
+                  to={`/profile/${user_id?._id}`}
+                  className="font-semibold  text-[14px] cursor-pointer"
+                >
                   {user_id.username}
-                </h4>
+                </Link>
                 <GoDotFill size={6} />
                 <p className="text-gray-500">{moment(createdAt).fromNow()}</p>
               </div>

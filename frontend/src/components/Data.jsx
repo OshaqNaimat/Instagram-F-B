@@ -8,6 +8,8 @@ import * as FaIcons from "react-icons/fa";
 import { Link, Links } from "react-router-dom";
 // import Link from "react-redux";
 
+let user = JSON.parse(localStorage.getItem("user"));
+
 export const sidebarItems = [
   {
     id: 1,
