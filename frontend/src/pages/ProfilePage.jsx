@@ -12,7 +12,7 @@ const ProfilePage = ({ show, setShow }) => {
 
   const { user_id } = useParams();
   const dispatch = useDispatch();
-  const { foundUser } = useSelector((state) => state.auth);
+  const { foundUser, user } = useSelector((state) => state.auth);
   useEffect(() => {
     dispatch(findMyUser(user_id));
   }, [user_id]);
@@ -91,17 +91,20 @@ const ProfilePage = ({ show, setShow }) => {
             </div>
           </div>
           <hr className="w-[90%] mx-auto" />
-          <div className="flex-col flex gap-4 p-10 items-center justify-center ">
-            <FaCamera size={50} className="cursor-pointer" />
 
-            <h2 className="text-5xl font-bold">Share Photos</h2>
-            <p className="text-gray-700">
-              When you share photos, they will appear on your profile.
-            </p>
-            <h3 className="cursor-pointer text-blue-600 font-semibold border-0  border-t-0 border-e-0 border-l-0 hover:text-blue-500 hover:border-b-3 duration-75">
-              Share your first photo
-            </h3>
-          </div>
+          {user_id == user._id && (
+            <div className="flex-col flex gap-4 p-10 items-center justify-center ">
+              <FaCamera size={50} className="cursor-pointer" />
+
+              <h2 className="text-5xl font-bold">Share Photos</h2>
+              <p className="text-gray-700">
+                When you share photos, they will appear on your profile.
+              </p>
+              <h3 className="cursor-pointer text-blue-600 font-semibold border-0  border-t-0 border-e-0 border-l-0 hover:text-blue-500 hover:border-b-3 duration-75">
+                Share your first photo
+              </h3>
+            </div>
+          )}
         </div>
       </div>
     </>
