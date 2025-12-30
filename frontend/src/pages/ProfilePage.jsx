@@ -110,20 +110,21 @@ const ProfilePage = ({ show, setShow }) => {
           )}
 
           {/* post grid section */}
-          <div className="relative group cursor-pointer">
-            <div className="grid grid-cols-3 gap-[0.2rem] md:grid-cols-4">
-              {myPost?.map((item, index) => (
-                <div key={index} className="relative overflow-hidden">
-                  <img
-                    src={item?.image}
-                    alt=""
-                    className="w-full h-[300px] object-cover"
-                  />
-                  {/* Instagram-style hover overlay */}
-                  <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-40 transition-opacity duration-200" />
-                </div>
-              ))}
-            </div>
+          <div className="grid grid-cols-3 gap-[0.2rem] md:grid-cols-4">
+            {myPost?.map((item, index) => (
+              <div
+                key={index}
+                className="relative group overflow-hidden cursor-pointer"
+              >
+                <img
+                  src={item?.image}
+                  alt=""
+                  className="w-full h-[300px] object-cover"
+                />
+                {/* Instagram-style hover overlay */}
+                <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-40 transition-opacity duration-200" />
+              </div>
+            ))}
           </div>
         </div>
       </div>
