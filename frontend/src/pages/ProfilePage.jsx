@@ -7,14 +7,17 @@ import Sidebar from "../components/Sidebar";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { findMyUser } from "../features/users/userSlice";
+import { getRelaventPosts } from "../features/posts/postSlice";
 const ProfilePage = ({ show, setShow }) => {
   const [active, setActive] = useState(false);
 
   const { user_id } = useParams();
   const dispatch = useDispatch();
   const { foundUser, user } = useSelector((state) => state.auth);
+  const { myPost } = useSelector((state) => state.daak);
   useEffect(() => {
     dispatch(findMyUser(user_id));
+    dispatch(getRelaventPosts(user_id));
   }, [user_id]);
 
   return (
@@ -92,7 +95,7 @@ const ProfilePage = ({ show, setShow }) => {
           </div>
           <hr className="w-[90%] mx-auto" />
 
-          {user_id == user._id && (
+          {user_id == user._id && myPost.length == 0 && (
             <div className="flex-col flex gap-4 p-10 items-center justify-center ">
               <FaCamera size={50} className="cursor-pointer" />
 
@@ -107,52 +110,18 @@ const ProfilePage = ({ show, setShow }) => {
           )}
 
           {/* post grid section */}
-          <div className="grid grid-cols-3 gap-[0.2rem] md:grid-cols-4">
-            <img
-              src="https://i.pinimg.com/736x/c7/1e/b0/c71eb0b9f9940da41678e735964c7759.jpg"
-              alt=""
-              className="w-full h-[4  00px] object-fill"
-            />
-            <img
-              src="https://i.pinimg.com/736x/c7/1e/b0/c71eb0b9f9940da41678e735964c7759.jpg"
-              alt=""
-              className="w-full h-[4  00px] object-fill"
-            />
-            <img
-              src="https://i.pinimg.com/736x/c7/1e/b0/c71eb0b9f9940da41678e735964c7759.jpg"
-              alt=""
-              className="w-full h-[4  00px] object-fill"
-            />
-            <img
-              src="https://i.pinimg.com/736x/c7/1e/b0/c71eb0b9f9940da41678e735964c7759.jpg"
-              alt=""
-              className="w-full h-[4  00px] object-fill"
-            />
-            <img
-              src="https://i.pinimg.com/736x/c7/1e/b0/c71eb0b9f9940da41678e735964c7759.jpg"
-              alt=""
-              className="w-full h-[4  00px] object-fill"
-            />
-            <img
-              src="https://i.pinimg.com/736x/c7/1e/b0/c71eb0b9f9940da41678e735964c7759.jpg"
-              alt=""
-              className="w-full h-[4  00px] object-fill"
-            />
-            <img
-              src="https://i.pinimg.com/736x/c7/1e/b0/c71eb0b9f9940da41678e735964c7759.jpg"
-              alt=""
-              className="w-full h-[4  00px] object-fill"
-            />
-            <img
-              src="https://i.pinimg.com/736x/c7/1e/b0/c71eb0b9f9940da41678e735964c7759.jpg"
-              alt=""
-              className="w-full h-[4  00px] object-fill"
-            />
-            <img
-              src="https://i.pinimg.com/736x/c7/1e/b0/c71eb0b9f9940da41678e735964c7759.jpg"
-              alt=""
-              className="w-full h-[4  00px] object-fill"
-            />
+          <div className="bg-black/50 backdrop-blur-2xl w-[300px] absolute">
+            <div className="grid grid-cols-3  gap-[0.2rem] md:grid-cols-4">
+              {myPost?.map((item, index) => {
+                return (
+                  <img
+                    src={item?.image}
+                    alt=""
+                    className="w-full h-[300px] object-cover "
+                  />
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>
