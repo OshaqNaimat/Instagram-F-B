@@ -60,6 +60,14 @@ export const addLikeData = createAsyncThunk("add-likes",async(LikesData,thunkapi
         return thunkapi.rejectWithValue(error.response.data)
   }
 })
+export const getRelaventPosts = createAsyncThunk("get-posts",async(user_id,thunkapi)=>{
+  try {
+    const response = await axios.post(`http://localhost:5000/api/posts/get-my-posts/${user_id}`)
+    return response.data
+  } catch (error) {
+        return thunkapi.rejectWithValue(error.response.data)
+  }
+})
 
 export const postSlice = createSlice({
   name: "daak",

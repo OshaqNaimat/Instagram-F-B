@@ -24,7 +24,7 @@ const ProfilePage = ({ show, setShow }) => {
         <div className="hidden md:block md:col-span-1 lg:col-span-1">
           <Sidebar show={show} setShow={setShow} isMobile={false} />
         </div>
-        <div className="col-span-3">
+        <div className="col-span-3 pb-10">
           <div className="w-full p-4 sm:p-6">
             <div className="flex flex-col sm:flex-row w-full sm:w-[80%] lg:w-[60%] mx-auto items-center sm:items-start gap-4">
               <img
@@ -105,6 +105,55 @@ const ProfilePage = ({ show, setShow }) => {
               </h3>
             </div>
           )}
+
+          {/* post grid section */}
+          <div className="grid grid-cols-3 gap-[0.2rem] md:grid-cols-4">
+            <img
+              src="https://i.pinimg.com/736x/c7/1e/b0/c71eb0b9f9940da41678e735964c7759.jpg"
+              alt=""
+              className="w-full h-[4  00px] object-fill"
+            />
+            <img
+              src="https://i.pinimg.com/736x/c7/1e/b0/c71eb0b9f9940da41678e735964c7759.jpg"
+              alt=""
+              className="w-full h-[4  00px] object-fill"
+            />
+            <img
+              src="https://i.pinimg.com/736x/c7/1e/b0/c71eb0b9f9940da41678e735964c7759.jpg"
+              alt=""
+              className="w-full h-[4  00px] object-fill"
+            />
+            <img
+              src="https://i.pinimg.com/736x/c7/1e/b0/c71eb0b9f9940da41678e735964c7759.jpg"
+              alt=""
+              className="w-full h-[4  00px] object-fill"
+            />
+            <img
+              src="https://i.pinimg.com/736x/c7/1e/b0/c71eb0b9f9940da41678e735964c7759.jpg"
+              alt=""
+              className="w-full h-[4  00px] object-fill"
+            />
+            <img
+              src="https://i.pinimg.com/736x/c7/1e/b0/c71eb0b9f9940da41678e735964c7759.jpg"
+              alt=""
+              className="w-full h-[4  00px] object-fill"
+            />
+            <img
+              src="https://i.pinimg.com/736x/c7/1e/b0/c71eb0b9f9940da41678e735964c7759.jpg"
+              alt=""
+              className="w-full h-[4  00px] object-fill"
+            />
+            <img
+              src="https://i.pinimg.com/736x/c7/1e/b0/c71eb0b9f9940da41678e735964c7759.jpg"
+              alt=""
+              className="w-full h-[4  00px] object-fill"
+            />
+            <img
+              src="https://i.pinimg.com/736x/c7/1e/b0/c71eb0b9f9940da41678e735964c7759.jpg"
+              alt=""
+              className="w-full h-[4  00px] object-fill"
+            />
+          </div>
         </div>
       </div>
     </>
