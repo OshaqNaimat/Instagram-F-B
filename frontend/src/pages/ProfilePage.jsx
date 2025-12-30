@@ -122,7 +122,7 @@ const ProfilePage = ({ show, setShow }) => {
                   className="w-full h-[300px] object-cover"
                 />
                 {/* Instagram-style hover overlay */}
-                <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-40 transition-opacity duration-200" />
+                <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-50  " />
               </div>
             ))}
           </div>
