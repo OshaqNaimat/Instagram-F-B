@@ -14,7 +14,8 @@ const initialState = {
   likesLoading:false,
   likesError:false,
   likesSucces:false,
-  likesMessage:""
+  likesMessage:"",
+  myPost:[]
 };
 
 export const addDaak = createAsyncThunk(
@@ -126,7 +127,7 @@ export const postSlice = createSlice({
     })
     builder.addCase(addLikeData.rejected,(state,action)=>{
       state.likesLoading = false,
-      state.likesError = true,cs
+      state.likesError = true,
       state.likesMessage = action.paylaod
     })
     builder.addCase(addLikeData.fulfilled, (state,action)=>{
@@ -140,6 +141,20 @@ export const postSlice = createSlice({
 
         return item
       }) 
+    })
+    builder.addCase(getRelaventPosts.pending,(state,action)=>{
+      state.postLoading = true
+    })
+    builder.addCase(getRelaventPosts.rejected,(state,action)=>{
+      state.postLoading = false,
+      state.postError = true,
+      state.postMessage = action.payload
+    })
+    builder.addCase(getRelaventPosts.fulfilled,(state,action)=>{
+      state.postLoading = false,
+      state.postError = false,
+      state.postSuccess = true,
+      state.myPost = action.payload
     })
   },
 });
