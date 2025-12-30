@@ -9,6 +9,7 @@ const initialState = {
     userSuccess:false,
     userError:false,
     userMessage:'',
+    foundUser:null
 
 }
 
@@ -57,6 +58,22 @@ export const userSlice = createSlice({
             state.userLoading = false
             state.userSuccess = true
             state.user =  action.payload
+
+        })
+        builder
+        .addCase(findMyUser.pending , (state,action)=>{
+            state.userLoading = true
+        })
+        .addCase(findMyUser.rejected ,(state,action)=>{
+            state.userLoading = false,
+            state.userError = true,
+            state.userMessage = action.payload,
+            state.foundUser = null
+        })
+        .addCase(findMyUser.fulfilled ,(state,action)=>{
+            state.userLoading = false
+            state.userSuccess = true
+            state.foundUser =  action.payload
 
         })
     }

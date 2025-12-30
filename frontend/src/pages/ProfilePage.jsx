@@ -1,11 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { TbSettingsFilled } from "react-icons/tb";
 import { IoAddCircle, IoAddCircleOutline } from "react-icons/io5";
 import { FaCamera, FaRegBookmark, FaTable } from "react-icons/fa6";
 import { BsPersonSquare } from "react-icons/bs";
 import Sidebar from "../components/Sidebar";
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { findMyUser } from "../features/users/userSlice";
 const ProfilePage = ({ show, setShow }) => {
   const [active, setActive] = useState(false);
+
+  const { user_id } = useParams();
+  const dispatch = useDispatch();
+  const { foundUser } = useSelector((state) => state.auth);
+  useEffect(() => {
+    dispatch(findMyUser(user_id));
+  }, [user_id]);
 
   return (
     <>
