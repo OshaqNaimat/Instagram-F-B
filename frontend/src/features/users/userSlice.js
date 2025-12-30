@@ -22,6 +22,14 @@ export const regUser = createAsyncThunk('user',async(userData,thunkAPI)=>{
     }
 })
 
+export const findMyUser = createAsyncThunk('find-user',async(user_id,thunkAPI)=>{
+    try {
+        const response = await axios.get(`http://localhost:5000/api/users/find-user/${user_id}`)
+        return response.data
+    } catch (error) {
+        return thunkAPI.rejectWithValue(error.response.data)
+    }
+})
 
 export const userSlice = createSlice({
     name:'auth',
