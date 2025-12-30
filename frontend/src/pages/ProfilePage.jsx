@@ -36,7 +36,7 @@ const ProfilePage = ({ show, setShow }) => {
               <div className="flex flex-col text-center sm:text-left w-full">
                 <div className="flex items-center justify-center sm:justify-start">
                   <h2 className="font-semibold text-xl sm:text-2xl me-3">
-                    Username
+                    {foundUser?.username}
                   </h2>
                   <TbSettingsFilled
                     size={26}
@@ -44,7 +44,9 @@ const ProfilePage = ({ show, setShow }) => {
                   />
                 </div>
 
-                <h5 className="my-2 text-sm sm:text-base">FullName</h5>
+                <h5 className="my-2 text-sm sm:text-base">
+                  {foundUser?.fullName}
+                </h5>
 
                 <div className="flex justify-center sm:justify-start gap-3 mb-3">
                   <p className="text-sm">0 Posts</p>
