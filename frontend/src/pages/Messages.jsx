@@ -9,6 +9,9 @@ import { TiMicrophoneOutline } from "react-icons/ti";
 import { PiStickerBold } from "react-icons/pi";
 import { TbSend } from "react-icons/tb";
 import IconSidebar from "../components/IconSidebar";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { getAllUsers } from "../features/users/userSlice";
 
 /**
  * Fixed version:
@@ -29,6 +32,12 @@ const Messages = () => {
   ]);
 
   const [showChat, setShowChat] = useState(false);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllUsers());
+  }, []);
 
   return (
     <>
