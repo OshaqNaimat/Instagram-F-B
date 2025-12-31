@@ -2,7 +2,7 @@ import React from "react";
 
 const Speoples = () => {
   return (
-    <div className="flex flex-col items-center shrink-0">
+    <div className="flex flex-col items-center shrink-0 cursor-pointer active:scale-95 transition">
       <div
         className="p-1 rounded-full"
         style={{
