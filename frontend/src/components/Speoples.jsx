@@ -2,7 +2,7 @@ import React from "react";
 
 const Speoples = () => {
   return (
-    <div className="flex flex-col items-center shrink-0 cursor-pointer active:scale-95 transition">
+    <div className="flex flex-col items-center shrink-0 cursor-pointer ">
       <div
         className="p-1 rounded-full"
         style={{
@@ -10,9 +10,9 @@ const Speoples = () => {
             "linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5)",
         }}
       >
-        <div className="bg-white p-1 rounded-full">
+        <div className="bg-white p-1 rounded-full active:scale-95 transition">
           <img
-            className="w-20 h-20 rounded-full"
+            className="w-20 h-20 rounded-full "
             src="https://cdn-icons-png.flaticon.com/256/219/219988.png"
             alt=""
           />
