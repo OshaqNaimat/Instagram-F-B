@@ -9,7 +9,7 @@ const ExploreSection = () => {
       <div className="grid grid-cols-4 min-h-screen">
         {/* Sidebar */}
         <div className="hidden md:block bg md:col-span-1">
-          <Sidebar show={show} setShow={setShow} isMobile={false} />
+          <Sidebar show={show} setShow={setShow} />
         </div>
 
         {/* Explore Section */}
