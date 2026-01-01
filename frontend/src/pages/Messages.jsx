@@ -63,6 +63,8 @@ const Messages = () => {
     }
   }, [search]);
 
+  const handleMessageSend = (e) => {};
+
   return (
     <>
       <div className="grid grid-cols-13  h-screen select-none overflow-hidden">
@@ -228,6 +230,7 @@ const Messages = () => {
                 className="border border-gray-300 p-2 border-s-0 border-e-0   rounded-s-none hover:scale-105 cursor-pointer"
               />
               <IoSend
+                onClick={handleMessageSend}
                 size={49}
                 className="border border-gray-300 p-2 border-s-0  rounded-full rounded-s-none hover:scale-105 cursor-pointer"
               />
