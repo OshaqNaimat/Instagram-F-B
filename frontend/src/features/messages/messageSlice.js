@@ -2,7 +2,7 @@ import { createAsyncThunk,createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     messageLoading:false,
-    messageSucces:false,
+    messageSuccess:false,
     messageError:false,
     errorMessage:'',
     messages:[]
@@ -30,6 +30,12 @@ export const messageSlice = createSlice({
             state.messageLoading = false,
             state.messageError = true,
             state.errorMessage = action.payload
+        }))
+        .addCase(sendMessageData.fulfilled,((state,action)=>{
+            state.messageLoading = false,
+            state.messageError = false,
+            state.messageSuccess = true,
+            state.messages = action.payload.chats
         }))
     },
 })
