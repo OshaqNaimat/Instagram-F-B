@@ -111,7 +111,31 @@ const Messages = () => {
             className="overflow-y-auto flex-1 pr-1"
           >
             {searchedUsers.map((item) => (
-              <Cpeoples key={item.id} data={item} />
+              <div key={item.id}>
+                {item.username
+                  ?.split(new RegExp(`(${search})`, "gi"))
+                  .map((part, index) =>
+                    part.toLowerCase() === search.toLowerCase() ? (
+                      <>
+                        <div className="flex justify-center cursor-pointer hover:bg-gray-200 rounded-md p-2">
+                          <img
+                            className="w-[10] h-[10] rounded-md "
+                            src="https://cdn-icons-png.flaticon.com/256/12225/12225935.png"
+                            alt=""
+                          />
+                          <span
+                            key={index}
+                            className="bg-green-500 text-white font-semibold px-1 rounded"
+                          >
+                            {part}
+                          </span>
+                        </div>
+                      </>
+                    ) : (
+                      // <span key={index}>{part}</span>
+                    )
+                  )}
+              </div>
             ))}
           </div>
         </div>
