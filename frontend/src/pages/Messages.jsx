@@ -59,14 +59,14 @@ const Messages = () => {
 
   return (
     <>
-      <div className="grid grid-cols-14  h-screen select-none overflow-hidden">
+      <div className="grid grid-cols-13  h-screen select-none overflow-hidden">
         {/* sidebar */}
         <div className="col-span-1 icon-sidebar">
           <IconSidebar />
         </div>
 
         {/* LEFT PANEL */}
-        <div className="col-span-4 border-r hidden sm:flex flex-col p-4 overflow-hidden">
+        <div className="col-span-4  border-r hidden sm:flex flex-col p-4 overflow-hidden">
           {/* Top Username Row */}
           <div className="flex justify-between items-center mb-3">
             <div className="flex gap-1 items-center cursor-pointer">
@@ -109,13 +109,13 @@ const Messages = () => {
           {/* Chat List — Independent Scroll */}
           <div
             onClick={() => setShowChat(true)}
-            className="overflow-y-auto flex-1 pr-1"
+            className="overflow-y-auto flex-1 pr-1 "
           >
             {searchedUsers.map((item) => (
               <div
                 onClick={() => setClickUsers(item)}
                 key={item.id}
-                className="flex items-center gap-2 cursor-pointer hover:bg-gray-200 rounded-md p-2"
+                className="flex  items-center gap-2 cursor-pointer hover:bg-gray-200 rounded-md p-2"
               >
                 <img
                   className="w-10 h-10 rounded-md"
@@ -145,8 +145,9 @@ const Messages = () => {
         </div>
 
         {/* RIGHT PANEL */}
+
         {showChat ? (
-          <div className="col-span-14  sm:col-span-8 flex flex-col h-full overflow-hidden">
+          <div className="col-span-14  sm:col-span-8 flex flex-col  h-full overflow-hidden">
             {/* Chat Header */}
             <div className="flex p-2 justify-between items-center border-b gap-3 sticky top-0 bg-white z-10">
               <div className="flex items-center gap-2 cursor-pointer">
