@@ -34,6 +34,7 @@ const Messages = () => {
   const [showChat, setShowChat] = useState(false);
   const [search, setSearch] = useState("");
   const [searchedUsers, setSearchedUsers] = useState([]);
+  const [ClickedUser, setClickUsers] = useState({});
   const { allUsers, userLoading, userSuccess, userError } = useSelector(
     (state) => state.auth
   );
@@ -112,6 +113,7 @@ const Messages = () => {
           >
             {searchedUsers.map((item) => (
               <div
+                onClick={() => setClickUsers(item)}
                 key={item.id}
                 className="flex items-center gap-2 cursor-pointer hover:bg-gray-200 rounded-md p-2"
               >
@@ -144,7 +146,7 @@ const Messages = () => {
 
         {/* RIGHT PANEL */}
         {showChat ? (
-          <div className="col-span-14 sm:col-span-8 flex flex-col h-full overflow-hidden">
+          <div className="col-span-14  sm:col-span-8 flex flex-col h-full overflow-hidden">
             {/* Chat Header */}
             <div className="flex p-2 justify-between items-center border-b gap-3 sticky top-0 bg-white z-10">
               <div className="flex items-center gap-2 cursor-pointer">
@@ -154,7 +156,7 @@ const Messages = () => {
                   alt=""
                 />
                 <div>
-                  <h4 className="font-semibold">Username</h4>
+                  <h4 className="font-semibold">{ClickedUser?.username}</h4>
                   <p className="text-gray-500 text-[11px]">Active 2hr ago</p>
                 </div>
               </div>
@@ -182,9 +184,9 @@ const Messages = () => {
                 alt=""
               />
               <div>
-                <h2 className="font-bold text-xl">Username</h2>
+                <h2 className="font-bold text-xl">{ClickedUser?.username}</h2>
                 <p className="text-gray-500 text-[11px]">
-                  Fullname · Instagram
+                  {ClickedUser?.fullName} · Instagram
                 </p>
               </div>
               <button className="p-2 rounded-md bg-gray-100 mt-2 cursor-pointer hover:bg-gray-200">
