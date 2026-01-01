@@ -12,6 +12,7 @@ import IconSidebar from "../components/IconSidebar";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllUsers } from "../features/users/userSlice";
+import { Link } from "react-router-dom";
 
 /**
  * Fixed version:
@@ -150,7 +151,10 @@ const Messages = () => {
           <div className="col-span-14  sm:col-span-8 flex flex-col  h-full overflow-hidden">
             {/* Chat Header */}
             <div className="flex p-2 justify-between items-center border-b gap-3 sticky top-0 bg-white z-10">
-              <div className="flex items-center gap-2 cursor-pointer">
+              <Link
+                to={`/profile/${ClickedUser?._id}`}
+                className="flex items-center gap-2 cursor-pointer"
+              >
                 <img
                   className="w-[60px] h-[60px] rounded-full object-cover"
                   src="https://cdn-icons-png.flaticon.com/256/12225/12225935.png"
@@ -160,7 +164,7 @@ const Messages = () => {
                   <h4 className="font-semibold">{ClickedUser?.username}</h4>
                   <p className="text-gray-500 text-[11px]">Active 2hr ago</p>
                 </div>
-              </div>
+              </Link>
               <div className="flex items-center gap-4 ">
                 <IoCallOutline
                   size={25}
