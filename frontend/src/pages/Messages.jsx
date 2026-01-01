@@ -18,6 +18,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllUsers } from "../features/users/userSlice";
 import { Link } from "react-router-dom";
+import { sendMessageData } from "../features/messages/messageSlice";
 
 /**
  * Fixed version:
@@ -41,7 +42,8 @@ const Messages = () => {
   const [search, setSearch] = useState("");
   const [searchedUsers, setSearchedUsers] = useState([]);
   const [ClickedUser, setClickUsers] = useState({});
-  const { allUsers, userLoading, userSuccess, userError } = useSelector(
+  const [message, setMessage] = useState("");
+  const { allUsers, userLoading, userSuccess, userError, user } = useSelector(
     (state) => state.auth
   );
 
@@ -63,7 +65,15 @@ const Messages = () => {
     }
   }, [search]);
 
-  const handleMessageSend = (e) => {};
+  const handleMessageSend = (e) => {
+    const messageData = {
+      message,
+      sender_id: user?._id,
+      receiver_id: ClickedUser?._id,
+    };
+
+    dispatch(sendMessageData(messageData));
+  };
 
   return (
     <>
@@ -213,6 +223,8 @@ const Messages = () => {
                 className="border border-e-0 border-gray-300 p-2 rounded-full rounded-e-none hover:scale-105 cursor-pointer"
               />
               <input
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
                 type="text"
                 placeholder="Message..."
                 className="p-3 w-full border border-s-0 border-e-0 border-gray-300 rounded-s-none  outline-none"
