@@ -49,12 +49,16 @@ const Messages = () => {
       return item.username.toLowerCase().startsWith(search.toLowerCase());
     });
 
-    setSearchedUsers(foundData);
+    if (search) {
+      setSearchedUsers(foundData);
+    } else {
+      setSearchedUsers([]);
+    }
   }, [search]);
 
   return (
     <>
-      <div className="grid grid-cols-13  h-screen select-none overflow-hidden">
+      <div className="grid grid-cols-14  h-screen select-none overflow-hidden">
         {/* sidebar */}
         <div className="col-span-1 icon-sidebar">
           <IconSidebar />
@@ -114,7 +118,7 @@ const Messages = () => {
 
         {/* RIGHT PANEL */}
         {showChat ? (
-          <div className="col-span-12 sm:col-span-8 flex flex-col h-full overflow-hidden">
+          <div className="col-span-14 sm:col-span-8 flex flex-col h-full overflow-hidden">
             {/* Chat Header */}
             <div className="flex p-2 justify-between items-center border-b gap-3 sticky top-0 bg-white z-10">
               <div className="flex items-center gap-2 cursor-pointer">
