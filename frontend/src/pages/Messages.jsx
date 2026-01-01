@@ -10,7 +10,7 @@ import { PiStickerBold } from "react-icons/pi";
 import { TbSend } from "react-icons/tb";
 import IconSidebar from "../components/IconSidebar";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getAllUsers } from "../features/users/userSlice";
 
 /**
@@ -21,23 +21,36 @@ import { getAllUsers } from "../features/users/userSlice";
  */
 
 const Messages = () => {
-  const [chatPeoples] = useState([
-    { id: 1, username: "Ali", message: "Salam" },
-    { id: 2, username: "Ahmed", message: "Salam" },
-    { id: 3, username: "Usman", message: "Salam" },
-    { id: 5, username: "Abdullah", message: "Salam" },
-    { id: 6, username: "Murad", message: "Salam" },
-    { id: 7, username: "Yosuf", message: "Salam" },
-    { id: 8, username: "Muzammil", message: "Salam" },
-  ]);
+  // const [chatPeoples] = useState([
+  //   { id: 1, username: "Ali", message: "Salam" },
+  //   { id: 2, username: "Ahmed", message: "Salam" },
+  //   { id: 3, username: "Usman", message: "Salam" },
+  //   { id: 5, username: "Abdullah", message: "Salam" },
+  //   { id: 6, username: "Murad", message: "Salam" },
+  //   { id: 7, username: "Yosuf", message: "Salam" },
+  //   { id: 8, username: "Muzammil", message: "Salam" },
+  // ]);
 
   const [showChat, setShowChat] = useState(false);
+  const [search, setSearch] = useState("");
+  const [searchedUsers, setSearchedUsers] = useState([]);
+  const { allUsers, userLoading, userSuccess, userError } = useSelector(
+    (state) => state.auth
+  );
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getAllUsers());
   }, []);
+
+  useEffect(() => {
+    let foundData = allUsers.filter((item, index) => {
+      return item.username.toLowerCase().startsWith(search.toLowerCase());
+    });
+
+    setSearchedUsers(foundData);
+  }, [search]);
 
   return (
     <>
@@ -62,6 +75,8 @@ const Messages = () => {
           <div className="flex shadow-sm shadow-gray-300 rounded-full mb-5">
             <IoSearch size={40} className="p-2 rounded-full text-gray-500" />
             <input
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
               type="text"
               placeholder="Search"
               className="w-full p-2 outline-none rounded-full text-sm"
@@ -91,7 +106,7 @@ const Messages = () => {
             onClick={() => setShowChat(true)}
             className="overflow-y-auto flex-1 pr-1"
           >
-            {chatPeoples.map((item) => (
+            {searchedUsers.map((item) => (
               <Cpeoples key={item.id} data={item} />
             ))}
           </div>
