@@ -3,7 +3,8 @@ import { createAsyncThunk,createSlice } from "@reduxjs/toolkit";
 const initialState = {
     messageLoading:false,
     messageSucces:false,
-    messageErro:false,
+    messageError:false,
+    errorMessage:'',
     messages:[]
 }
 
@@ -20,7 +21,17 @@ export const messageSlice = createSlice({
     name:'message',
     initialState,
     reducers:{},
-    extraReducers:()=>{},
+    extraReducers:(builder)=>{
+        builder
+        .addCase(sendMessageData.pending,((state,action)=>{
+            state.messageLoading = true
+        }))
+        .addCase(sendMessageData.rejected, ((state,action)=>{
+            state.messageLoading = false,
+            state.messageError = true,
+            state.errorMessage = action.payload
+        }))
+    },
 })
 
 
