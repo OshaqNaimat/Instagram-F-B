@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import reducer from "../features/posts/postSlice";
 import userReducer from "../features/users/userSlice"
+import messageReducer from "../features/messages/messageSlice"
 export const store = configureStore({
   reducer: {
     daak: reducer,
     auth: userReducer,
+    chats:messageReducer 
   },
 });
