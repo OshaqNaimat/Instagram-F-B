@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import { FaPenToSquare } from "react-icons/fa6";
 import { IoIosArrowDown, IoMdInformationCircleOutline } from "react-icons/io";
-import { IoCallOutline, IoImageOutline, IoSearch } from "react-icons/io5";
+import {
+  IoCallOutline,
+  IoImageOutline,
+  IoSearch,
+  IoSend,
+} from "react-icons/io5";
 import { BsCameraVideo } from "react-icons/bs";
 import Cpeoples from "../components/Cpeoples";
 import { FaRegSmile } from "react-icons/fa";
@@ -212,15 +217,19 @@ const Messages = () => {
               />
               <TiMicrophoneOutline
                 size={49}
-                className="border  border-gray-300 p-2 border-s-0 border-e-0  hover:scale-105 cursor-pointer"
+                className="border border-gray-300 p-2 border-s-0 border-e-0  hover:scale-105 cursor-pointer"
               />
               <IoImageOutline
                 size={49}
-                className="border  border-gray-300 p-2 border-s-0 border-e-0  hover:scale-105 cursor-pointer"
+                className="border border-gray-300 p-2 border-s-0 border-e-0  hover:scale-105 cursor-pointer"
               />
               <PiStickerBold
                 size={49}
-                className="border  border-gray-300 p-2 border-s-0  rounded-full rounded-s-none hover:scale-105 cursor-pointer"
+                className="border border-gray-300 p-2 border-s-0 border-e-0   rounded-s-none hover:scale-105 cursor-pointer"
+              />
+              <IoSend
+                size={49}
+                className="border border-gray-300 p-2 border-s-0  rounded-full rounded-s-none hover:scale-105 cursor-pointer"
               />
             </div>
           </div>
