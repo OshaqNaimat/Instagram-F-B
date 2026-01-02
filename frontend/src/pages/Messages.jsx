@@ -201,29 +201,31 @@ const Messages = () => {
             </div>
 
             {/* Chat Body — Independent Scroll */}
-            <div className="flex-1 overflow-y-auto flex flex-col items-center justify-center text-center p-4">
-              <img
-                className="rounded-full w-[120px] h-[120px] object-contain"
-                src="https://cdn-icons-png.flaticon.com/256/12225/12225935.png"
-                alt=""
-              />
-              <div>
-                <h2 className="font-bold text-xl">{ClickedUser?.username}</h2>
-                <p className="text-gray-500 text-[11px]">
-                  {ClickedUser?.fullName} · Instagram
-                </p>
+            <div className="overflow-y-scroll">
+              <div className="flex-1 overflow-y-auto flex flex-col items-center justify-center text-center p-4">
+                <img
+                  className="rounded-full w-[120px] h-[120px] object-contain"
+                  src="https://cdn-icons-png.flaticon.com/256/12225/12225935.png"
+                  alt=""
+                />
+                <div>
+                  <h2 className="font-bold text-xl">{ClickedUser?.username}</h2>
+                  <p className="text-gray-500 text-[11px]">
+                    {ClickedUser?.fullName} · Instagram
+                  </p>
+                </div>
+                <button className="p-2 rounded-md bg-gray-100 mt-2 cursor-pointer hover:bg-gray-200">
+                  View Profile
+                </button>
               </div>
-              <button className="p-2 rounded-md bg-gray-100 mt-2 cursor-pointer hover:bg-gray-200">
-                View Profile
-              </button>
+
+              {/* show messages */}
+              <div className=" px-2">
+                {messages?.map((item, index) => {
+                  return <SingleMessage {...item} key={index} />;
+                })}
+              </div>
             </div>
-
-            {/* show messages */}
-
-            {messages?.map((item, index) => {
-              return <SingleMessage {...item} key={index} />;
-            })}
-
             {/* Input Section — No extra margin */}
             <div className="p-3 flex items-center  bg-white">
               <FaRegSmile
