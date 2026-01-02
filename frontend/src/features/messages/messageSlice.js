@@ -1,4 +1,5 @@
 import { createAsyncThunk,createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
 
 const initialState = {
     messageLoading:false,
@@ -10,8 +11,7 @@ const initialState = {
 
 export const sendMessageData = createAsyncThunk('send-message',async(messageData,thunkAPI)=>{
     try {
-        const response = await axios.post(`http://localhost:5000/api/messages/send-message/
-            ${messageData.sender_id}/${messageData.receiver_id}`,messageData);
+        const response = await axios.post(`http://localhost:5000/api/messages/send-message/${messageData.sender_id}/${messageData.receiver_id}`,messageData);
         return response.data
     } catch (error) {
         return thunkAPI.rejectWithValue(error.response.data)
@@ -34,7 +34,7 @@ export const messageSlice = createSlice({
         })
         .addCase(sendMessageData.fulfilled,(state,action)=>{
             state.messageLoading = false,
-            // state.messageError = false,
+            state.messageError = false,
             state.messageSuccess = true,
             state.messages = action.payload.chats
         })

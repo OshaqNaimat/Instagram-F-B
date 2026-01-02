@@ -46,6 +46,8 @@ const Messages = () => {
   const { allUsers, userLoading, userSuccess, userError, user } = useSelector(
     (state) => state.auth
   );
+  const { messages, messageLoading, messageSuccess, messageError } =
+    useSelector((state) => state.chats);
 
   const dispatch = useDispatch();
 
@@ -256,7 +258,7 @@ const Messages = () => {
               Send a message to start a chat.
             </p>
             <button
-              onClick={() => setShowChat(true)}
+              // onClick={() => setShowChat(true)}
               className="p-2 rounded-md text-white bg-blue-500 hover:bg-blue-600 cursor-pointer"
             >
               Send message
