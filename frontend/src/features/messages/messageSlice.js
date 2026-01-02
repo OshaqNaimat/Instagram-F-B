@@ -24,20 +24,20 @@ export const messageSlice = createSlice({
     reducers:{},
     extraReducers:(builder)=>{
         builder
-        .addCase(sendMessageData.pending,((state,action)=>{
+        .addCase(sendMessageData.pending,(state,action)=>{
             state.messageLoading = true
-        }))
-        .addCase(sendMessageData.rejected, ((state,action)=>{
+        })
+        .addCase(sendMessageData.rejected,(state,action)=>{
             state.messageLoading = false,
             state.messageError = true,
             state.errorMessage = action.payload
-        }))
-        .addCase(sendMessageData.fulfilled,((state,action)=>{
+        })
+        .addCase(sendMessageData.fulfilled,(state,action)=>{
             state.messageLoading = false,
-            state.messageError = false,
+            // state.messageError = false,
             state.messageSuccess = true,
             state.messages = action.payload.chats
-        }))
+        })
     },
 })
 
