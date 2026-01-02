@@ -19,6 +19,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllUsers } from "../features/users/userSlice";
 import { Link } from "react-router-dom";
 import { sendMessageData } from "../features/messages/messageSlice";
+import SingleMessage from "../components/SingleMessage";
 
 /**
  * Fixed version:
@@ -125,7 +126,6 @@ const Messages = () => {
               Requests
             </h5>
           </div>
-
           {/* Chat List — Independent Scroll */}
           <div
             onClick={() => setShowChat(true)}
@@ -217,6 +217,12 @@ const Messages = () => {
                 View Profile
               </button>
             </div>
+
+            {/* show messages */}
+
+            {messages?.map((item, index) => {
+              return <SingleMessage {...item} key={index} />;
+            })}
 
             {/* Input Section — No extra margin */}
             <div className="p-3 flex items-center  bg-white">
