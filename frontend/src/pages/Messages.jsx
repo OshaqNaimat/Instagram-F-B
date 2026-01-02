@@ -65,7 +65,7 @@ const Messages = () => {
     }
   }, [search]);
 
-  const handleMessageSend = (e) => {
+  const handleMessageSend = () => {
     const messageData = {
       message,
       sender_id: user?._id,

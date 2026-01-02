@@ -13,7 +13,7 @@ export const sendMessageData = createAsyncThunk('send-message',async(messageData
         const response = await axios.post(`http://localhost:5000/api/messages/send-message/${messageData?.sender_id}/${messageData?.receiver_id}`)
         return response.data
     } catch (error) {
-        thunkAPI.rejectWithValue(error.response.data)
+        return thunkAPI.rejectWithValue(error.response.data)
     }
 })
 
