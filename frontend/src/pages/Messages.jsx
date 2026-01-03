@@ -207,6 +207,7 @@ const Messages = () => {
               </Link>
               <div className="flex items-center gap-4 ">
                 <IoCallOutline
+                  onClick={handleVideoCall}
                   size={25}
                   className="cursor-pointer hover:scale-105 transition"
                 />
