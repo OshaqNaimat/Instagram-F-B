@@ -138,14 +138,7 @@ const Messages = () => {
 
   return (
     <>
-      {call && (
-        <Calling
-          callDeclined={callDeclined}
-          setCallDeclined={setCallDeclined}
-          callReceived={callReceived}
-          setCallReceived={setCallReceived}
-        />
-      )}
+      {call && <Calling onAccept={handleAccept} onDeclined={handleDeclined} />}
       <div className="grid grid-cols-13  h-screen select-none overflow-hidden">
         {/* sidebar */}
         <div className="col-span-1 icon-sidebar">

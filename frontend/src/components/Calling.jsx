@@ -3,7 +3,7 @@ import { useState } from "react";
 import { BiMessageSquare, BiPhone, BiPhoneOff, BiUser } from "react-icons/bi";
 import { MdBorderVertical } from "react-icons/md";
 
-const Calling = () => {
+const Calling = ({ onAccept, onDeclined }) => {
   const [showOptions, setShowOptions] = useState(false);
   return (
     <div>
@@ -67,7 +67,7 @@ const Calling = () => {
             <div className="p-8">
               <div className="flex justify-center space-x-12">
                 <button
-                  onClick={() => setShowCall(false)}
+                  onClick={onDeclined}
                   className="flex flex-col items-center group"
                 >
                   <div className="w-16 h-16 bg-red-400/80 rounded-full flex items-center justify-center group-hover:bg-red-500/80 transition-all mb-3 shadow-lg">
@@ -79,7 +79,7 @@ const Calling = () => {
                 </button>
 
                 <button
-                  onClick={declined}
+                  onClick={onAccept}
                   className="flex flex-col items-center group"
                 >
                   <div className="w-20 h-20 bg-green-400/80 rounded-full flex items-center justify-center group-hover:bg-green-500/80 transition-all mb-3 shadow-lg animate-bounce-subtle">
