@@ -201,7 +201,7 @@ const Messages = () => {
             </div>
 
             {/* Chat Body — Independent Scroll */}
-            <div className="overflow-y-scroll">
+            <div className="overflow-y-scroll h-[90vh]">
               <div className="flex-1 overflow-y-auto flex flex-col items-center justify-center text-center p-4">
                 <img
                   className="rounded-full w-[120px] h-[120px] object-contain"
@@ -227,34 +227,39 @@ const Messages = () => {
               </div>
             </div>
             {/* Input Section — No extra margin */}
-            <div className="p-3 flex items-center  bg-white">
+            <div className="p-3 flex items-end bg-white">
               <FaRegSmile
                 size={49}
                 className="border border-e-0 border-gray-300 p-2 rounded-full rounded-e-none hover:scale-105 cursor-pointer"
               />
-              <input
+
+              <textarea
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                type="text"
                 placeholder="Message..."
-                className="p-3 w-full border border-s-0 border-e-0 border-gray-300 rounded-s-none  outline-none"
-              />
+                rows={1}
+                className="p-3 w-full border border-s-0 border-e-0 border-gray-300 rounded-s-none outline-none resize-none max-h-40 overflow-y-auto"
+              ></textarea>
+
               <TiMicrophoneOutline
                 size={49}
-                className="border border-gray-300 p-2 border-s-0 border-e-0  hover:scale-105 cursor-pointer"
+                className="border border-gray-300 p-2 border-s-0 border-e-0 hover:scale-105 cursor-pointer"
               />
+
               <IoImageOutline
                 size={49}
-                className="border border-gray-300 p-2 border-s-0 border-e-0  hover:scale-105 cursor-pointer"
+                className="border border-gray-300 p-2 border-s-0 border-e-0 hover:scale-105 cursor-pointer"
               />
+
               <PiStickerBold
                 size={49}
-                className="border border-gray-300 p-2 border-s-0 border-e-0   rounded-s-none hover:scale-105 cursor-pointer"
+                className="border border-gray-300 p-2 border-s-0 border-e-0 hover:scale-105 cursor-pointer"
               />
+
               <IoSend
                 onClick={handleMessageSend}
                 size={49}
-                className="border border-gray-300 p-2 border-s-0  rounded-full rounded-s-none hover:scale-105 cursor-pointer"
+                className="border border-gray-300 p-2 border-s-0 rounded-full rounded-s-none hover:scale-105 cursor-pointer"
               />
             </div>
           </div>
