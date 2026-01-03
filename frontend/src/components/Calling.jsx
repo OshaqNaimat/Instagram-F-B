@@ -1,36 +1,17 @@
-import React, { useState, useEffect } from "react";
-import {
-  Phone,
-  PhoneOff,
-  User,
-  MoreVertical,
-  MessageSquare,
-  Video,
-} from "lucide-react";
+import React from "react";
+import { useState } from "react";
+import { BiMessageSquare, BiPhone, BiPhoneOff, BiUser } from "react-icons/bi";
+import { MdBorderVertical } from "react-icons/md";
 
-const GlassmorphismCallToast = () => {
-  const [showCall, setShowCall] = useState();
+const Calling = () => {
   const [showOptions, setShowOptions] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setShowCall(true), 2000);
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
-    <>
-      {/* <button
-        onClick={() => setShowCall(true)}
-        className="mb-8 px-6 py-3 bg-white/20 backdrop-blur-sm text-white font-medium rounded-xl hover:bg-white/30 transition-all shadow-lg border border-white/30"
-      >
-        Show Glass Call
-      </button> */}
-
+    <div>
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
         {/* Backdrop */}
         <div
           className="absolute inset-0 bg-black/30 backdrop-blur-md"
-          onClick={() => setShowCall(false)}
+          // onClick={() => setShowCall(false)}
         />
 
         {/* Glass Card */}
@@ -44,7 +25,7 @@ const GlassmorphismCallToast = () => {
                 <div className="flex items-center">
                   <div className="relative">
                     <div className="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
-                      <User size={28} className="text-white" />
+                      <BiUser size={28} className="text-white" />
                     </div>
                     <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-green-400 rounded-full border-2 border-white/30 animate-pulse"></div>
                   </div>
@@ -59,7 +40,7 @@ const GlassmorphismCallToast = () => {
                   onClick={() => setShowOptions(!showOptions)}
                   className="p-2 hover:bg-white/20 rounded-full transition-colors"
                 >
-                  <MoreVertical size={20} className="text-white" />
+                  <MdBorderVertical size={20} className="text-white" />
                 </button>
               </div>
             </div>
@@ -69,7 +50,7 @@ const GlassmorphismCallToast = () => {
               <div className="absolute right-4 top-20 bg-white/30 backdrop-blur-md rounded-xl p-3 shadow-lg border border-white/30 animate-fade-in">
                 <div className="space-y-3">
                   <button className="flex items-center space-x-2 p-2 hover:bg-white/20 rounded-lg w-full">
-                    <MessageSquare size={16} className="text-white" />
+                    <BiMessageSquare size={16} className="text-white" />
                     <span className="text-white text-sm">Send message</span>
                   </button>
                   {/* <button className="flex items-center space-x-2 p-2 hover:bg-white/20 rounded-lg w-full">
@@ -90,7 +71,7 @@ const GlassmorphismCallToast = () => {
                   className="flex flex-col items-center group"
                 >
                   <div className="w-16 h-16 bg-red-400/80 rounded-full flex items-center justify-center group-hover:bg-red-500/80 transition-all mb-3 shadow-lg">
-                    <PhoneOff size={24} className="text-white" />
+                    <BiPhoneOff size={24} className="text-white" />
                   </div>
                   <span className="text-white/90 text-sm font-medium">
                     Decline
@@ -102,7 +83,7 @@ const GlassmorphismCallToast = () => {
                   className="flex flex-col items-center group"
                 >
                   <div className="w-20 h-20 bg-green-400/80 rounded-full flex items-center justify-center group-hover:bg-green-500/80 transition-all mb-3 shadow-lg animate-bounce-subtle">
-                    <Phone size={28} className="text-white" />
+                    <BiPhone size={28} className="text-white" />
                   </div>
                   <span className="text-white/90 text-sm font-medium">
                     Accept
@@ -126,8 +107,8 @@ const GlassmorphismCallToast = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
-export default GlassmorphismCallToast;
+export default Calling;

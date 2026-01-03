@@ -27,9 +27,10 @@ import io from "socket.io-client";
 import RetroCRTCallToast from "../components/Calling";
 import NeumorphismCallToast from "../components/Calling";
 import GlassmorphismCallToast from "../components/Calling";
+import Calling from "../components/Calling";
 // import CallingToast from "../components/Calling";
 
-const socket = io.connect("http://localhost:5174");
+const socket = io.connect("http://localhost:5000");
 
 /**
  * Fixed version:
@@ -114,7 +115,7 @@ const Messages = () => {
 
   return (
     <>
-      {call && <GlassmorphismCallToast />}
+      {!call && <Calling />}
       <div className="grid grid-cols-13  h-screen select-none overflow-hidden">
         {/* sidebar */}
         <div className="col-span-1 icon-sidebar">
