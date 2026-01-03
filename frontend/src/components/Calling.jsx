@@ -79,7 +79,7 @@ const Calling = () => {
                 </button>
 
                 <button
-                  onClick={() => setShowCall(false)}
+                  onClick={declined}
                   className="flex flex-col items-center group"
                 >
                   <div className="w-20 h-20 bg-green-400/80 rounded-full flex items-center justify-center group-hover:bg-green-500/80 transition-all mb-3 shadow-lg animate-bounce-subtle">

@@ -98,6 +98,8 @@ const Messages = () => {
 
   const [call, setCall] = useState(false);
   const [callLink, setCallLink] = useState(null);
+  const [callReceived, setCallReceived] = useState(false);
+  const [callDeclined, setCallDeclined] = useState(false);
 
   useEffect(() => {
     socket.on("received_message", (data) => {
@@ -136,7 +138,14 @@ const Messages = () => {
 
   return (
     <>
-      {call && <Calling />}
+      {call && (
+        <Calling
+          callDeclined={callDeclined}
+          setCallDeclined={setCallDeclined}
+          callReceived={callReceived}
+          setCallReceived={setCallReceived}
+        />
+      )}
       <div className="grid grid-cols-13  h-screen select-none overflow-hidden">
         {/* sidebar */}
         <div className="col-span-1 icon-sidebar">
