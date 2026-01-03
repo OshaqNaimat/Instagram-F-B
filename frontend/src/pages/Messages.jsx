@@ -25,7 +25,7 @@ import {
 import SingleMessage from "../components/SingleMessage";
 import io from "socket.io-client";
 
-const socket = io.connect("http://localhost:5000");
+const socket = io.connect("http://localhost:5174");
 
 /**
  * Fixed version:
@@ -82,6 +82,13 @@ const Messages = () => {
     };
 
     dispatch(sendMessageData(messageData));
+  };
+
+  const handleVideoCall = () => {
+    window.open(
+      `http://localhost:5173/video-call/${user?._id}/${ClickedUser?._id}`,
+      "_blank"
+    );
   };
 
   return (
@@ -204,6 +211,7 @@ const Messages = () => {
                   className="cursor-pointer hover:scale-105 transition"
                 />
                 <BsCameraVideo
+                  onClick={handleVideoCall}
                   size={25}
                   className="cursor-pointer hover:scale-105 transition"
                 />

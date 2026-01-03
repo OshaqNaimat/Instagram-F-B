@@ -10,6 +10,7 @@ import Messages from "./pages/Messages";
 import ExploreSection from "./pages/ExploreSection";
 import Reels from "./pages/Reels";
 import "react-loading-skeleton/dist/skeleton.css";
+import VideoCallZego from "./pages/VideoCall";
 
 const App = () => {
   return (
@@ -23,6 +24,10 @@ const App = () => {
         <Route path="/message" element={<Messages />} />
         <Route path="/Explore" element={<ExploreSection />} />
         <Route path="/reels" element={<Reels />} />
+        <Route
+          path="/video-call/:caller_id/:receiver_id"
+          element={<VideoCallZego />}
+        />
       </Routes>
     </Router>
   );
