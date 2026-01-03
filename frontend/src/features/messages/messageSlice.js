@@ -18,6 +18,15 @@ export const sendMessageData = createAsyncThunk('send-message',async(messageData
     }
 })
 
+export const getMessageData = createAsyncThunk('get-message',async(messageData,thunkAPI)=>{
+    try {
+        const response = await axios.get(`http://localhost:5000/api/messages/get-message/${messageData.sender_id}/${messageData.receiver_id}`);
+        return response.data
+    } catch (error) {
+        return thunkAPI.rejectWithValue(error.response.data)
+    }
+})
+
 export const messageSlice = createSlice({
     name:'message',
     initialState,
@@ -38,6 +47,21 @@ export const messageSlice = createSlice({
             state.messageSuccess = true,
             state.messages = action.payload.chats
         })
+        .addCase(getMessageData     .pending,(state,action)=>{
+            state.messageLoading = true
+        })
+        .addCase(getMessageData     .rejected,(state,action)=>{
+            state.messageLoading = false,
+            state.messageError = true,
+            state.errorMessage = action.payload
+        })
+        .addCase(getMessageData     .fulfilled,(state,action)=>{
+            state.messageLoading = false,
+            state.messageError = false,
+            state.messageSuccess = true,
+            state.messages = action.payload.chats
+        })
+        
     },
 })
 

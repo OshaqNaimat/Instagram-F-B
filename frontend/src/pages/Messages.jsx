@@ -18,8 +18,14 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllUsers } from "../features/users/userSlice";
 import { Link } from "react-router-dom";
-import { sendMessageData } from "../features/messages/messageSlice";
+import {
+  getMessageData,
+  sendMessageData,
+} from "../features/messages/messageSlice";
 import SingleMessage from "../components/SingleMessage";
+import io from "socket.io-client";
+
+const socket = io.connect("http://localhost:5000");
 
 /**
  * Fixed version:
@@ -91,7 +97,7 @@ const Messages = () => {
           {/* Top Username Row */}
           <div className="flex justify-between items-center mb-3">
             <div className="flex gap-1 items-center cursor-pointer">
-              <h2 className="font-bold text-xl">Username</h2>
+              <h2 className="font-bold text-xl">{user?.username}</h2>
               <IoIosArrowDown size={20} />
             </div>
             <FaPenToSquare className="cursor-pointer w-6 h-6 active:scale-110 transition" />
@@ -133,7 +139,15 @@ const Messages = () => {
           >
             {searchedUsers.map((item) => (
               <div
-                onClick={() => setClickUsers(item)}
+                onClick={() => {
+                  setClickUsers(item),
+                    dispatch(
+                      getMessageData({
+                        sender_id: user?._id,
+                        receiver_id: item?._id,
+                      })
+                    );
+                }}
                 key={item.id}
                 className="flex  items-center gap-2 cursor-pointer hover:bg-gray-200 rounded-md p-2"
               >
