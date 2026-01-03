@@ -88,7 +88,7 @@ const Messages = () => {
     dispatch(sendMessageData(messageData));
   };
 
-  const [showCall, setShowCall] = useState(false);
+  const [call, setCall] = useState(false);
 
   useEffect(() => {
     socket.on("received_message", (data) => {
@@ -97,6 +97,7 @@ const Messages = () => {
 
     socket.on("call_arahi_hai", (data) => {
       setCall(true);
+      alert("call arahi ahi");
     });
   });
 
@@ -113,9 +114,7 @@ const Messages = () => {
 
   return (
     <>
-      {call && (
-        <GlassmorphismCallToast showCall={showCall} setShowCall={setShowCall} />
-      )}
+      {call && <GlassmorphismCallToast />}
       <div className="grid grid-cols-13  h-screen select-none overflow-hidden">
         {/* sidebar */}
         <div className="col-span-1 icon-sidebar">
