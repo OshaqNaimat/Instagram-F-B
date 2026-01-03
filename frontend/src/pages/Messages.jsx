@@ -115,7 +115,7 @@ const Messages = () => {
 
   return (
     <>
-      {!call && <Calling />}
+      {call && <Calling />}
       <div className="grid grid-cols-13  h-screen select-none overflow-hidden">
         {/* sidebar */}
         <div className="col-span-1 icon-sidebar">
@@ -284,7 +284,7 @@ const Messages = () => {
                 onChange={(e) => setMessage(e.target.value)}
                 placeholder="Message..."
                 rows={1}
-                className="p-3 w-full border resize-none border-s-0 border-e-0 border-gray-300 rounded-s-none outline-none resize-none max-h-40 overflow-y-auto"
+                className="p-3 w-full border  border-s-0 border-e-0 border-gray-300 rounded-s-none outline-none resize-none max-h-40 overflow-y-auto"
               ></textarea>
 
               {message.length == 0 && (
