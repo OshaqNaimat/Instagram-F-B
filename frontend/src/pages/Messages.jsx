@@ -80,16 +80,24 @@ const Messages = () => {
   }, [search]);
 
   const handleMessageSend = () => {
-    const messageData = {
+    // const messageData = {
+    //   message,
+    //   sender_id: user?._id,
+    //   receiver_id: ClickedUser?._id,
+    // };
+    // dispatch(sendMessageData(messageData));
+
+    socket.emit("sent_message", {
       message,
       sender_id: user?._id,
       receiver_id: ClickedUser?._id,
-    };
-
-    dispatch(sendMessageData(messageData));
+      time: Date.now(),
+      sent: true,
+    });
   };
 
   const [call, setCall] = useState(false);
+  const [callLink, setCallLink] = useState(null);
 
   useEffect(() => {
     socket.on("received_message", (data) => {
@@ -97,8 +105,21 @@ const Messages = () => {
     });
 
     socket.on("call_arahi_hai", (data) => {
-      setCall(true);
-      alert("call arahi ahi");
+      if (user?._id == data?.receiver_id) {
+        setCall(true);
+      }
+    });
+
+    // declined
+
+    socket.on("nahi_uthai", (data) => {
+      alert("Call Declined");
+    });
+
+    //answered
+
+    socket.on("utha_li_ha", (data) => {
+      setCallLink(data.shareableLink);
     });
   });
 
