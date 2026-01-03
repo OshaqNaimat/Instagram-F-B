@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 
 const GlassmorphismCallToast = () => {
-  const [showCall, setShowCall] = useState(false);
+  const [showCall, setShowCall] = useState(true);
   const [showOptions, setShowOptions] = useState(false);
 
   useEffect(() => {
@@ -19,12 +19,12 @@ const GlassmorphismCallToast = () => {
 
   return (
     <>
-      <button
+      {/* <button
         onClick={() => setShowCall(true)}
         className="mb-8 px-6 py-3 bg-white/20 backdrop-blur-sm text-white font-medium rounded-xl hover:bg-white/30 transition-all shadow-lg border border-white/30"
       >
         Show Glass Call
-      </button>
+      </button> */}
 
       {showCall && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
@@ -73,12 +73,12 @@ const GlassmorphismCallToast = () => {
                       <MessageSquare size={16} className="text-white" />
                       <span className="text-white text-sm">Send message</span>
                     </button>
-                    <button className="flex items-center space-x-2 p-2 hover:bg-white/20 rounded-lg w-full">
+                    {/* <button className="flex items-center space-x-2 p-2 hover:bg-white/20 rounded-lg w-full">
                       <Video size={16} className="text-white" />
                       <span className="text-white text-sm">
                         Switch to video
                       </span>
-                    </button>
+                    </button> */}
                   </div>
                 </div>
               )}
@@ -115,9 +115,9 @@ const GlassmorphismCallToast = () => {
                 <div className="mt-8 text-center">
                   <div className="inline-flex items-center space-x-2 bg-black/20 rounded-full px-4 py-2">
                     <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                    <span className="text-white/90 text-sm">
+                    {/* <span className="text-white/90 text-sm">
                       Voice call • 03:22
-                    </span>
+                    </span> */}
                   </div>
                 </div>
               </div>
