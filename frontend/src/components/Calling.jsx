@@ -8,8 +8,8 @@ import {
   Video,
 } from "lucide-react";
 
-const GlassmorphismCallToast = () => {
-  const [showCall, setShowCall] = useState(true);
+const GlassmorphismCallToast = ({ showCall, setShowCall }) => {
+  // const [showCall, setShowCall] = useState();
   const [showOptions, setShowOptions] = useState(false);
 
   useEffect(() => {
