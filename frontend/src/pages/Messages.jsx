@@ -238,29 +238,36 @@ const Messages = () => {
                 onChange={(e) => setMessage(e.target.value)}
                 placeholder="Message..."
                 rows={1}
-                className="p-3 w-full border border-s-0 border-e-0 border-gray-300 rounded-s-none outline-none resize-none max-h-40 overflow-y-auto"
+                className="p-3 w-full border resize-none border-s-0 border-e-0 border-gray-300 rounded-s-none outline-none resize-none max-h-40 overflow-y-auto"
               ></textarea>
 
-              <TiMicrophoneOutline
-                size={49}
-                className="border border-gray-300 p-2 border-s-0 border-e-0 hover:scale-105 cursor-pointer"
-              />
+              {message.length == 0 && (
+                <>
+                  <TiMicrophoneOutline
+                    size={49}
+                    className="border border-gray-300 p-2 border-s-0 border-e-0 hover:scale-105 cursor-pointer"
+                  />
 
-              <IoImageOutline
-                size={49}
-                className="border border-gray-300 p-2 border-s-0 border-e-0 hover:scale-105 cursor-pointer"
-              />
+                  <IoImageOutline
+                    size={49}
+                    className="border border-gray-300 p-2 border-s-0 border-e-0 hover:scale-105 cursor-pointer"
+                  />
 
-              <PiStickerBold
-                size={49}
-                className="border border-gray-300 p-2 border-s-0 border-e-0 hover:scale-105 cursor-pointer"
-              />
+                  <PiStickerBold
+                    size={49}
+                    className="border border-gray-300 p-2 border-s-0 rounded-full rounded-s-none border-e-0 hover:scale-105 cursor-pointer"
+                  />
+                </>
+              )}
 
-              <IoSend
-                onClick={handleMessageSend}
-                size={49}
-                className="border border-gray-300 p-2 border-s-0 rounded-full rounded-s-none hover:scale-105 cursor-pointer"
-              />
+              {message.length != 0 && (
+                <IoSend
+                  disabled={message.length == 0}
+                  onClick={handleMessageSend}
+                  size={49}
+                  className="border border-gray-300 p-2 border-s-0 rounded-full rounded-s-none hover:scale-105 cursor-pointer"
+                />
+              )}
             </div>
           </div>
         ) : (
