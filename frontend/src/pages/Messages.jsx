@@ -24,6 +24,10 @@ import {
 } from "../features/messages/messageSlice";
 import SingleMessage from "../components/SingleMessage";
 import io from "socket.io-client";
+import RetroCRTCallToast from "../components/Calling";
+import NeumorphismCallToast from "../components/Calling";
+import GlassmorphismCallToast from "../components/Calling";
+// import CallingToast from "../components/Calling";
 
 const socket = io.connect("http://localhost:5174");
 
@@ -84,15 +88,27 @@ const Messages = () => {
     dispatch(sendMessageData(messageData));
   };
 
+  useEffect(() => {
+    socket.on("received_message", (data) => {
+      alert(data.message);
+    });
+  });
+
   const handleVideoCall = () => {
     window.open(
       `http://localhost:5173/video-call/${user?._id}/${ClickedUser?._id}`,
       "_blank"
     );
+    socket.emit("calling", {
+      caller_id: user?._id,
+      receiver_id: ClickedUser?._id,
+    });
   };
 
   return (
     <>
+      {/* <CallingToast /> */}
+      <GlassmorphismCallToast />
       <div className="grid grid-cols-13  h-screen select-none overflow-hidden">
         {/* sidebar */}
         <div className="col-span-1 icon-sidebar">
@@ -206,11 +222,11 @@ const Messages = () => {
                 </div>
               </Link>
               <div className="flex items-center gap-4 ">
-                <IoCallOutline
+                {/* <IoCallOutline
                   onClick={handleVideoCall}
                   size={25}
                   className="cursor-pointer hover:scale-105 transition"
-                />
+                /> */}
                 <BsCameraVideo
                   onClick={handleVideoCall}
                   size={25}
