@@ -2,8 +2,11 @@ import React from "react";
 import { BsThreeDots } from "react-icons/bs";
 import { GoDotFill } from "react-icons/go";
 import Fpeoples from "./Fpeoples";
+import { useSelector } from "react-redux";
 
 const Followers = ({ allSuggestions, setAllSuggestion }) => {
+  const { allUsers, user } = useSelector((state) => state.auth);
+
   return (
     <>
       <div className="container shadow-lg rounded-md mt-9 p-3">
@@ -17,10 +20,10 @@ const Followers = ({ allSuggestions, setAllSuggestion }) => {
             <div className="">
               <div className="flex gap-2 items-center justify-center">
                 <h4 className="font-semibold  text-[14px] cursor-pointer">
-                  Username
+                  {user?.username}
                 </h4>
               </div>
-              <p className="text-sm">User ID</p>
+              <p className="text-sm">{user?.fullName}</p>
             </div>
           </div>
           {/* <button className="p-2 bg-blue-500 hover:bg-blue-600 active:scale-95 text-white rounded-md duration-100 cursor-pointer">Follow</button> */}
@@ -37,10 +40,9 @@ const Followers = ({ allSuggestions, setAllSuggestion }) => {
           </p>
         </div>
 
-        <Fpeoples />
-        <Fpeoples />
-        <Fpeoples />
-        <Fpeoples />
+        {allUsers?.map((item, index) => {
+          return <Fpeoples />;
+        })}
       </div>
     </>
   );
