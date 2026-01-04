@@ -184,7 +184,7 @@ const Messages = () => {
   };
 
   let myMessages = [...sentMessages, ...receivedMessages].sort((a, b) => {
-    return a.id - b.id;
+    return a.time - b.time;
   });
 
   return (
