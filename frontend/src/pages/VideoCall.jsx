@@ -1,6 +1,7 @@
 import * as React from "react";
 import { ZegoUIKitPrebuilt } from "@zegocloud/zego-uikit-prebuilt";
 import io from "socket.io-client";
+import { useParams } from "react-router-dom";
 const socket = io.connect("http://localhost:5000");
 function randomID(len) {
   let result = "";
