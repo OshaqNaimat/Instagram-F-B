@@ -80,13 +80,6 @@ const Messages = () => {
   }, [search]);
 
   const handleMessageSend = () => {
-    // const messageData = {
-    //   message,
-    //   sender_id: user?._id,
-    //   receiver_id: ClickedUser?._id,
-    // };
-    // dispatch(sendMessageData(messageData));
-
     socket.emit("sent_message", {
       message,
       sender_id: user?._id,
@@ -101,6 +94,8 @@ const Messages = () => {
   const [callReceived, setCallReceived] = useState(false);
   const [callDeclined, setCallDeclined] = useState(false);
   const [isTyping, setIsTyping] = useState(false);
+  const [sentMessages, setSentMessage] = useState([]);
+  const [receivedMessages, setReceivedMessages] = useState([]);
 
   useEffect(() => {
     socket.on("received_message", (data) => {
