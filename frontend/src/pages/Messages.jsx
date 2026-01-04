@@ -87,6 +87,17 @@ const Messages = () => {
       time: Date.now(),
       sent: true,
     });
+
+    setSentMessages([
+      ...sentMessages,
+      {
+        message,
+        sender_id: user?._id,
+        receiver_id: ClickedUser?._id,
+        time: Date.now(),
+        sent: true,
+      },
+    ]);
   };
 
   const [call, setCall] = useState(false);
@@ -94,12 +105,25 @@ const Messages = () => {
   const [callReceived, setCallReceived] = useState(false);
   const [callDeclined, setCallDeclined] = useState(false);
   const [isTyping, setIsTyping] = useState(false);
-  const [sentMessages, setSentMessage] = useState([]);
+  const [sentMessages, setSentMessages] = useState([]);
   const [receivedMessages, setReceivedMessages] = useState([]);
 
   useEffect(() => {
     socket.on("received_message", (data) => {
-      alert(data.message);
+      setReceivedMessages([
+        ...receivedMessages,
+        {
+          // text: data.text,
+          // time: data.time,
+          // id: data.id,
+          // status: "received",
+          message: data.message,
+          sender_id: data.sender_id,
+          receiver_id: data.receiver_id,
+          time: Date.now(),
+          received: true,
+        },
+      ]);
     });
 
     socket.on("call_arahi_hai", (data) => {
@@ -130,6 +154,10 @@ const Messages = () => {
     socket.on("nahi_likh_raha", (data) => {
       setIsTyping(false);
     });
+
+    return () => {
+      socket.off("received_message");
+    };
   }, [socket]);
 
   const handleDeclined = () => {
@@ -154,6 +182,10 @@ const Messages = () => {
       receiver_id: ClickedUser?._id,
     });
   };
+
+  let myMessages = [...sentMessages, ...receivedMessages].sort((a, b) => {
+    return a.id - b.id;
+  });
 
   return (
     <>
@@ -309,7 +341,7 @@ const Messages = () => {
 
               {/* show messages */}
               <div className=" px-2">
-                {messages?.map((item, index) => {
+                {myMessages?.map((item, index) => {
                   return <SingleMessage {...item} key={index} />;
                 })}
               </div>
