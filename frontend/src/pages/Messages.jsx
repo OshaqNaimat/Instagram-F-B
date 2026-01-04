@@ -88,8 +88,8 @@ const Messages = () => {
       sent: true,
     });
 
-    setSentMessages([
-      ...sentMessages,
+    setSentMessages((prevMessages) => [
+      ...prevMessages,
       {
         message,
         sender_id: user?._id,
@@ -110,8 +110,8 @@ const Messages = () => {
 
   useEffect(() => {
     socket.on("received_message", (data) => {
-      setReceivedMessages([
-        ...receivedMessages,
+      setReceivedMessages((newValues) => [
+        ...newValues,
         {
           // text: data.text,
           // time: data.time,
