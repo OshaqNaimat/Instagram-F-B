@@ -14,7 +14,7 @@ import Sidebar from "../components/Sidebar";
 const Reels = () => {
   return (
     <>
-      <div className="w-screen h-100vh  flex flex-col items-center justify-center ">
+      <div className="w-screen h-100vh   flex flex-col items-center justify-center ">
         <div className="hidden md:block md:col-span-1 lg:col-span-1">
           <Sidebar />
         </div>
