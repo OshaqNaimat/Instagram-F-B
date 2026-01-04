@@ -21,6 +21,7 @@ export function getUrlParams(url = window.location.href) {
 }
 
 export default function VideoCallZego() {
+  const { caller_id, receiver_id } = useParams();
   const roomID = getUrlParams().get("roomID") || randomID(5);
   let myMeeting = async (element) => {
     // generate Kit Token
@@ -56,6 +57,12 @@ export default function VideoCallZego() {
       scenario: {
         mode: ZegoUIKitPrebuilt.VideoConference,
       },
+    });
+
+    socket.emit("answer_call", {
+      caller_id,
+      receiver_id,
+      shareableLink,
     });
   };
 
