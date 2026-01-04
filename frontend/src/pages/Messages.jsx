@@ -125,6 +125,18 @@ const Messages = () => {
     });
   });
 
+  const handleDeclined = () => {
+    setCall(false);
+    socket.emit("call_declined", (data) => {
+      caller_id: user?._id;
+      receiver_id: ClickedUser?._id;
+    });
+  };
+
+  const handleAccept = () => {
+    window.open(callLink, "_blank");
+  };
+
   const handleVideoCall = () => {
     window.open(
       `http://localhost:5173/video-call/${user?._id}/${ClickedUser?._id}`,
