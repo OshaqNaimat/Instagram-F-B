@@ -40,9 +40,13 @@ const Followers = ({ allSuggestions, setAllSuggestion }) => {
           </p>
         </div>
 
-        {allUsers?.map((item, index) => {
-          return <Fpeoples />;
-        })}
+        {/* {allUsers.map((item, index) => {
+          return <Fpeoples key={index} user={item} />;
+        })} */}
+        <Fpeoples />
+        <Fpeoples />
+        <Fpeoples />
+        <Fpeoples />
       </div>
     </>
   );

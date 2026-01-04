@@ -65,7 +65,7 @@ const Messages = () => {
 
   useEffect(() => {
     dispatch(getAllUsers());
-  }, []);
+  });
 
   useEffect(() => {
     let foundData = allUsers.filter((item, index) => {
