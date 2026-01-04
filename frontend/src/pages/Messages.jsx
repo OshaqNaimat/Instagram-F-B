@@ -130,6 +130,11 @@ const Messages = () => {
     socket.on("likh_raha_ha", (data) => {
       setIsTyping(true);
     });
+
+    // not typing
+    socket.on("nahi_likh_raha", (data) => {
+      setIsTyping(false);
+    });
   }, [socket]);
 
   const handleDeclined = () => {
@@ -343,6 +348,7 @@ const Messages = () => {
 
               <textarea
                 onFocus={() => socket.emit("typing", "typing value")}
+                onBlur={() => socket.emit("not_typing", "not_typing")}
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 placeholder="Message..."
