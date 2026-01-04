@@ -100,6 +100,7 @@ const Messages = () => {
   const [callLink, setCallLink] = useState(null);
   const [callReceived, setCallReceived] = useState(false);
   const [callDeclined, setCallDeclined] = useState(false);
+  const [isTyping, setIsTyping] = useState(false);
 
   useEffect(() => {
     socket.on("received_message", (data) => {
@@ -123,7 +124,13 @@ const Messages = () => {
     socket.on("utha_li_ha", (data) => {
       setCallLink(data.shareableLink);
     });
-  });
+
+    // typing
+
+    socket.on("likh_raha_ha", (data) => {
+      setIsTyping(true);
+    });
+  }, [socket]);
 
   const handleDeclined = () => {
     setCall(false);
@@ -307,6 +314,26 @@ const Messages = () => {
                 })}
               </div>
             </div>
+
+            {isTyping && (
+              <div className="flex items-center rounded-md gap-1 shadow shadow-gray-500 p-2 w-[60px] m-2">
+                {/* Circle 1 */}
+                <span
+                  className="w-3 h-3 bg-gray-500 rounded-full animate-bounce"
+                  style={{ animationDelay: "0s" }}
+                ></span>
+                {/* Circle 2 */}
+                <span
+                  className="w-3 h-3 bg-gray-500 rounded-full animate-bounce"
+                  style={{ animationDelay: "0.2s" }}
+                ></span>
+                {/* Circle 3 */}
+                <span
+                  className="w-3 h-3 bg-gray-500 rounded-full animate-bounce"
+                  style={{ animationDelay: "0.4s" }}
+                ></span>
+              </div>
+            )}
             {/* Input Section — No extra margin */}
             <div className="p-3 flex items-end bg-white">
               <FaRegSmile
@@ -315,6 +342,7 @@ const Messages = () => {
               />
 
               <textarea
+                onFocus={() => socket.emit("typing", "typing value")}
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 placeholder="Message..."
