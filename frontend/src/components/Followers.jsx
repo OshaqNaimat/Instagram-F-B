@@ -3,6 +3,7 @@ import { BsThreeDots } from "react-icons/bs";
 import { GoDotFill } from "react-icons/go";
 import Fpeoples from "./Fpeoples";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Followers = ({ allSuggestions, setAllSuggestion }) => {
   const { allUsers, user } = useSelector((state) => state.auth);
@@ -10,7 +11,10 @@ const Followers = ({ allSuggestions, setAllSuggestion }) => {
   return (
     <>
       <div className="container shadow-lg rounded-md mt-9 p-3">
-        <div className="flex justify-between  items-center">
+        <Link
+          to={`/profile/${user?._id}`}
+          className="flex justify-between  items-center"
+        >
           <div className="flex p-2 gap-2 items-center">
             <img
               className="w-[35px] h-[35px] cursor-pointer"
@@ -28,7 +32,7 @@ const Followers = ({ allSuggestions, setAllSuggestion }) => {
           </div>
           {/* <button className="p-2 bg-blue-500 hover:bg-blue-600 active:scale-95 text-white rounded-md duration-100 cursor-pointer">Follow</button> */}
           <p className="text-blue-700 cursor-pointer">Switch</p>
-        </div>
+        </Link>
 
         <div className="flex my-2 justify-between">
           <h4 className="text-gray-500 font-semibold">Suggested for you</h4>
