@@ -1,77 +1,42 @@
 import React, { useState } from "react";
 import Sidebar from "../components/Sidebar";
-
-const img =
-  "https://img.freepik.com/premium-photo/reels-instagram-logo-new-feature-social-media-app-3d-rendering_1379-5024.jpg";
+import { useSelector } from "react-redux";
 
 const ExploreSection = () => {
   const [show, setShow] = useState(false);
 
+  const posts = useSelector((state) => state.daak.posts);
+
+  // Convert object to array for mapping
+  const postsArray = Object.values(posts || []);
+
   return (
-    <div className="grid grid-cols-1 md:grid-cols-4 min-h-screen">
+    <div className="grid grid-cols-4 min-h-screen">
       {/* Sidebar */}
       <div className="hidden md:block md:col-span-1">
         <Sidebar show={show} setShow={setShow} />
       </div>
 
-      {/* Explore Section */}
-      <div className="md:col-span-3 p-1">
-        <div
-          className="
-            grid 
-            grid-cols-3 
-            auto-rows-fr 
-            gap-1
-          "
-        >
-          {/* 1 */}
-          <div className="aspect-square">
-            <img src={img} className="w-full h-full object-cover" />
-          </div>
+      {/* Explore Feed */}
+      <div className="col-span-4 md:col-span-3 grid grid-cols-3 gap-1 p-1">
+        {postsArray.length === 0 && (
+          <p className="col-span-3 text-center text-gray-500">No posts found</p>
+        )}
 
-          {/* 2 */}
-          <div className="aspect-square">
-            <img src={img} className="w-full h-full object-cover" />
+        {postsArray.map((post, index) => (
+          <div
+            key={index}
+            className={`overflow-hidden ${
+              index % 7 === 0 ? "row-span-2" : "aspect-square"
+            }`}
+          >
+            <img
+              src={post?.image}
+              alt={`Post by ${post?.user || "unknown"}`}
+              className="w-full h-full object-cover"
+            />
           </div>
-
-          {/* 3 */}
-          <div className="row-span-2">
-            <img src={img} className="w-full h-full object-cover" />
-          </div>
-
-          {/* 4 */}
-          <div className="aspect-square">
-            <img src={img} className="w-full h-full object-cover" />
-          </div>
-
-          {/* 5 */}
-          <div className="aspect-square">
-            <img src={img} className="w-full h-full object-cover" />
-          </div>
-
-          {/* 6 */}
-          <div className="row-span-2">
-            <img src={img} className="w-full h-full object-cover" />
-          </div>
-          <div className="aspect-square">
-            <img src={img} className="w-full h-full object-cover" />
-          </div>
-
-          {/* 7 */}
-
-          {/* 8 */}
-          <div className="aspect-square">
-            <img src={img} className="w-full h-full object-cover" />
-          </div>
-
-          {/* 9 */}
-          <div className="aspect-square">
-            <img src={img} className="w-full h-full object-cover" />
-          </div>
-          <div className="aspect-square">
-            <img src={img} className="w-full h-full object-cover" />
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );
