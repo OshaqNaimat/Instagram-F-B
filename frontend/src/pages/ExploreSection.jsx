@@ -4,10 +4,7 @@ import { useSelector } from "react-redux";
 
 const ExploreSection = () => {
   const [show, setShow] = useState(false);
-
   const posts = useSelector((state) => state.daak.posts);
-
-  // Convert object to array for mapping
   const postsArray = Object.values(posts || []);
 
   return (
@@ -26,15 +23,20 @@ const ExploreSection = () => {
         {postsArray.map((post, index) => (
           <div
             key={index}
-            className={`overflow-hidden ${
+            className={`relative overflow-hidden cursor-pointer ${
               index % 7 === 0 ? "row-span-2" : "aspect-square"
             }`}
           >
+            {/* Image */}
             <img
               src={post?.image}
               alt={`Post by ${post?.user || "unknown"}`}
               className="w-full h-full object-cover"
             />
+
+            {/* Overlay */}
+            <div className="absolute z-100 inset-0 bg-black opacity-0 hover:opacity-50 transition-opacity duration-100" />
+            <h1>jkdsn</h1>
           </div>
         ))}
       </div>
