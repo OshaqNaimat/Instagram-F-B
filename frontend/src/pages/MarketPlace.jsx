@@ -63,8 +63,7 @@ const MarketPlace = () => {
       originalPrice: 39.99,
       rating: 4.2,
       reviewCount: 89,
-      image:
-        "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&auto=format&fit=crop",
+      image: "https://m.media-amazon.com/images/I/71WqMgeCMlL._AC_SL1500_.jpg",
       category: "clothing",
       description:
         "Soft, breathable organic cotton t-shirt available in multiple colors.",
@@ -101,7 +100,7 @@ const MarketPlace = () => {
       rating: 4.8,
       reviewCount: 156,
       image:
-        "https://images.unsplash.com/photo-1514228742587-6b155fcf93a?w=400&auto=format&fit=crop",
+        "https://lemonadeindia.com/cdn/shop/files/personalized-gift-box-pastel-neu-ceramic-coffee-mug-set-signaturehomelemonade-387193.png?v=1747335193",
       category: "home",
       description:
         "Set of 4 elegant ceramic mugs, perfect for your morning coffee or tea.",
@@ -132,7 +131,7 @@ const MarketPlace = () => {
       rating: 4.6,
       reviewCount: 187,
       image:
-        "https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?w=400&auto=format&fit=crop",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6QU1r_I5jnQhr7m0d93jo09bs-22-QtA8sw&s",
       category: "sports",
       description:
         "Non-slip, eco-friendly yoga mat with carrying strap for easy transport.",
