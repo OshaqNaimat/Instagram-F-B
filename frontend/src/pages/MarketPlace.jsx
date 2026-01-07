@@ -693,6 +693,13 @@ const MarketPlace = () => {
             {/* Cart & Wishlist */}
             <div className="flex items-center space-x-4">
               <button
+                className="p-2 w-full font-semibold text-white cursor-pointer hover:scale-105 bg-linear-to-r from-blue-500 to-purple-500
+ rounded-md"
+              >
+                Sell
+              </button>
+
+              <button
                 onClick={() => setIsCartOpen(true)}
                 className="relative p-2 hover:bg-gray-100 rounded-full"
               >
