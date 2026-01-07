@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Sidebar from "../components/Sidebar";
 import { useSelector } from "react-redux";
+import { FaRegComment } from "react-icons/fa";
+import { IoHeartOutline } from "react-icons/io5";
 
 const ExploreSection = () => {
   const [show, setShow] = useState(false);
@@ -35,8 +37,17 @@ const ExploreSection = () => {
             />
 
             {/* Overlay */}
-            <div className="absolute z-100 inset-0 bg-black opacity-0 hover:opacity-50 transition-opacity duration-100" />
-            <h1>jkdsn</h1>
+            <div className="absolute inset-0 bg-black opacity-0 hover:opacity-50 transition-opacity duration-200 flex items-center justify-center gap-4">
+              {/* Icons centered */}
+              <div className="flex items-center gap-2 text-white text-lg font-bold">
+                <IoHeartOutline />
+                <span>{post?.likes || 0}</span>
+              </div>
+              <div className="flex items-center gap-2 text-white text-lg font-bold">
+                <FaRegComment />
+                <span>{post?.comments || 0}</span>
+              </div>
+            </div>
           </div>
         ))}
       </div>

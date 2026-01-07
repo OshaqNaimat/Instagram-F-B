@@ -11,6 +11,7 @@ import ExploreSection from "./pages/ExploreSection";
 import Reels from "./pages/Reels";
 import "react-loading-skeleton/dist/skeleton.css";
 import VideoCallZego from "./pages/VideoCall";
+import MarketPlace from "./pages/MarketPlace";
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
         <Route path="/message" element={<Messages />} />
         <Route path="/Explore" element={<ExploreSection />} />
         <Route path="/reels" element={<Reels />} />
+        <Route path="/marketplace" element={<MarketPlace />} />
         <Route
           path="/video-call/:caller_id/:receiver_id"
           element={<VideoCallZego />}

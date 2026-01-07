@@ -5,6 +5,8 @@ import * as IoIcons from "react-icons/io";
 import * as FiIcons from "react-icons/fi";
 import * as BsIcons from "react-icons/bs";
 import * as FaIcons from "react-icons/fa";
+import { RiShoppingCart2Line } from "react-icons/ri";
+
 import { Link, Links } from "react-router-dom";
 // import Link from "react-redux";
 
@@ -62,8 +64,9 @@ export const sidebarItems = [
   },
   {
     id: 9,
-    title: "More",
-    icon: <FiIcons.FiMenu />,
+    title: "MarketPlace",
+    icon: <RiShoppingCart2Line />,
+    Link: "/marketplace",
   },
 ];
 
