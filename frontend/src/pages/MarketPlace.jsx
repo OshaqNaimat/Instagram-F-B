@@ -701,7 +701,7 @@ const MarketPlace = () => {
 
               <button
                 onClick={() => setIsCartOpen(true)}
-                className="relative p-2 hover:bg-gray-100 rounded-full"
+                className="relative p-2 cursor-pointer hover:bg-gray-100 rounded-full"
               >
                 <Icons.Cart />
                 {cartCount > 0 && (
@@ -727,7 +727,7 @@ const MarketPlace = () => {
                     setSelectedCategory(category.id);
                     setIsMenuOpen(false);
                   }}
-                  className={`px-4 py-2 rounded-lg transition ${
+                  className={`px-4 py-2 cursor-pointer rounded-lg transition ${
                     selectedCategory === category.id
                       ? "bg-blue-600 text-white"
                       : "text-gray-700 hover:bg-gray-100"
@@ -756,7 +756,7 @@ const MarketPlace = () => {
             </p>
             <button
               onClick={() => setSelectedCategory("all")}
-              className="bg-white text-blue-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition transform hover:scale-105"
+              className="bg-white cursor-pointer text-blue-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition transform hover:scale-105"
             >
               Shop Now →
             </button>
@@ -809,7 +809,7 @@ const MarketPlace = () => {
               <button
                 key={category.id}
                 onClick={() => setSelectedCategory(category.id)}
-                className={`px-4 py-2 rounded-full transition ${
+                className={`px-4 py-2 cursor-pointer rounded-full transition ${
                   selectedCategory === category.id
                     ? "bg-blue-600 text-white"
                     : "bg-gray-200 text-gray-700 hover:bg-gray-300"
@@ -822,7 +822,7 @@ const MarketPlace = () => {
         </div>
 
         {/* Product Count & Sort */}
-        <div className="flex justify-between items-center mb-6">
+        {/* <div className="flex justify-between items-center mb-6">
           <div className="text-gray-600">
             Showing {filteredProducts.length} of {products.length} products
           </div>
@@ -832,11 +832,11 @@ const MarketPlace = () => {
             <option>Price: High to Low</option>
             <option>Customer Reviews</option>
           </select>
-        </div>
+        </div> */}
 
         {/* Products Grid */}
         {filteredProducts.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {filteredProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
@@ -861,7 +861,7 @@ const MarketPlace = () => {
         )}
 
         {/* Promo Banner */}
-        <div className="mt-12 bg-gradient-to-r from-green-500 to-teal-600 rounded-2xl overflow-hidden">
+        {/* <div className="mt-12 bg-gradient-to-r from-green-500 to-teal-600 rounded-2xl overflow-hidden">
           <div className="p-8 md:p-12 text-white">
             <div className="flex flex-col md:flex-row items-center justify-between">
               <div>
@@ -875,17 +875,17 @@ const MarketPlace = () => {
               </button>
             </div>
           </div>
-        </div>
+        </div> */}
       </main>
 
       {/* Footer */}
       <footer className="bg-gray-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div className="flex justify-center ">
             <div>
-              <div className="flex items-center mb-4">
+              <div className="flex items-center justify-center mb-4">
                 <span className="text-2xl">🛍️</span>
-                <h3 className="text-2xl font-bold ml-2">
+                <h3 className="text-2xl  font-bold ml-2">
                   Shop<span className="text-blue-400">Easy</span>
                 </h3>
               </div>
@@ -894,7 +894,7 @@ const MarketPlace = () => {
               </p>
             </div>
 
-            <div>
+            {/* <div>
               <h4 className="font-bold text-lg mb-4">Shop</h4>
               <ul className="space-y-2 text-gray-400">
                 {categories.slice(0, 4).map((cat) => (
@@ -908,9 +908,9 @@ const MarketPlace = () => {
                   </li>
                 ))}
               </ul>
-            </div>
+            </div> */}
 
-            <div>
+            {/* <div>
               <h4 className="font-bold text-lg mb-4">Help</h4>
               <ul className="space-y-2 text-gray-400">
                 <li>
@@ -932,9 +932,9 @@ const MarketPlace = () => {
                   </button>
                 </li>
               </ul>
-            </div>
+            </div> */}
 
-            <div>
+            {/* <div>
               <h4 className="font-bold text-lg mb-4">Newsletter</h4>
               <p className="text-gray-400 mb-4">
                 Subscribe for updates and exclusive offers
@@ -949,11 +949,11 @@ const MarketPlace = () => {
                   Subscribe
                 </button>
               </div>
-            </div>
+            </div> */}
           </div>
 
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>© 2024 ShopEasy. All rights reserved.</p>
+            <p>© 2026 ShopEasy. All rights reserved.</p>
             <div className="mt-4 flex justify-center space-x-6">
               <button className="hover:text-white">Terms</button>
               <button className="hover:text-white">Privacy</button>
@@ -972,11 +972,13 @@ const MarketPlace = () => {
         {cartCount > 0 && (
           <button
             onClick={() => setIsCartOpen(true)}
-            className="bg-blue-600 text-white p-4 rounded-full shadow-lg hover:bg-blue-700 transition transform hover:scale-105"
+            className="bg-blue-600 text-white p-4  rounded-full shadow-lg hover:bg-blue-700 transition transform hover:scale-105"
           >
             <span className="flex items-center">
               <Icons.Cart />
-              <span className="ml-2 font-bold">${cartTotal.toFixed(2)}</span>
+              <span className="ml-2 cursor-pointer font-bold">
+                ${cartTotal.toFixed(2)}
+              </span>
             </span>
           </button>
         )}
