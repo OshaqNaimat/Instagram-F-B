@@ -1,6 +1,8 @@
 // MarketPlace.jsx - Complete e-commerce landing page in one file
 import React, { useState } from "react";
 import IconSidebar from "../components/IconSidebar";
+import { FaLeftLong } from "react-icons/fa6";
+import { BsArrowLeftCircleFill } from "react-icons/bs";
 
 const MarketPlace = () => {
   const [cart, setCart] = useState([]);
@@ -253,6 +255,7 @@ const MarketPlace = () => {
   const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   // Render Stars for rating
+
   const renderStars = (rating) => {
     return (
       <div className="flex">
@@ -657,11 +660,17 @@ const MarketPlace = () => {
               >
                 {isMenuOpen ? <Icons.Close /> : <Icons.Menu />}
               </button>
-              <div className="flex items-center">
-                <span className="text-2xl">🛍️</span>
-                <h1 className="text-2xl font-bold ml-2">
-                  Shop<span className="text-blue-600">Easy</span>
-                </h1>
+              <div className="flex items-center justify-between">
+                <div className="flex justify-center items-center gap-2">
+                  <BsArrowLeftCircleFill />
+                  <span>Return to Instagram</span>
+                </div>
+                <div className="flex items-center justify-center">
+                  <span className="text-2xl">🛍️</span>
+                  <h1 className="text-2xl font-bold ml-2">
+                    Shop<span className="text-blue-600">Easy</span>
+                  </h1>
+                </div>
               </div>
             </div>
 
@@ -683,10 +692,6 @@ const MarketPlace = () => {
 
             {/* Cart & Wishlist */}
             <div className="flex items-center space-x-4">
-              <button className="p-2 hover:bg-gray-100 rounded-full">
-                <Icons.Heart />
-              </button>
-
               <button
                 onClick={() => setIsCartOpen(true)}
                 className="relative p-2 hover:bg-gray-100 rounded-full"
