@@ -46,7 +46,7 @@ export const getAllUsers = createAsyncThunk('get-all-users',async(_,thunkAPI)=>{
 
 export const LoginUser = createAsyncThunk("Login-user", async(LoginData,thunkAPI)=>{
     try {
-        const response = await axios.post("http://localhost:5000/api/users/Login-user",LoginData)
+        const response = await axios.post("http://localhost:5000/api/users/login",LoginData)
         return response.data
     } catch (error) {
         return thunkAPI.rejectWithValue(error.response.data)

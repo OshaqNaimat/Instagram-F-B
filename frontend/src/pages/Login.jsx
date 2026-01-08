@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FaFacebook, FaApple } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { LoginUser, userReset } from "../features/users/userSlice";
 import toast from "react-hot-toast";
 
@@ -24,15 +24,17 @@ const Login = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     const LoginData = {
-      mobile: m_mail,
-      password,
+      mobile: formData?.m_mail,
+      password: formData?.password,
     };
     dispatch(LoginUser(LoginData));
   };
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (userSuccess) {
-      toast.success("Successfully Logges");
+      toast.success("Successfully Logged");
+      navigate("/Home");
     }
     if (userError) {
       toast.error(userMessage);

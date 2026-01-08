@@ -42,7 +42,7 @@ const Register = () => {
     }
 
     if (userSuccess) {
-      toast.success("Successfully logged");
+      toast.success("Successfully Registered");
       navigate("/");
     }
 
