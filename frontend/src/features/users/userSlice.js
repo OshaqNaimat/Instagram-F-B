@@ -10,7 +10,8 @@ const initialState = {
     userError:false,
     userMessage:'',
     foundUser:null,
-    allUsers:[]
+    allUsers:[],
+    Authenticated:false
 
 }
 
@@ -33,12 +34,21 @@ export const findMyUser = createAsyncThunk('find-user',async(user_id,thunkAPI)=>
     }
 })
 
-export const getAllUsers = createAsyncThunk('get-all-users',async(__,thunkAPI)=>{
+export const getAllUsers = createAsyncThunk('get-all-users',async(_,thunkAPI)=>{
     try {
         const response = await axios.get('http://localhost:5000/api/users/get-all-users')
         return response.data
     } catch (error) {
         
+        return thunkAPI.rejectWithValue(error.response.data)
+    }
+})
+
+export const LoginUser = createAsyncThunk("Login-user", async(LoginData,thunkAPI)=>{
+    try {
+        const response = await axios.post("http://localhost:5000/api/users/Login-user",LoginData)
+        return response.data
+    } catch (error) {
         return thunkAPI.rejectWithValue(error.response.data)
     }
 })
@@ -57,15 +67,18 @@ export const userSlice = createSlice({
     extraReducers: (builder)=>{
         builder
         .addCase(regUser.pending , (state,action)=>{
+            state.Authenticated = false
             state.userLoading = true
         })
         .addCase(regUser.rejected ,(state,action)=>{
             state.userLoading = false,
             state.userError = true,
+            state.Authenticated = false,
             state.userMessage = action.payload,
             state.user = null
         })
         .addCase(regUser.fulfilled ,(state,action)=>{
+            state.Authenticated = true
             state.userLoading = false
             state.userSuccess = true
             state.user =  action.payload
@@ -98,6 +111,21 @@ export const userSlice = createSlice({
             state.allUsers = null
         })
         .addCase(getAllUsers.fulfilled ,(state,action)=>{
+            state.userLoading = false
+            state.userSuccess = true
+            state.allUsers =  action.payload
+
+        })
+        .addCase(LoginUser.pending , (state,action)=>{
+            state.userLoading = true
+        })
+        .addCase(LoginUser.rejected ,(state,action)=>{
+            state.userLoading = false,
+            state.userError = true,
+            state.userMessage = action.payload
+            
+        })
+        .addCase(LoginUser.fulfilled ,(state,action)=>{
             state.userLoading = false
             state.userSuccess = true
             state.allUsers =  action.payload
