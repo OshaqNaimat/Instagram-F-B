@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import {useDispatch, useSelector} from 'react-redux'
+import { useDispatch, useSelector } from "react-redux";
 import { regUser, userReset } from "../features/users/userSlice";
 import toast from "react-hot-toast";
-import {Link, useNavigate} from 'react-router-dom'
-import {CircleLoader, ClockLoader, MoonLoader} from 'react-spinners'
+import { Link, Links, useNavigate } from "react-router-dom";
+import { CircleLoader, ClockLoader, MoonLoader } from "react-spinners";
 const Register = () => {
   const [formFields, setFormFields] = useState({
     m_mail: "",
@@ -17,40 +17,37 @@ const Register = () => {
   const handleChange = (e) => {
     setFormFields({ ...formFields, [e.target.name]: e.target.value });
   };
-  
-  const dispatch = useDispatch()
-  
-  const {user,userLoading,userError,userSuccess,userMessage} = useSelector((state)=>state.auth)
 
-  const navigate = useNavigate()
+  const dispatch = useDispatch();
 
+  const { user, userLoading, userError, userSuccess, userMessage } =
+    useSelector((state) => state.auth);
+
+  const navigate = useNavigate();
 
   const handleRegister = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const myData = {
-      mobile:m_mail,
+      mobile: m_mail,
       password,
       fullName,
-      username:profileName
+      username: profileName,
+    };
+
+    dispatch(regUser(myData));
+  };
+  useEffect(() => {
+    if (userError) {
+      toast.error(userMessage);
     }
 
-    dispatch(regUser(myData))
-    
+    if (userSuccess) {
+      toast.success("Successfully logged");
+      navigate("/");
+    }
 
-
-  }
-      useEffect(()=>{
-        if(userError){
-          toast.error(userMessage)
-        }
-
-        if(userSuccess ){
-          toast.success("Successfully logged")
-          navigate('/Home')
-        }
-
-        dispatch(userReset())
-      },[userError,userSuccess])
+    dispatch(userReset());
+  }, [userError, userSuccess]);
 
   return (
     <div className="min-h-screen bg-white flex flex-col items-center justify-center px-4 py-8">
@@ -147,14 +144,15 @@ const Register = () => {
             </div>
 
             <button
-            disabled={userLoading}
-            onClick={handleRegister}
+              disabled={userLoading}
+              onClick={handleRegister}
               className="w-full cursor-pointer bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded text-sm transition-colors duration-200"
             >
-
-              {
-                userLoading ? <ClockLoader size={20} color="white"/> : "Register"
-              }
+              {userLoading ? (
+                <ClockLoader size={20} color="white" />
+              ) : (
+                "Register"
+              )}
             </button>
           </form>
         </div>
@@ -163,7 +161,10 @@ const Register = () => {
         <div className="bg-white border-0 shadow-lg shadow-gray-500 rounded-lg p-6 text-center">
           <p className="text-sm">
             Have an account?{" "}
-            <Link to={'/'}  className="text-blue-500 font-semibold cursor-pointer">
+            <Link
+              to={"/"}
+              className="text-blue-500 font-semibold cursor-pointer"
+            >
               Log in
             </Link>
           </p>
