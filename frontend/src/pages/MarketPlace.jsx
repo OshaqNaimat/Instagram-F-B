@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import IconSidebar from "../components/IconSidebar";
 import { FaLeftLong } from "react-icons/fa6";
 import { BsArrowLeftCircleFill } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 const MarketPlace = () => {
   const [cart, setCart] = useState([]);
@@ -661,7 +662,12 @@ const MarketPlace = () => {
               </button>
               <div className="flex items-center justify-between">
                 <div className="flex justify-center items-center gap-2">
-                  <BsArrowLeftCircleFill />
+                  <Link to={"/home"}>
+                    <BsArrowLeftCircleFill
+                      className="cursor-pointer"
+                      size={30}
+                    />
+                  </Link>
                   <span>Return to Instagram</span>
                 </div>
                 <div className="flex items-center justify-center">
