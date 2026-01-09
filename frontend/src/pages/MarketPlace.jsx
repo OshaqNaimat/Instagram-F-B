@@ -3,7 +3,9 @@ import React, { useState } from "react";
 import IconSidebar from "../components/IconSidebar";
 import { FaLeftLong } from "react-icons/fa6";
 import { BsArrowLeftCircleFill } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { Link, Links, useNavigate } from "react-router-dom";
+import MarketPlaceForm from "../components/MarketPlaceForm";
+import { IoClose, IoCloseCircle } from "react-icons/io5";
 
 const MarketPlace = () => {
   const [cart, setCart] = useState([]);
@@ -12,6 +14,7 @@ const MarketPlace = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [mform, setMForm] = useState(false);
 
   // Lucide React Icons (simplified with emojis for single file)
   const Icons = {
@@ -695,9 +698,9 @@ const MarketPlace = () => {
               </div>
             </div>
 
-            {/* Cart & Wishlist */}
             <div className="flex items-center space-x-4">
               <button
+                onClick={() => setMForm(true)}
                 className="p-2 w-full font-semibold text-white cursor-pointer hover:scale-105 bg-linear-to-r from-blue-500 to-purple-500
  rounded-md"
               >
@@ -971,6 +974,19 @@ const MarketPlace = () => {
       {/* Components */}
       <CartSidebar />
       <ProductDetailModal />
+      {mform && (
+        <>
+          <div className="fixed inset-0 z-[100] bg-black/50 flex items-center justify-center">
+            <MarketPlaceForm onClose={() => setMForm(false)} />
+          </div>
+
+          <IoClose
+            size={30}
+            className="cursor-pointer z-100 fixed top-5 right-5 text-white"
+            onClick={() => setMForm(false)}
+          />
+        </>
+      )}
 
       {/* Quick Action Buttons */}
       <div className="fixed bottom-6 right-6 flex flex-col space-y-2 z-20">
