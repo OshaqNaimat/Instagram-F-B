@@ -51,7 +51,7 @@ const Home = () => {
         {/* Posts */}
 
         <div className="col-span-4 md:col-span-3 lg:col-span-2 p-3 rounded-md">
-          <Stories />
+          {/* <Stories /> */}
           {posts?.map((item, index) => {
             return <Posts {...item} key={item._id} />;
           })}

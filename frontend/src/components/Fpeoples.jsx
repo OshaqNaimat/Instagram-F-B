@@ -2,8 +2,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 const Fpeoples = () => {
-  // const { allUsers } = useSelector((state) => state.auth);
-  // console.log(allUsers);
+  const { allUsers } = useSelector((state) => state.auth);
+  console.log(allUsers);
   return (
     <>
       <div className="flex justify-between  items-center">

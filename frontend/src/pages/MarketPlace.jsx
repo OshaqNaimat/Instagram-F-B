@@ -510,11 +510,11 @@ const MarketPlace = () => {
     if (!selectedProduct) return null;
 
     return (
-      <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-        <div className="bg-white rounded-xl max-w-4xl w-full max-h-[90vh] overflow-hidden">
+      <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+        <div className="bg-white  rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-scroll">
           <button
             onClick={() => setSelectedProduct(null)}
-            className="absolute top-4 right-4 z-10 bg-white p-2 rounded-full shadow-lg hover:bg-gray-100"
+            className="absolute cursor-pointer top-4 right-4 z-10 bg-white p-2 w-10 h-10 rounded-full shadow-lg hover:bg-gray-100"
           >
             <Icons.Close />
           </button>
@@ -615,7 +615,7 @@ const MarketPlace = () => {
                     alert(`${selectedProduct.name} added to cart!`);
                   }}
                   disabled={!selectedProduct.inStock}
-                  className={`flex-grow py-3 px-6 rounded-lg font-semibold transition ${
+                  className={`flex-grow py-3 cursor-pointer px-6 rounded-lg font-semibold transition ${
                     selectedProduct.inStock
                       ? "bg-blue-600 text-white hover:bg-blue-700"
                       : "bg-gray-300 text-gray-500 cursor-not-allowed"
@@ -630,7 +630,7 @@ const MarketPlace = () => {
                     setIsCartOpen(true);
                   }}
                   disabled={!selectedProduct.inStock}
-                  className={`px-6 py-3 rounded-lg font-semibold transition ${
+                  className={`px-6 py-3 rounded-lg cursor-pointer font-semibold transition ${
                     selectedProduct.inStock
                       ? "border border-blue-600 text-blue-600 hover:bg-blue-50"
                       : "border border-gray-300 text-gray-500 cursor-not-allowed"
