@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-const Fpeoples = ({ username }) => {
+const Fpeoples = ({ username, fullName }) => {
   const { allUsers } = useSelector((state) => state.auth);
   console.log(allUsers);
   return (
@@ -19,7 +19,7 @@ const Fpeoples = ({ username }) => {
                 {username}
               </h4>
             </div>
-            <p className="text-sm">{allUsers?._id}</p>
+            <p className="text-sm">{fullName}</p>
           </div>
         </div>
         <button className="p-2 bg-blue-500 hover:bg-blue-600 active:scale-95 text-white rounded-md duration-100 cursor-pointer">
