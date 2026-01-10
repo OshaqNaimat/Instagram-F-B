@@ -1,0 +1,35 @@
+import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
+import { userReset } from "../users/userSlice";
+
+// havr to include the user in local storage
+
+const initialState = {
+    product:[],
+    productLoading:false,
+    productError:false,
+    productSuccess:false
+}
+
+
+export const sellProduct = createAsyncThunk('products',async(userData,thunkAPI)=>{
+    
+})
+
+
+export const productSlice = createSlice({
+    name:"Products",
+    initialState,
+    reducers:{
+        userReset:(state)=>{
+            state.productError = false,
+            state.productSuccess = false,
+            state.productLoading = false
+        }
+    },
+    extraReducers:(builder)=>{
+        builder
+        
+    }
+})
+
+export default productSlice.reducer
