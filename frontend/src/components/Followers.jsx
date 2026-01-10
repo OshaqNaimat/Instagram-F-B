@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BsThreeDots } from "react-icons/bs";
 import { GoDotFill } from "react-icons/go";
 import Fpeoples from "./Fpeoples";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { getAllUsers } from "../features/users/userSlice";
 
 const Followers = ({ allSuggestions, setAllSuggestion }) => {
   const { allUsers, user } = useSelector((state) => state.auth);
-
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAllUsers());
+  }, []);
   return (
     <>
       <div className="container shadow-lg rounded-md mt-9 p-3">
@@ -44,13 +48,13 @@ const Followers = ({ allSuggestions, setAllSuggestion }) => {
           </p>
         </div>
 
-        {/* {allUsers.map((item, index) => {
-          return <Fpeoples key={index} user={item} />;
-        })} */}
+        {allUsers.slice(0, 5).map((item, index) => {
+          return <Fpeoples key={index} {...item} />;
+        })}
+        {/* <Fpeoples />
         <Fpeoples />
         <Fpeoples />
-        <Fpeoples />
-        <Fpeoples />
+        <Fpeoples /> */}
       </div>
     </>
   );
