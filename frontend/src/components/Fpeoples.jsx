@@ -1,12 +1,16 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
-const Fpeoples = ({ username, fullName }) => {
+const Fpeoples = ({ username, fullName, _id }) => {
   const { allUsers } = useSelector((state) => state.auth);
   console.log(allUsers);
   return (
     <>
-      <div className="flex justify-between  items-center">
+      <Link
+        to={`/profile/${_id}`}
+        className="flex justify-between  items-center"
+      >
         <div className="flex p-2 gap-2 items-center">
           <img
             className="w-[35px] h-[35px] cursor-pointer"
@@ -25,7 +29,7 @@ const Fpeoples = ({ username, fullName }) => {
         <button className="p-2 bg-blue-500 hover:bg-blue-600 active:scale-95 text-white rounded-md duration-100 cursor-pointer">
           Follow
         </button>
-      </div>
+      </Link>
     </>
   );
 };
