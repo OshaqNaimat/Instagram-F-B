@@ -9,7 +9,7 @@ const Fpeoples = ({ username, fullName, _id }) => {
     <>
       <Link
         to={`/profile/${_id}`}
-        className="flex justify-between hover:bg-gray-300 duration-100 rounded-md items-center"
+        className="flex justify-between hover:bg-gray-200 duration-100 rounded-md items-center"
       >
         <div className="flex p-2 gap-2 items-center">
           <img
