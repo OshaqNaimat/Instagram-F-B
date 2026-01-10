@@ -34,12 +34,10 @@ export default function SellProductForm() {
   };
 
   return (
-    <div className="min-h-screen overflow-y-scroll h-[90vh]  bg-gray-100 flex items-center justify-center p-4">
-      <div className="w-full max-w-lg bg-white rounded-2xl shadow-lg p-6">
-        <h1 className="text-2xl font-bold mb-1">Sell a Product</h1>
-        <p className="text-gray-600 mb-6">
-          Post your product like an OLX / Instagram-style listing
-        </p>
+    <div className="min-h-screen w-full  overflow-y-scroll h-[90vh]   flex items-center justify-center ">
+      <div className="w-full max-w-lg  bg-white rounded-2xl shadow-lg p-6">
+        <h1 className="text-2xl text-center font-bold mb-1">Sell a Product</h1>
+        <p className="text-gray-600 text-center mb-6">Post your product</p>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Image Upload */}
@@ -83,7 +81,7 @@ export default function SellProductForm() {
               value={form.title}
               onChange={handleChange}
               placeholder="e.g. iPhone 13, Wooden Table"
-              className="w-full rounded-lg border px-3 py-2 focus:ring-2 focus:ring-blue-500"
+              className="w-full rounded-lg outline-0 shadow-xl px-3 py-2 focus:ring-2 focus:ring-blue-500"
             />
           </div>
 
@@ -97,12 +95,12 @@ export default function SellProductForm() {
               value={form.price}
               onChange={handleChange}
               placeholder="₹ / $"
-              className="w-full rounded-lg border px-3 py-2 focus:ring-2 focus:ring-blue-500"
+              className="w-full rounded-lg outline-0 shadow-xl px-3 py-2 focus:ring-2 focus:ring-blue-500"
             />
           </div>
 
           {/* Category */}
-          <div>
+          {/* <div>
             <label className="block text-sm font-medium mb-1">Category</label>
             <select
               name="category"
@@ -117,7 +115,7 @@ export default function SellProductForm() {
               <option>Vehicles</option>
               <option>Others</option>
             </select>
-          </div>
+          </div> */}
 
           {/* Description */}
           <div>
