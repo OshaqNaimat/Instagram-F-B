@@ -9,7 +9,7 @@ const Fpeoples = ({ username, fullName, _id }) => {
     <>
       <Link
         to={`/profile/${_id}`}
-        className="flex justify-between  items-center"
+        className="flex justify-between hover:bg-gray-300 duration-100 rounded-md items-center"
       >
         <div className="flex p-2 gap-2 items-center">
           <img
@@ -26,7 +26,7 @@ const Fpeoples = ({ username, fullName, _id }) => {
             <p className="text-sm">{fullName}</p>
           </div>
         </div>
-        <button className="p-2 bg-blue-500 hover:bg-blue-600 active:scale-95 text-white rounded-md duration-100 cursor-pointer">
+        <button className="p-2 bg-blue-500 m-2 hover:bg-blue-600 active:scale-95 text-white rounded-md duration-100 cursor-pointer">
           Follow
         </button>
       </Link>
