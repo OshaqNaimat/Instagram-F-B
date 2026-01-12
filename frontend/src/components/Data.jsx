@@ -11,6 +11,7 @@ import { Link, Links } from "react-router-dom";
 // import Link from "react-redux";
 
 let user = JSON.parse(localStorage.getItem("user"));
+let LogoutUser = JSON.parse(localStorage.removeItem("UserLogout"));
 
 export const sidebarItems = [
   {
