@@ -25,6 +25,8 @@ export const regUser = createAsyncThunk('user',async(userData,thunkAPI)=>{
     }
 })
 
+
+
 export const findMyUser = createAsyncThunk('find-user',async(user_id,thunkAPI)=>{
     try {
         const response = await axios.get(`http://localhost:5000/api/users/find-user/${user_id}`)
@@ -62,7 +64,15 @@ export const userSlice = createSlice({
             state.userMessage = '',
             state.userSuccess = false,
             state.userLoading = false
-        }
+        },
+         Signout: (state) => {
+    localStorage.removeItem("user");
+    state.user = null;
+    state.userError = false;
+    state.userMessage = '';
+    state.userSuccess = false;
+    state.userLoading = false;
+  }
     },
     extraReducers: (builder)=>{
         builder
@@ -135,4 +145,4 @@ export const userSlice = createSlice({
 })
 
 export default userSlice.reducer
-export const {userReset} = userSlice.actions
+export const {Signout,userReset} = userSlice.actions

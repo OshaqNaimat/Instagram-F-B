@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from "react";
 import sidebarItems from "./Data";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+// import { logout } from "../features/user/userSlice";
+import { userReset } from "../features/users/userSlice";
 
 const Sidebar = ({ isMobile, setShow, setPpage }) => {
   const [user, setUser] = useState({});
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   // Load user from localStorage reactively
   useEffect(() => {
@@ -21,19 +26,29 @@ const Sidebar = ({ isMobile, setShow, setPpage }) => {
     user.fullName,
   ];
 
-  // Replace "Profile" with user's name
+  // Replace "Profile" with user's name dynamically
   const updatedSidebarItems = sidebarItems.map((item) =>
     item.title === "Profile"
       ? { ...item, title: user.fullName || "Profile" }
       : item
   );
 
-  // Filter for mobile
+  // Filter items for mobile view
   const filteredItems = isMobile
     ? updatedSidebarItems.filter((item) =>
         mobileVisibleTitles.includes(item.title)
       )
     : updatedSidebarItems;
+
+  // Handle clicks for special actions (logout, create, profile)
+  const handleItemClick = (item) => {
+    if (item.action === "logout") {
+      dispatch(userReset());
+      navigate("/");
+    }
+    if (item.title === "Create") setShow(true);
+    if (item.title === user.fullName) setPpage(true);
+  };
 
   return (
     <div
@@ -44,6 +59,7 @@ const Sidebar = ({ isMobile, setShow, setPpage }) => {
           : "min-h-screen w-max border-r border-gray-500"
       }`}
     >
+      {/* Logo for desktop */}
       {!isMobile && (
         <img
           className="hidden sm:block w-[70px] h-[70px]"
@@ -57,22 +73,34 @@ const Sidebar = ({ isMobile, setShow, setPpage }) => {
           isMobile ? "flex flex-row w-full justify-between items-center" : ""
         }`}
       >
-        {filteredItems.map((item) => (
-          <Link
-            to={item.Link}
-            key={item.id}
-            onClick={() => {
-              if (item.title === "Create") setShow(true);
-              if (item.title === user.fullName) setPpage(true);
-            }}
-            className={`flex items-center md:justify-center lg:justify-start gap-3 py-3 px-2 my-2 text-[20px] cursor-pointer
-              rounded-md hover:bg-gray-200 duration-100 active:scale-95
-              ${isMobile && "my-!"}`}
-          >
-            {item.icon}
-            <span className="hidden lg:block">{item.title || "Profile"}</span>
-          </Link>
-        ))}
+        {filteredItems.map((item) =>
+          item.Link ? (
+            // Normal Link items
+            <Link
+              to={item.Link}
+              key={item.id}
+              onClick={() => handleItemClick(item)}
+              className={`flex items-center md:justify-center lg:justify-start gap-3 py-3 px-2 my-2 text-[20px] cursor-pointer
+                rounded-md hover:bg-gray-200 duration-100 active:scale-95
+                ${isMobile && "my-!"}`}
+            >
+              {item.icon}
+              <span className="hidden lg:block">{item.title}</span>
+            </Link>
+          ) : (
+            // Action items like Logout
+            <div
+              key={item.id}
+              onClick={() => handleItemClick(item)}
+              className={`flex items-center md:justify-center lg:justify-start gap-3 py-3 px-2 my-2 text-[20px] cursor-pointer
+                rounded-md hover:bg-gray-200 duration-100 active:scale-95
+                ${isMobile && "my-!"}`}
+            >
+              {item.icon}
+              <span className="hidden lg:block">{item.title}</span>
+            </div>
+          )
+        )}
       </ul>
     </div>
   );
