@@ -48,9 +48,11 @@ const Followers = ({ allSuggestions, setAllSuggestion }) => {
           </p>
         </div>
 
-        {allUsers.slice(0, 5).map((item, index) => {
-          return <Fpeoples key={index} {...item} />;
-        })}
+        {Array.isArray(allUsers) &&
+          allUsers
+            .slice(0, 5)
+            .map((item, index) => <Fpeoples key={index} {...item} />)}
+
         {/* <Fpeoples />
         <Fpeoples />
         <Fpeoples />

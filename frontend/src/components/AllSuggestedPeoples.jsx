@@ -21,10 +21,8 @@ const Followers = ({ allSuggestions, setAllSuggestion }) => {
           <div className="flex my-2 justify-center">
             <h4 className="text-gray-500 font-semibold">Suggested for you</h4>
           </div>
-
-          {allUsers?.map((item, index) => {
-            return <Fpeoples {...item} />;
-          })}
+          {Array.isArray(allUsers) &&
+            allUsers.map((item, index) => <Fpeoples key={index} {...item} />)}
         </div>
         <IoClose
           onClick={() => setAllSuggestion(false)}

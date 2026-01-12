@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import sidebarItems from "./Data";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-// import { logout } from "../features/user/userSlice";
-import { userReset } from "../features/users/userSlice";
+import { Signout, userReset } from "../features/users/userSlice";
+import toast from "react-hot-toast";
 
 const Sidebar = ({ isMobile, setShow, setPpage }) => {
   const [user, setUser] = useState({});
@@ -43,8 +43,9 @@ const Sidebar = ({ isMobile, setShow, setPpage }) => {
   // Handle clicks for special actions (logout, create, profile)
   const handleItemClick = (item) => {
     if (item.action === "logout") {
-      dispatch(userReset());
+      dispatch(Signout());
       navigate("/");
+      toast.success("Logout successfully");
     }
     if (item.title === "Create") setShow(true);
     if (item.title === user.fullName) setPpage(true);
