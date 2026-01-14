@@ -53,7 +53,7 @@ const Sidebar = ({ isMobile, setShow, setPpage }) => {
 
   return (
     <div
-      className={`flex flex-col p-4 overflow-hidden bg-white select-none xl:fixed left-0 md:fixed bottom-0 font-semibold
+      className={`flex flex-col p-4 overflow-y-scroll h-[90vh] bg-white select-none xl:fixed left-0 md:fixed bottom-0 font-semibold
       ${
         isMobile
           ? "flex-row justify-around w-full p-2"
@@ -61,13 +61,6 @@ const Sidebar = ({ isMobile, setShow, setPpage }) => {
       }`}
     >
       {/* Logo for desktop */}
-      {!isMobile && (
-        <img
-          className="hidden sm:block w-[70px] h-[70px]"
-          src="https://images.vexels.com/media/users/3/137198/isolated/lists/07f0d7b69ef071571e4ada2f4d6a053a-instagram-icon-colorful.png"
-          alt="Instagram"
-        />
-      )}
 
       <ul
         className={`my-4 ${
