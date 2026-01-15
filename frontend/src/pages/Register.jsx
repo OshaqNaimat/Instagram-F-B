@@ -4,6 +4,7 @@ import { regUser, userReset } from "../features/users/userSlice";
 import toast from "react-hot-toast";
 import { Link, Links, useNavigate } from "react-router-dom";
 import { CircleLoader, ClockLoader, MoonLoader } from "react-spinners";
+import { BsEye, BsEyeSlash } from "react-icons/bs";
 const Register = () => {
   const [formFields, setFormFields] = useState({
     m_mail: "",
@@ -11,6 +12,7 @@ const Register = () => {
     fullName: "",
     profileName: "",
   });
+  const [show, setShow] = useState(false);
 
   const { m_mail, password, fullName, profileName } = formFields;
 
@@ -94,14 +96,22 @@ const Register = () => {
               placeholder="Mobile Number or Email"
               className="w-full  px-3 py-2 border-0 shadow-lg shadow-gray-400 rounded text-sm placeholder-gray-500  focus:outline-blue-500"
             />
-            <input
-              type="password"
-              name="password"
-              value={password}
-              onChange={handleChange}
-              placeholder="Password"
-              className="w-full  px-3 py-2 border-0 shadow-lg shadow-gray-400 rounded text-sm placeholder-gray-500  focus:outline-blue-500"
-            />
+            <div className="relative">
+              <input
+                type={show ? "text" : "password"}
+                name="password"
+                value={password}
+                onChange={handleChange}
+                placeholder="Password"
+                className="w-full  px-3 py-2 border-0 shadow-lg shadow-gray-400 rounded text-sm placeholder-gray-500  focus:outline-blue-500"
+              />
+              <span
+                onClick={() => setShow(!show)}
+                className="absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer text-gray-500"
+              >
+                {show ? <BsEyeSlash /> : <BsEye />}
+              </span>
+            </div>
             <input
               type="text"
               name="fullName"
