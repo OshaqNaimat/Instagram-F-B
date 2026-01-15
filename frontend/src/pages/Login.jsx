@@ -158,7 +158,7 @@ const Login = () => {
               <button
                 onClick={handleLogin}
                 type="submit"
-                className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-1.5 rounded text-sm transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full bg-blue-500 hover:bg-blue-600  text-white font-semibold py-1.5 rounded text-sm transition-colors disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed"
                 disabled={!formData.m_mail || !formData.password}
               >
                 Log in
