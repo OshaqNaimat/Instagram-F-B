@@ -54,9 +54,10 @@ const Sidebar = ({
       toast.success("Logout successfully");
     }
     if (item.title === "Search") {
-      setShowSearch(true);
+      setShowSearch((prev) => !prev);
       return;
     }
+
     if (item.title === "Create") setShow(true);
     if (item.title === user.fullName) setPpage(true);
   };
