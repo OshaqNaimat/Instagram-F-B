@@ -6,8 +6,8 @@ import { GoDotFill } from "react-icons/go";
 import { IoClose } from "react-icons/io5";
 import { useSelector } from "react-redux";
 
-const CommentPreview = ({ user, comments, sabComments, caption, image }) => {
-  const { user: myUser } = useSelector((state) => state.auth);
+const CommentPreview = ({ comments, sabComments, caption, image }) => {
+  const { posts } = useSelector((state) => state.daak);
   return (
     <div className="min-h-screen w-full left-0 flex justify-center items-center fixed top-0 bg-black/50 z-[100]">
       <IoClose
@@ -31,7 +31,9 @@ const CommentPreview = ({ user, comments, sabComments, caption, image }) => {
                   alt=""
                 />
 
-                <h5 className="font-semibold text-sm">{user?.username}</h5>
+                <h5 className="font-semibold text-sm">
+                  {posts?.user_id?.username}
+                </h5>
               </div>
               <GoDotFill className="w-[10px] text-gray-400" />
               <h5 className="text-sm text-blue-500 font-bold">Follow</h5>
