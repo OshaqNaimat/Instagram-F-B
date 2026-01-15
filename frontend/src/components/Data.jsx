@@ -7,7 +7,9 @@ import * as BsIcons from "react-icons/bs";
 import * as FaIcons from "react-icons/fa";
 import { RiShoppingCart2Line } from "react-icons/ri";
 
-import { Link, Links } from "react-router-dom";
+import { Link, Links, useNavigate } from "react-router-dom";
+import { useState } from "react";
+// const [showSearch,setShowSearch] = useState(false)
 // import Link from "react-redux";
 
 let user = JSON.parse(localStorage.getItem("user"));
@@ -24,6 +26,7 @@ export const sidebarItems = [
     id: 2,
     title: "Search",
     icon: <AiIcons.AiOutlineSearch />,
+
     // have to make the Search page
   },
   {

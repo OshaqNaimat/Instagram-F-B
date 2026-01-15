@@ -3,7 +3,7 @@ import { IoClose } from "react-icons/io5";
 import { useSelector } from "react-redux";
 import { Link, Links, Navigate } from "react-router-dom";
 
-const Search = () => {
+const Search = ({ showSearch, setShowSearch }) => {
   const [search, setSearch] = useState("");
   const [searchedUsers, setSearchUsers] = useState([]);
   const [ClickedUser, setClickUsers] = useState({});

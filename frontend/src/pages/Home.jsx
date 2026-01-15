@@ -17,6 +17,7 @@ import Search from "../components/Search";
 const Home = () => {
   const [show, setShow] = useState(false);
   const [allSuggestions, setAllSuggestions] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -41,14 +42,20 @@ const Home = () => {
         allSuggestions={allSuggestions}
         setAllSuggestion={setAllSuggestions}
       />
-      <Search />
+      <Search showSearch={showSearch} setShowSearch={setShowSearch} />
       {/* all comments */}
       {/* </div> */}
       <PostModal show={show} setShow={setShow} />
       <div className="grid grid-cols-4 min-h-screen">
         {/* Sidebar */}
         <div className="hidden md:block md:col-span-1 lg:col-span-1">
-          <Sidebar show={show} setShow={setShow} isMobile={false} />
+          <Sidebar
+            show={show}
+            setShow={setShow}
+            isMobile={false}
+            showSearch={showSearch}
+            setShowSearch={setShowSearch}
+          />
         </div>
 
         {/* Posts */}

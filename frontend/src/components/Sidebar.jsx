@@ -5,7 +5,13 @@ import { useDispatch } from "react-redux";
 import { Signout, userReset } from "../features/users/userSlice";
 import toast from "react-hot-toast";
 
-const Sidebar = ({ isMobile, setShow, setPpage }) => {
+const Sidebar = ({
+  isMobile,
+  setShow,
+  setPpage,
+  showSearch,
+  setShowSearch,
+}) => {
   const [user, setUser] = useState({});
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -46,6 +52,10 @@ const Sidebar = ({ isMobile, setShow, setPpage }) => {
       dispatch(Signout());
       navigate("/");
       toast.success("Logout successfully");
+    }
+    if (item.title === "Search") {
+      setShowSearch(true);
+      return;
     }
     if (item.title === "Create") setShow(true);
     if (item.title === user.fullName) setPpage(true);
