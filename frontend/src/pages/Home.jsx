@@ -12,6 +12,7 @@ import ProfilePage from "./ProfilePage";
 import AllSuggestedPeoples from "../components/AllSuggestedPeoples";
 import PostSkeleton from "../components/PostSkeleton";
 import CommentPopUp from "../components/CommentPopUp";
+import Search from "../components/Search";
 
 const Home = () => {
   const [show, setShow] = useState(false);
@@ -40,6 +41,7 @@ const Home = () => {
         allSuggestions={allSuggestions}
         setAllSuggestion={setAllSuggestions}
       />
+      <Search />
       {/* all comments */}
       {/* </div> */}
       <PostModal show={show} setShow={setShow} />
