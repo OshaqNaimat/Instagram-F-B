@@ -70,7 +70,12 @@ const Posts = ({
   return (
     <>
       {allComments && (
-        <CommentPopUp user={user_id} comments={comment} show={setAllComments} />
+        <CommentPopUp
+          user={user_id}
+          comments={comments}
+          setAllComments={setComments}
+          sabComments={setAllComments}
+        />
       )}
       <div className="container rounded-md mb-10  shadow-lg w-[80%] mt-10 mx-auto relative select-none overflow-hidden">
         <div className="flex justify-between p-2 items-center">
@@ -210,11 +215,12 @@ const Posts = ({
             onClick={handleComment}
             disabled={comments.trim() === "" || commentLoading}
             className={`font-semibold px-1 transition
-      ${
-        comments.trim() === "" || commentLoading
-          ? "text-gray-400 cursor-not-allowed"
-          : "text-cyan-500 hover:text-cyan-700"
-      }`}
+        ${
+          comments.trim() === "" || commentLoading
+            ? "text-gray-400 cursor-not-allowed"
+            : "text-cyan-500 hover:text-cyan-700"
+        }
+        `}
           >
             {commentLoading ? (
               <ClockLoader color="blue" size={20} />

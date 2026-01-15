@@ -43,7 +43,7 @@ const PostModal = ({ show, setShow }) => {
   };
 
   useEffect(() => {
-    console.log(range);
+    // console.log(range);
   }, [range]);
 
   const dispatch = useDispatch();

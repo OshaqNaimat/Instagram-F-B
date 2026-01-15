@@ -28,7 +28,7 @@ export default function SellProductForm() {
     e.preventDefault();
 
     // In real app: upload image + data to backend or Firebase
-    console.log("Product posted:", form);
+    // console.log("Product posted:", form);
 
     alert("✅ Product posted successfully!");
   };

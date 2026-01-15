@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Fpeoples = ({ username, fullName, _id }) => {
   const { allUsers } = useSelector((state) => state.auth);
-  console.log(allUsers);
+
   return (
     <>
       <Link

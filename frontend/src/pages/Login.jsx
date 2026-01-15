@@ -67,17 +67,17 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Login attempt:", formData);
+    // console.log("Login attempt:", formData);
     // Handle login logic here
   };
 
   const handleFacebookLogin = () => {
-    console.log("Facebook login clicked");
+    // console.log("Facebook login clicked");
     // Handle Facebook login logic
   };
 
   const handleSignUp = () => {
-    console.log("Redirect to signup");
+    // console.log("Redirect to signup");
     // Handle signup navigation
   };
 

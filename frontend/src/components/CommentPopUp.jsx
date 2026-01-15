@@ -1,276 +1,115 @@
-import React, { useState, useRef, useEffect } from "react";
-import { toast } from "react-hot-toast";
-
-import {
-  X,
-  Heart,
-  Send,
-  MoreVertical,
-  Verified,
-  MessageCircle,
-} from "lucide-react";
+import moment from "moment";
+import React from "react";
+import { BsChat, BsThreeDots } from "react-icons/bs";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
+import { GoDotFill } from "react-icons/go";
+import { IoClose } from "react-icons/io5";
 import { useSelector } from "react-redux";
-import { IoIosSend } from "react-icons/io";
-import ClockLoader from "react-spinners/ClockLoader";
 
-// Mock data
-const currentUser = {
-  id: "user1",
-  username: "current_user",
-  avatar: "https://i.pravatar.cc/150?img=1",
-};
-
-const CommentPopUp = ({ user, comment, show }) => {
-  const [comments, setComments] = useState([]);
-  const [Pcomment, setPcomment] = useState("");
-  const [newComment, setNewComment] = useState("");
-  const [isLiked, setIsLiked] = useState(false);
-  const [likesCount, setLikesCount] = useState(1500);
-  const commentsEndRef = useRef(null);
-
-  const { commentLoading } = useSelector((state) => state.daak);
-
-  useEffect(() => {
-    commentsEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [comments]);
-
-  // const handleSubmitComment = (e) => {
-  //   e.preventDefault();
-  //   if (!newComment.trim()) return;
-
-  //   const comment = {
-  //     id: Date.now().toString(),
-  //     userId: currentUser.id,
-  //     username: currentUser.username,
-  //     avatar: currentUser.avatar,
-  //     comment: newComment,
-  //     timestamp: "Just now",
-  //     likes: 0,
-  //     isLiked: false,
-  //   };
-
-  //   setComments([...comments, comment]);
-  //   setNewComment("");
-  // };
-
-  const handleLikeComment = (commentId) => {
-    setComments(
-      Pcomment.map((comment) =>
-        comment.id === commentId
-          ? {
-              ...comment,
-              likes: comment.isLiked ? comment.likes - 1 : comment.likes + 1,
-              isLiked: !comment.isLiked,
-            }
-          : comment
-      )
-    );
-  };
-
-  const handleLikePost = () => {
-    setIsLiked(!isLiked);
-    setLikesCount((prev) => (isLiked ? prev - 1 : prev + 1));
-  };
-
-  const formatLikes = (num) => {
-    if (num >= 1000000) return `${(num / 1000000).toFixed(1)}M`;
-    if (num >= 1000) return `${(num / 1000).toFixed(1)}K`;
-    return num.toString();
-  };
-  const handleComment = () => {
-    const commentData = {
-      post_id: _id,
-      user_id: user_id._id,
-      comments,
-    };
-
-    dispatch(addCommentData(commentData));
-    toast.success("Comment Added");
-    setComments("");
-  };
-
-  // const handleClose = () => {
-  //   setAllComments(false);
-  // };
+const CommentPreview = ({ user, comments, sabComments, caption, image }) => {
+  const { user: myUser } = useSelector((state) => state.auth);
   return (
-    <div>
-      <div
-        className={`bg-black/50 min-h-screen w-full left-0 fixed top-0 z-100  `}
-      >
-        <X
-          onClick={() => show(false)}
-          size={30}
-          className="fixed right-8 top-5 shadow-xl  text-white cursor-pointer hover:scale-110 transition duration-100"
-        />
-        <div className="flex bg-white w-[60%] h-[500px] mt-10 m-auto rounded-md shadow-xl">
-          {/* Left side - Video/Image */}
-          <div className="w-[35%] border-r">
-            <div className="relative h-full">
-              {/* Post header */}
-
-              {/* Video/Image placeholder */}
-              <div className="h-full object-contain flex items-center justify-center ">
-                <img
-                  src="https://www.pixelstalk.net/wp-content/uploads/images6/Portrait-Wallpaper-HD-Free-download.jpg "
-                  className="h-full w-full object-"
-                  alt=""
-                />
-              </div>
-
-              {/* Action buttons below video */}
-              <div className="absolute bottom-0 left-0 right-0 p-4">
-                <div className="flex items-center justify-between">
-                  <img src="" alt="" />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Right side - Comments */}
-          <div className="w-[65%] flex flex-col">
-            <div className="flex items-center justify-between p-4 border-gray-300 border-b">
+    <div className="min-h-screen w-full left-0 flex justify-center items-center fixed top-0 bg-black/50 z-[100]">
+      <IoClose
+        onClick={() => sabComments(false)}
+        className="fixed right-5 top-5 cursor-pointer hover:scale-105 transition text-white text-2xl"
+      />
+      <div className="flex h-[90vh] w-2/3">
+        {/* post */}
+        <div className="h-[100%] w-1/2 bg-black">
+          <img className="w-full h-full object-cover" src={image} alt="" />
+        </div>
+        {/* comment section */}
+        {/* main user section */}
+        <div className=" w-1/2 bg-white p-2">
+          <div className="flex sticky top-0 border border-gray-300 border-t-0 border-e-0 border-s-0 justify-between w-full items-center ">
+            <div className="flex items-center gap-2 p-2">
               <div className="flex items-center gap-3">
                 <img
-                  src="https://i.pravatar.cc/150?img=8"
-                  alt="User"
-                  className="w-8 h-8 rounded-full"
+                  className="w-10 h-10 rounded-full"
+                  src="https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png"
+                  alt=""
                 />
-                <div>
-                  <div className="flex items-center gap-1">
-                    <span className="font-semibold">{user?.username} .</span>
-                    <p className="text-blue-500 font-bold hover:underline cursor-pointer ">
-                      Follow
-                    </p>
-                  </div>
-                  <span className="text-sm text-gray-500">
-                    {user?.fullName}
-                  </span>
-                </div>
+
+                <h5 className="font-semibold text-sm">{user?.username}</h5>
               </div>
-              <button className="p-2 hover:bg-gray-100 rounded-full">
-                <MoreVertical className="w-5 h-5 text-gray-600" />
-              </button>
+              <GoDotFill className="w-[10px] text-gray-400" />
+              <h5 className="text-sm text-blue-500 font-bold">Follow</h5>
+              <p className="text-gray-400 text-sm"></p>
+            </div>
+            <BsThreeDots />
+          </div>
+          <div className="p-2 h-full">
+            <div className="flex gap-2">
+              <div className="flex items-start gap-2 ">
+                {caption && (
+                  <div className="flex items-start gap-3">
+                    <img
+                      className="w-10 h-10 rounded-full"
+                      src="https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png"
+                      alt=""
+                    />
+                    <div className="">
+                      <h5 className="font-semibold text-sm">
+                        {user?.username}
+                      </h5>
+
+                      <p className="text-gray-500 text-sm">{caption}</p>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
 
-            {/* Comments list */}
-            <div className="flex-1 overflow-y-auto p-4">
-              {comments.length === 0 ? (
-                <div className="flex flex-col items-center justify-center h-full text-gray-500">
-                  <MessageCircle className="w-12 h-12 mb-4" />
-                  <p>No comments yet</p>
-                  <p className="text-sm">Be the first to comment!</p>
-                </div>
-              ) : (
-                <div className="space-y-4">
-                  {comments?.map((comment) => (
-                    <div key={comment.id} className="flex gap-3">
-                      <img
-                        src={comment.avatar}
-                        alt={comment.username}
-                        className="w-8 h-8 rounded-full flex-shrink-0"
-                      />
-                      <div className="flex-1">
-                        <div className="flex items-center gap-2 mb-1">
-                          <span className="font-semibold text-sm">
-                            {user?.username}
-                          </span>
-                          <span className="text-xs text-gray-500">
-                            {comment.timestamp}
-                          </span>
-                        </div>
-                        <p className="text-sm mb-2">{comment?.comment}</p>
-                        <div className="flex items-center gap-4">
-                          <button
-                            onClick={() => handleLikeComment(comment.id)}
-                            className={`flex items-center gap-1 text-xs ${
-                              comment.isLiked ? "text-red-500" : "text-gray-500"
-                            }`}
-                          >
-                            <Heart
-                              className={`w-3 h-3 ${
-                                comment.isLiked ? "fill-red-500" : ""
-                              }`}
-                            />
-                            {comment.likes > 0 && comment.likes}
-                          </button>
-                          <button className="text-xs text-gray-500">
-                            Reply
-                          </button>
+            {/* comments list */}
+
+            {comments.length > 0 ? (
+              <>
+                {comments?.map((item, index) => {
+                  return (
+                    <div className="flex items-center my-2 justify-between">
+                      <div className="flex gap-2">
+                        <img
+                          src="https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png"
+                          className="w-[40px] h-[40px] rounded-full border border-gray-200"
+                          alt=""
+                        />
+                        <div className="">
+                          <h6 className="text-sm font-semibold">
+                            {item?.userName}{" "}
+                            <span className="text-sm text-gray-500 font-[400]">
+                              {item?.comment}
+                            </span>
+                          </h6>
+                          <div className="flex gap-2">
+                            <p className="text-[0.7rem] text-gray-600">
+                              {moment(item.timestamp).fromNow()}
+                            </p>
+                            <p className="text-[0.7rem] text-gray-600">Likes</p>
+                            <p className="text-[0.7rem] text-gray-600">
+                              Answer
+                            </p>
+                          </div>
                         </div>
                       </div>
+                      <FaRegHeart className="text-[0.6rem]" />
                     </div>
-                  ))}
-                  <div ref={commentsEndRef} />
-                </div>
-              )}
-            </div>
-
-            {/* Comment input */}
-            {/* <div className="border-t p-4">
-              <form
-                onSubmit={handleSubmitComment}
-                className="flex items-center gap-3"
-              >
-                <img
-                  src={currentUser.avatar}
-                  alt={currentUser.username}
-                  className="w-8 h-8 rounded-full"
-                />
-                <div className="flex-1 relative">
-                  <input
-                    type="text"
-                    value={newComment}
-                    onChange={(e) => setNewComment(e.target.value)}
-                    placeholder="Add a comment..."
-                    className="w-full px-4 py-2 border rounded-full focus:outline-none focus:border-blue-500 text-sm"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  disabled={!newComment.trim()}
-                  className={`font-semibold text-sm ${
-                    newComment.trim()
-                      ? "text-blue-500 hover:text-blue-600"
-                      : "text-blue-300 cursor-not-allowed"
-                  }`}
-                >
-                  Post
-                </button>
-              </form>
-            </div> */}
-            <div className="flex items-center p-2 rounded-md">
-              <input
-                value={Pcomment}
-                onChange={(e) => setComments(e.target.value)}
-                type="text"
-                placeholder="Add a comment..."
-                className="border border-gray-100 w-full py-2 rounded-md
-               focus:outline-none focus:ring-1 focus:ring-cyan-200 focus:border-cyan-200
-               transition"
-              />
-
-              <button
-                onClick={handleComment}
-                disabled={Pcomment.trim() === "" || commentLoading}
-                className={`font-semibold px-1 transition
-      ${
-        Pcomment.trim() === "" || commentLoading
-          ? "text-gray-400 cursor-not-allowed"
-          : "text-cyan-500 hover:text-cyan-700"
-      }`}
-              >
-                {commentLoading ? (
-                  <ClockLoader color="blue" size={20} />
-                ) : (
-                  <IoIosSend size={25} />
-                )}
-              </button>
-            </div>
+                  );
+                })}
+              </>
+            ) : (
+              <div className="flex flex-col h-[80%] text-gray-800 justify-center items-center">
+                <BsChat className="text-9xl" />
+                <h2 className="text-3xl font-bold">No Comment</h2>
+              </div>
+            )}
           </div>
         </div>
+
+        {/* comments list */}
       </div>
     </div>
   );
 };
 
-export default CommentPopUp;
+export default CommentPreview;
