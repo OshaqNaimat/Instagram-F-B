@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { LoginUser, userReset } from "../features/users/userSlice";
 import toast from "react-hot-toast";
+import { BsEye } from "react-icons/bs";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -135,7 +136,7 @@ const Login = () => {
                   required
                 />
               </div>
-              <div>
+              <div className="flex items-center gap-2">
                 <input
                   type="password"
                   name="password"
@@ -144,6 +145,10 @@ const Login = () => {
                   onChange={handleChange}
                   className="w-full px-3 py-2 bg-gray-50 border-0 outline-0 shadow-lg shadow-gray-300  rounded text-sm placeholder-gray-500 focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400"
                   required
+                />
+                <BsEye
+                  size={40}
+                  className="bg-gray-50 outline-0 shadow-gray-500 py-2 px-3"
                 />
               </div>
               <button
