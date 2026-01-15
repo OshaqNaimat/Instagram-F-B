@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { IoClose } from "react-icons/io5";
 import { useSelector } from "react-redux";
-import { Navigate } from "react-router-dom";
+import { Link, Links, Navigate } from "react-router-dom";
 
 const Search = () => {
   const [search, setSearch] = useState("");
   const [searchedUsers, setSearchUsers] = useState([]);
-  const { allUsers } = useSelector((state) => state.auth);
+  const [ClickedUser, setClickUsers] = useState({});
+
+  const { allUsers, user } = useSelector((state) => state.auth);
 
   useEffect(() => {
     let foundData = allUsers.filter((item, index) => {
@@ -42,21 +44,11 @@ const Search = () => {
             <IoClose />
             {/* {show ? <BsEyeSlash /> : <BsEye />} */}
           </span>
-          <div
-            onClick={Navigate(`profile/${user_id}`)}
-            className="overflow-y-auto flex-1 pr-1 "
-          >
+          <div className="overflow-y-auto flex-1 pr-1 ">
             {searchedUsers.map((item) => (
               <div
-                onClick={() => {
-                  setClickUsers(item),
-                    dispatch(
-                      getMessageData({
-                        sender_id: user?._id,
-                        receiver_id: item?._id,
-                      })
-                    );
-                }}
+                // to={`/profile/${ClickedUser?._id}`}
+                onClick={() => setClickUsers(item)}
                 key={item.id}
                 className="flex  items-center gap-2 cursor-pointer hover:bg-gray-200 rounded-md p-2"
               >
@@ -66,7 +58,7 @@ const Search = () => {
                   alt=""
                 />
 
-                <div>
+                <Link to={`/profile/${item?._id}`}>
                   {item.username
                     ?.split(new RegExp(`(${search})`, "gi"))
                     .map((part, index) =>
@@ -81,7 +73,7 @@ const Search = () => {
                         <span key={index}>{part}</span>
                       )
                     )}
-                </div>
+                </Link>
               </div>
             ))}
           </div>
