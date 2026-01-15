@@ -55,6 +55,7 @@ const Sidebar = ({
     }
     if (item.title === "Search") {
       setShowSearch((prev) => !prev);
+
       return;
     }
 
