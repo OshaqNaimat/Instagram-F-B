@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { IoClose } from "react-icons/io5";
+import { useSelector } from "react-redux";
 
 const [search, setSearch] = useState("");
+const [searchedUsers, setSearchUsers] = useState([]);
+const { allUsers } = useSelector((state) => state.auth);
 
 const Search = () => {
   return (
