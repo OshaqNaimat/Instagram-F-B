@@ -12,7 +12,7 @@ const CommentPreview = ({ user, comments, sabComments, caption, image }) => {
     <div className="min-h-screen w-full left-0 flex justify-center items-center fixed top-0 bg-black/50 z-[100]">
       <IoClose
         onClick={() => sabComments(false)}
-        className="fixed right-5 top-5 cursor-pointer hover:scale-105 transition text-white text-2xl"
+        className="fixed right-5 top-5 text-white hover:scale-105 transition cursor-pointer text-2xl"
       />
       <div className="flex h-[90vh] w-2/3">
         {/* post */}

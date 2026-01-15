@@ -71,7 +71,7 @@ const Posts = ({
     <>
       {allComments && (
         <CommentPopUp
-          user={user_id}
+          userid={user_id}
           comments={comments}
           setAllComments={setComments}
           sabComments={setAllComments}
