@@ -3,9 +3,9 @@ import { IoClose } from "react-icons/io5";
 
 const Search = () => {
   return (
-    <div>
-      <div className="fixed left-13  top-0 z-100">
-        <h3 className="font-bold text-3xl">Search</h3>
+    <div className="bg-white h-screen p-5 rounded-md w-[30%] fixed left-13 z-100 shadow-xl shadow-gray-300">
+      <div className="">
+        <h3 className="font-bold text-3xl mb-5">Search</h3>
 
         <div className="relative">
           <input
