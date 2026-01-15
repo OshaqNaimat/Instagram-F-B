@@ -4,13 +4,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { LoginUser, userReset } from "../features/users/userSlice";
 import toast from "react-hot-toast";
-import { BsEye } from "react-icons/bs";
+import { BsEye, BsEyeSlash } from "react-icons/bs";
 
 const Login = () => {
   const [formData, setFormData] = useState({
     m_mail: "",
     password: "",
   });
+  const [show, setShow] = useState(false);
+
   const dispatch = useDispatch();
   const {
     m_mail,
@@ -136,20 +138,22 @@ const Login = () => {
                   required
                 />
               </div>
-              <div className="flex items-center gap-2">
+              <div className="relative">
                 <input
-                  type="password"
+                  type={show ? "text" : "password"}
                   name="password"
                   placeholder="Password"
                   value={formData.password}
                   onChange={handleChange}
-                  className="w-full px-3 py-2 bg-gray-50 border-0 outline-0 shadow-lg shadow-gray-300  rounded text-sm placeholder-gray-500 focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400"
-                  required
+                  className="w-full px-3 py-2 pr-12 bg-gray-50 shadow-lg shadow-gray-300 rounded text-sm outline-none"
                 />
-                <BsEye
-                  size={40}
-                  className="bg-gray-50 outline-0 shadow-gray-500 py-2 px-3"
-                />
+
+                <span
+                  onClick={() => setShow(!show)}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer text-gray-500"
+                >
+                  {show ? <BsEyeSlash /> : <BsEye />}
+                </span>
               </div>
               <button
                 onClick={handleLogin}
