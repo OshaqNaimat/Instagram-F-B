@@ -152,7 +152,7 @@ const Login = () => {
                   onClick={() => setShow(!show)}
                   className="absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer text-gray-500"
                 >
-                  {show ? <BsEyeSlash /> : <BsEye />}
+                  {show ? <BsEye /> : <BsEyeSlash />}
                 </span>
               </div>
               <button
