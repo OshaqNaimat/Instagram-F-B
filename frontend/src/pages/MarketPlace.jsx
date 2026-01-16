@@ -674,8 +674,7 @@ const MarketPlace = () => {
                   <span className="font-semibold">Return to Instagram</span>
                 </div>
                 <div className="flex items-center justify-center">
-                  <span className="text-2xl">🛍️</span>
-                  <h1 className="text-2xl font-bold ml-2">
+                  <h1 className="text-2xl  font-bold ml-3">
                     Shop<span className="text-blue-600">Easy</span>
                   </h1>
                 </div>
