@@ -45,10 +45,10 @@ const Search = ({ showSearch, setShowSearch }) => {
               <IoClose />
               {/* {show ? <BsEyeSlash /> : <BsEye />} */}
             </span>
-            <div className="overflow-y-auto flex-1 pr-1 ">
+            <div className="overflow-y-scroll h-[90vh] mt-2 flex-1 pr-1 ">
               {searchedUsers.map((item) => (
-                <div
-                  // to={`/profile/${ClickedUser?._id}`}
+                <Link
+                  to={`/profile/${item?._id}`}
                   onClick={() => setClickUsers(item)}
                   key={item.id}
                   className="flex  items-center gap-2 cursor-pointer hover:bg-gray-200 rounded-md p-2"
@@ -59,7 +59,7 @@ const Search = ({ showSearch, setShowSearch }) => {
                     alt=""
                   />
 
-                  <Link to={`/profile/${item?._id}`}>
+                  <div>
                     {item.username
                       ?.split(new RegExp(`(${search})`, "gi"))
                       .map((part, index) =>
@@ -74,8 +74,8 @@ const Search = ({ showSearch, setShowSearch }) => {
                           <span key={index}>{part}</span>
                         )
                       )}
-                  </Link>
-                </div>
+                  </div>
+                </Link>
               ))}
             </div>
           </div>
