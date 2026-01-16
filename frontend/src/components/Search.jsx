@@ -33,17 +33,16 @@ const Search = ({ showSearch, setShowSearch }) => {
               type="text"
               //   name="password"
               placeholder="Search"
-              // value={search}
+              value={search}
               onChange={(e) => setSearch(e.target.value)}
               className="w-full relative px-3 py-2 pr-12 bg-gray-50 shadow-lg shadow-gray-300 rounded text-sm outline-none"
             />
 
             <span
-              //   onClick={() => setShow(!show)}
+              onClick={() => setSearch("")}
               className="absolute right-8 top-[15%]    cursor-pointer text-gray-500"
             >
               <IoClose />
-              {/* {show ? <BsEyeSlash /> : <BsEye />} */}
             </span>
             <div className="overflow-y-scroll h-[90vh] mt-2 flex-1 pr-1 ">
               {searchedUsers.map((item) => (

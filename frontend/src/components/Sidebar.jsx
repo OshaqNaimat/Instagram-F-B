@@ -60,7 +60,7 @@ const Sidebar = ({
 
   return (
     <div
-      className={`flex flex-col p-4 overflow-y-scroll h-[80vh] bg-white select-none xl:fixed left-0 md:fixed bottom-0 font-semibold
+      className={`flex flex-col p-4 overflow-y-scroll h-[80vh] bg-white select-none xl:fixed left-0  md:fixed bottom-0 font-semibold
       ${
         isMobile
           ? "flex-row justify-around w-full p-2"
