@@ -1,7 +1,12 @@
 import React from "react";
 import Skeleton from "react-loading-skeleton";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import Fpeoples from "./Fpeoples";
 
 const PostSkeleton = () => {
+  const { allUsers, user } = useSelector((state) => state.auth);
+
   return (
     <div className="container rounded-md shadow-lg w-[40%] mt-10 mx-auto relative select-none overflow-hidden">
       <div className="flex justify-between p-2 items-center">
@@ -47,6 +52,8 @@ const PostSkeleton = () => {
           <Skeleton width={30} />
         </p>
       </div>
+
+      {/* follow page */}
     </div>
   );
 };
