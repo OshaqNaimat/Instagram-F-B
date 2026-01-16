@@ -13,6 +13,7 @@ import AllSuggestedPeoples from "../components/AllSuggestedPeoples";
 import PostSkeleton from "../components/PostSkeleton";
 import CommentPopUp from "../components/CommentPopUp";
 import Search from "../components/Search";
+import FollowersSkeleton from "../components/FollowersSkeleton";
 
 const Home = () => {
   const [show, setShow] = useState(false);
@@ -30,7 +31,12 @@ const Home = () => {
 
   if (postLoading) {
     return [...Array(5)].map((_, index) => {
-      return <PostSkeleton key={index} />;
+      return (
+        <>
+          <PostSkeleton key={index} />
+          <FollowersSkeleton key={index} />
+        </>
+      );
     });
   }
 
