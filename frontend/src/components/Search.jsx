@@ -28,19 +28,19 @@ const Search = ({ showSearch, setShowSearch }) => {
         <div className="">
           <h3 className="font-bold text-3xl mb-5">Search</h3>
 
-          <div className="relative">
+          <div className="">
             <input
               type="text"
               //   name="password"
               placeholder="Search"
               // value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full px-3 py-2 pr-12 bg-gray-50 shadow-lg shadow-gray-300 rounded text-sm outline-none"
+              className="w-full relative px-3 py-2 pr-12 bg-gray-50 shadow-lg shadow-gray-300 rounded text-sm outline-none"
             />
 
             <span
               //   onClick={() => setShow(!show)}
-              className="absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer text-gray-500"
+              className="absolute right-8 top-[15%]    cursor-pointer text-gray-500"
             >
               <IoClose />
               {/* {show ? <BsEyeSlash /> : <BsEye />} */}
