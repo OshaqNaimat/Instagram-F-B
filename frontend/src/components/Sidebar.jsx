@@ -16,13 +16,11 @@ const Sidebar = ({
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // Load user from localStorage reactively
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem("user")) || {};
     setUser(storedUser);
   }, []);
 
-  // Titles allowed on mobile
   const mobileVisibleTitles = [
     "Home",
     "Explore",
@@ -32,21 +30,18 @@ const Sidebar = ({
     user.fullName,
   ];
 
-  // Replace "Profile" with user's name dynamically
   const updatedSidebarItems = sidebarItems.map((item) =>
     item.title === "Profile"
       ? { ...item, title: user.fullName || "Profile" }
       : item
   );
 
-  // Filter items for mobile view
   const filteredItems = isMobile
     ? updatedSidebarItems.filter((item) =>
         mobileVisibleTitles.includes(item.title)
       )
     : updatedSidebarItems;
 
-  // Handle clicks for special actions (logout, create, profile)
   const handleItemClick = (item) => {
     if (item.action === "logout") {
       dispatch(Signout());
@@ -65,28 +60,25 @@ const Sidebar = ({
 
   return (
     <div
-      className={`flex flex-col p-4 overflow-y-scroll h-[90vh] bg-white select-none xl:fixed left-0 md:fixed bottom-0 font-semibold
+      className={`flex flex-col p-4 overflow-y-scroll h-[80vh] bg-white select-none xl:fixed left-0 md:fixed bottom-0 font-semibold
       ${
         isMobile
           ? "flex-row justify-around w-full p-2"
           : "min-h-screen w-max border-r border-gray-500"
       }`}
     >
-      {/* Logo for desktop */}
-
       <ul
-        className={`my-4 ${
+        className={`my-2 ${
           isMobile ? "flex flex-row w-full justify-between items-center" : ""
         }`}
       >
         {filteredItems.map((item) =>
           item.Link ? (
-            // Normal Link items
             <Link
               to={item.Link}
               key={item.id}
               onClick={() => handleItemClick(item)}
-              className={`flex items-center md:justify-center lg:justify-start gap-3 py-3 px-2 my-2 text-[20px] cursor-pointer
+              className={`flex items-center md:justify-center lg:justify-start gap-3 py-3 px-2 my-1 text-[20px] cursor-pointer
                 rounded-md hover:bg-gray-200 duration-100 active:scale-95
                 ${isMobile && "my-!"}`}
             >
@@ -94,7 +86,6 @@ const Sidebar = ({
               <span className="hidden lg:block">{item.title}</span>
             </Link>
           ) : (
-            // Action items like Logout
             <div
               key={item.id}
               onClick={() => handleItemClick(item)}
