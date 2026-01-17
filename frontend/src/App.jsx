@@ -33,69 +33,16 @@ const App = () => {
         {/* Public routes */}
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
-
-        {/* Protected routes */}
-        <Route
-          path="/home"
-          element={
-            <ProtectedRoute>
-              <Home />
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
-          path="/profile/:user_id"
-          element={
-            <ProtectedRoute>
-              <ProfilePage />
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
-          path="/message"
-          element={
-            <ProtectedRoute>
-              <Messages />
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
-          path="/explore"
-          element={
-            <ProtectedRoute>
-              <ExploreSection />
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
-          path="/reels"
-          element={
-            <ProtectedRoute>
-              <Reels />
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
-          path="/marketplace"
-          element={
-            <ProtectedRoute>
-              <MarketPlace />
-            </ProtectedRoute>
-          }
-        />
-
+        <Route path="/home" element={<Home />} />
+        <Route path="/profile/:user_id" element={<ProfilePage />} />
+        <Route path="/message" element={<Messages />} />
+        <Route path="/explore" element={<ExploreSection />} />
+        <Route path="/reels" element={<Reels />} />
+        <Route path="/reels" element={<Reels />} />
+        <Route path="/marketplace" element={<MarketPlace />} />
         <Route
           path="/video-call/:caller_id/:receiver_id"
-          element={
-            <ProtectedRoute>
-              <VideoCallZego />
-            </ProtectedRoute>
-          }
+          element={<VideoCallZego />}
         />
       </Routes>
     </Router>
