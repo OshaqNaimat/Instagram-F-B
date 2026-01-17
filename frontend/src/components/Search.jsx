@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { IoClose } from "react-icons/io5";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, Links, Navigate } from "react-router-dom";
+import { getAllUsers } from "../features/users/userSlice";
 
 const Search = ({ showSearch, setShowSearch }) => {
   const [search, setSearch] = useState("");
@@ -10,10 +11,18 @@ const Search = ({ showSearch, setShowSearch }) => {
 
   const { allUsers, user } = useSelector((state) => state.auth);
 
+  const dispatch = useDispatch();
   useEffect(() => {
-    let foundData = allUsers.filter((item, index) => {
-      return item.username.toLowerCase().startsWith(search.toLowerCase());
-    });
+    dispatch(getAllUsers());
+  }, []);
+
+  useEffect(() => {
+    let foundData;
+    if (allUsers.length > 0) {
+      foundData = allUsers?.filter((item, index) => {
+        return item.username.toLowerCase().startsWith(search.toLowerCase());
+      });
+    }
 
     if (search) {
       setSearchUsers(foundData);
@@ -71,7 +80,7 @@ const Search = ({ showSearch, setShowSearch }) => {
                           </span>
                         ) : (
                           <span key={index}>{part}</span>
-                        )
+                        ),
                       )}
                   </div>
                 </Link>
