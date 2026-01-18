@@ -363,15 +363,15 @@ const MarketPlace = () => {
       {/* Overlay */}
       {isCartOpen && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-40"
+          className="fixed inset-0 bg-black/50 z-40"
           onClick={() => setIsCartOpen(false)}
         />
       )}
 
       {/* Cart */}
       <div
-        className={`fixed top-0 right-0 h-full w-full sm:w-96 bg-white z-50 transition-transform duration-300 ${
-          isCartOpen ? "translate-x-0" : "translate-x-full"
+        className={`fixed top-0 right-1/2 -translate-x-1/2 h-full w-full sm:w-96 bg-white z-50 transition-transform duration-300 ${
+          isCartOpen ? "translate-x-1/2" : "translate-x-full"
         }`}
       >
         <div className="h-full flex flex-col">
