@@ -228,7 +228,7 @@ const MarketPlace = () => {
         return prevCart.map((item) =>
           item.id === product.id
             ? { ...item, quantity: item.quantity + 1 }
-            : item
+            : item,
         );
       }
       return [...prevCart, { ...product, quantity: 1 }];
@@ -246,14 +246,14 @@ const MarketPlace = () => {
     }
     setCart((prevCart) =>
       prevCart.map((item) =>
-        item.id === productId ? { ...item, quantity } : item
-      )
+        item.id === productId ? { ...item, quantity } : item,
+      ),
     );
   };
 
   const cartTotal = cart.reduce(
     (total, item) => total + item.price * item.quantity,
-    0
+    0,
   );
   const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
 
@@ -482,11 +482,6 @@ const MarketPlace = () => {
               <div className="space-y-3">
                 <button
                   onClick={() => {
-                    alert(
-                      `Order placed! Total: $${(
-                        cartTotal + (cartTotal > 50 ? 0 : 5.99)
-                      ).toFixed(2)}`
-                    );
                     setCart([]);
                     setIsCartOpen(false);
                   }}
