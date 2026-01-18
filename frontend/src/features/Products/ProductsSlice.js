@@ -14,11 +14,7 @@ const initialState = {
 
 
 export const sellProduct = createAsyncThunk('products',async(userData,thunkAPI)=>{
-    try {
-        const response = await axios
-    } catch (error) {
-        
-    }
+   
 })
 
 
@@ -33,7 +29,7 @@ export const productSlice = createSlice({
         }
     },
     extraReducers:(builder)=>{
-        builder
+        
         
     }
 })
