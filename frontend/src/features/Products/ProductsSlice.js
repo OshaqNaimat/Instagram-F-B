@@ -1,5 +1,6 @@
 import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
 import { userReset } from "../users/userSlice";
+import axios from "axios";
 
 // havr to include the user in local storage
 
@@ -7,12 +8,17 @@ const initialState = {
     product:[],
     productLoading:false,
     productError:false,
-    productSuccess:false
+    productSuccess:false,
+    productMessage:""
 }
 
 
 export const sellProduct = createAsyncThunk('products',async(userData,thunkAPI)=>{
-    
+    try {
+        const response = await axios
+    } catch (error) {
+        
+    }
 })
 
 
