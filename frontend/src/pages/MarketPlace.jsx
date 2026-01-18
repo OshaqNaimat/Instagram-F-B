@@ -370,8 +370,8 @@ const MarketPlace = () => {
 
       {/* Cart */}
       <div
-        className={`fixed top-0 right-1/2 -translate-x-1/2 h-full w-full sm:w-96 bg-white z-50 transition-transform duration-300 ${
-          isCartOpen ? "translate-x-1/2" : "translate-x-full"
+        className={`fixed top-0 right-0 h-full w-full sm:w-96 bg-white z-50 transition-transform duration-300 ${
+          isCartOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
         <div className="h-full flex flex-col">
@@ -482,6 +482,11 @@ const MarketPlace = () => {
               <div className="space-y-3">
                 <button
                   onClick={() => {
+                    // alert(
+                    //   `Order placed! Total: $${(
+                    //     cartTotal + (cartTotal > 50 ? 0 : 5.99)
+                    //   ).toFixed(2)}`,
+                    // );
                     setCart([]);
                     setIsCartOpen(false);
                   }}
