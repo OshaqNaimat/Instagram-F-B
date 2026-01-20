@@ -61,10 +61,11 @@ const Register = () => {
             {/* <h1 className="text-3xl font-instagram font-semibold tracking-tight">
               Instagram
             </h1> */}
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1280px-Instagram_logo.svg.png"
+            {/* <img
+              // src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1280px-Instagram_logo.svg.png"
               alt=""
-            />
+            /> */}
+            <h3 className="text-6xl font-bold">𝓟𝓲𝔁𝓮𝓵𝓪</h3>
           </div>
 
           {/* Sign up text */}
