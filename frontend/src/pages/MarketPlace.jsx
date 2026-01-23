@@ -671,7 +671,7 @@ const MarketPlace = () => {
                       size={30}
                     />
                   </Link>
-                  <span className="font-semibold">Return to Instagram</span>
+                  <span className="font-semibold">Return to 𝓟𝓲𝔁𝓮𝓵𝓪</span>
                 </div>
                 <div className="flex items-center justify-center">
                   <h1 className="text-2xl  font-bold ml-3">

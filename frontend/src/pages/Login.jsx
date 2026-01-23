@@ -45,18 +45,17 @@ const Login = () => {
     dispatch(userReset());
   }, [userError, userSuccess, Authenticated]);
   const screenshots = [
-    "https://www.instagram.com/static/images/homepage/screenshots/screenshot1.png/fdfe239b7c9f.png",
-    "https://www.instagram.com/static/images/homepage/screenshots/screenshot2.png/4d62acb667fb.png",
+    // "https://www.instagram.com/static/images/homepage/screenshots/screenshot2.png/4d62acb667fb.png",
     "https://www.instagram.com/static/images/homepage/screenshots/screenshot3.png/94edb770accf.png",
-    "https://www.instagram.com/static/images/homepage/screenshots/screenshot4.png/a4fd825e3d49.png",
+    // "https://www.instagram.com/static/images/homepage/screenshots/screenshot4.png/a4fd825e3d49.png",
   ];
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentScreenshot((prev) => (prev + 1) % screenshots.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setCurrentScreenshot((prev) => (prev + 1) % screenshots.length);
+  //   }, 4000);
+  //   return () => clearInterval(interval);
+  // }, []);
 
   const handleChange = (e) => {
     setFormData({
@@ -118,11 +117,12 @@ const Login = () => {
           <div className="bg-white border-0 shadow-lg shadow-gray-500 rounded-lg p-8 mb-4">
             {/* Instagram Logo */}
             <div className="flex justify-center mb-8">
-              <img
+              {/* <img
                 src="https://www.instagram.com/static/images/web/logged_out_wordmark.png/7a252de00b20.png"
                 alt="Instagram"
                 className="h-12"
-              />
+              /> */}
+              <span className="text-7xl font-bold">𝓟𝓲𝔁𝓮𝓵𝓪</span>
             </div>
 
             {/* Login Form */}
