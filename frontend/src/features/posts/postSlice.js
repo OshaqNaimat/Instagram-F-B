@@ -15,7 +15,8 @@ const initialState = {
   likesError:false,
   likesSucces:false,
   likesMessage:"",
-  myPost:[]
+  myPost:[],
+  allcomments:[]
 };
 
 export const addDaak = createAsyncThunk(
@@ -110,6 +111,20 @@ export const postSlice = createSlice({
       state.postSuccess = true;
       state.postLoading = false;
       state.posts = action.payload;
+    });
+    builder.addCase(commentGet.pending, (state, action) => {
+      state.commentLoading = true;
+    });
+    builder.addCase(commentGet.rejected, (state, action) => {
+      state.commentLoading = false;
+      state.commentError = true;
+      state.commentMessage = action.payload;
+      state.allcomments = [];
+    });
+    builder.addCase(commentGet.fulfilled, (state, action) => {
+      state.commentSuccess = true;
+      state.comemntLoading = false;
+      state.allcomments = action.payload;
     });
     builder.addCase(addCommentData.pending, (state,action)=>{
       state.commentLoading = true
