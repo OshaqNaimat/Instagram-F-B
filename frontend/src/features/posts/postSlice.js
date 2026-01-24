@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import axios, { Axios } from "axios";
 import { addLikes } from "../../../../backend/controller/PostController";
 const initialState = {
   posts: [],
@@ -43,6 +43,15 @@ export const getDaak = createAsyncThunk("get-daaks", async (_, thunkapi) => {
     return thunkapi.rejectWithValue(error.response.data.error);
   }
 });
+
+export const commentGet = createAsyncThunk('getComments',async(userComment,thunkapi)=>{
+  try {
+    const response = await axios.get("http://localhost:5000/api/posts/get-comments",userComment)
+    return response.data
+  } catch (error) {
+    return thunkapi.rejectWithValue(error.response.data.error)
+  }
+})
 
 export const addCommentData = createAsyncThunk("add-comment",async(CommentData,thunkApi)=>{
   try {
