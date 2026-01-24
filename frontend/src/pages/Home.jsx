@@ -7,7 +7,7 @@ import Stories from "../components/Stories";
 import Hmessages from "../components/Hmessages";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getDaak } from "../features/posts/postSlice";
+import { commentGet, getDaak } from "../features/posts/postSlice";
 import ProfilePage from "./ProfilePage";
 import AllSuggestedPeoples from "../components/AllSuggestedPeoples";
 import PostSkeleton from "../components/PostSkeleton";
@@ -24,6 +24,7 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(getDaak());
+    dispatch(commentGet());
   }, []);
 
   const { posts, postLoading, postError, postSuccess, postMessage } =

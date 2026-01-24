@@ -8,7 +8,7 @@ import { filters } from "../Data/Filters";
 import axios from "axios";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addDaak, getDaak } from "../features/posts/postSlice";
+import { addDaak, commentGet, getDaak } from "../features/posts/postSlice";
 import ClipLoader from "react-spinners/ClipLoader";
 
 const PostModal = ({ show, setShow }) => {
@@ -29,7 +29,7 @@ const PostModal = ({ show, setShow }) => {
     data.append("upload_preset", "instagram");
     let response = await axios.post(
       "http://api.cloudinary.com/v1_1/daaqun6yh/image/upload",
-      data
+      data,
     );
     setImageLoading(false);
     return response.data.url;
@@ -48,7 +48,7 @@ const PostModal = ({ show, setShow }) => {
 
   const dispatch = useDispatch();
   const { postLoading, postSuccess, postError, postMessage } = useSelector(
-    (state) => state.daak
+    (state) => state.daak,
   );
 
   const { user } = useSelector((state) => state.auth);
@@ -65,6 +65,7 @@ const PostModal = ({ show, setShow }) => {
     dispatch(addDaak(postData));
     setShow(false);
     dispatch(getDaak());
+    dispatch(commentGet());
     // setCaption("");
     // setImage(null);
     // setImagePreview(null);
