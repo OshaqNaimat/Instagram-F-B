@@ -6,7 +6,7 @@ import { IoHeartOutline } from "react-icons/io5";
 
 const ExploreSection = () => {
   const [show, setShow] = useState(false);
-  const posts = useSelector((state) => state.daak.posts);
+  const { posts, likes } = useSelector((state) => state.daak);
   const postsArray = Object.values(posts || []);
 
   return (
@@ -41,11 +41,11 @@ const ExploreSection = () => {
               {/* Icons centered */}
               <div className="flex items-center gap-2 text-white text-lg font-bold">
                 <IoHeartOutline />
-                <span>{post?.likes || 0}</span>
+                <span>{likes}</span>
               </div>
               <div className="flex items-center gap-2 text-white text-lg font-bold">
                 <FaRegComment />
-                <span>{post?.comments || 0}</span>
+                <span>{post?.comments}</span>
               </div>
             </div>
           </div>
