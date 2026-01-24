@@ -13,7 +13,9 @@ import ClipLoader from "react-spinners/ClipLoader";
 
 const PostModal = ({ show, setShow }) => {
   const [imagePreview, setImagePreview] = useState(null);
+  const [videoPreview, setVideoPreview] = useState(null);
   const [image, setImage] = useState(null);
+  const [video, setVideo] = useState(null);
   const [zoomin, setZoomIn] = useState(false);
   const [range, setRange] = useState(100);
   const [thirdScreen, setThirdScreen] = useState(false);
