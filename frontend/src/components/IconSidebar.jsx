@@ -13,7 +13,9 @@ const IconSidebar = () => {
     <>
       <div className="flex flex-col border-r border-gray-300 gap-6 items-center min-h-screen">
         <Link to={"/home"}>
-          <span className="text-2xl font-semibold cursor-pointer">𝓟𝓲𝔁𝓮𝓵𝓪</span>
+          <span className="lg:text-xl md:text-[1rem] font-semibold cursor-pointer">
+            𝓟𝓲𝔁𝓮𝓵𝓪
+          </span>
         </Link>
         <Link to="/Home" className="">
           <IoIosHome
