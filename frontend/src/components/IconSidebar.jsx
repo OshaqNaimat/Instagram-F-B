@@ -1,34 +1,33 @@
 import React from "react";
-import { BiMoviePlay } from "react-icons/bi";
+import { BiLogOut, BiMoviePlay } from "react-icons/bi";
 import { FaRegPlusSquare } from "react-icons/fa";
 import { FaFacebookMessenger, FaRegHeart } from "react-icons/fa6";
 import { IoIosHome, IoMdSearch } from "react-icons/io";
 import { IoList, IoPersonCircleOutline } from "react-icons/io5";
 import { MdOutlineExplore } from "react-icons/md";
 import { Link, Links } from "react-router-dom";
+let user = JSON.parse(localStorage.getItem("user"));
 
 const IconSidebar = () => {
   return (
     <>
       <div className="flex flex-col border-r border-gray-300 gap-4 items-center min-h-screen">
-        <img
-          className="cursor-pointer"
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1280px-Instagram_logo.svg.png"
-          alt=""
-        />
+        <Link to={"/home"}>
+          <span className="text-2xl font-semibold cursor-pointer">𝓟𝓲𝔁𝓮𝓵𝓪</span>
+        </Link>
         <Link to="/Home" className="">
           <IoIosHome
             size={50}
             className="cursor-pointer hover:scale-105 transition hover:bg-gray-300 rounded-md p-3"
           />
         </Link>
-        <Link to="/search" className="">
+        <Link className="">
           <IoMdSearch
             size={50}
             className="cursor-pointer hover:scale-105 transition hover:bg-gray-300 rounded-md p-3"
           />
         </Link>
-        <Link to="/explore" className="">
+        <Link to="/Explore" className="">
           <MdOutlineExplore
             size={50}
             className="cursor-pointer hover:scale-105 transition hover:bg-gray-300 rounded-md p-3"
@@ -58,17 +57,17 @@ const IconSidebar = () => {
             className="cursor-pointer hover:scale-105 transition hover:bg-gray-300 rounded-md p-3"
           />
         </Link> */}
-        <Link to="/profile" className="">
+        <Link to={`/profile/${user?._id}`} className="">
           <IoPersonCircleOutline
             size={50}
             className="cursor-pointer hover:scale-105 transition hover:bg-gray-300 rounded-md p-3"
           />
         </Link>
 
-        <IoList
+        {/* <biLogOut
           size={50}
           className="cursor-pointer hover:scale-105 transition hover:bg-gray-300 rounded-md p-3"
-        />
+        /> */}
       </div>
     </>
   );
