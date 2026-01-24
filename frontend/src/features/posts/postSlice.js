@@ -80,9 +80,9 @@ export const getRelaventPosts = createAsyncThunk("get-posts",async(user_id,thunk
         return thunkapi.rejectWithValue(error.response.data)
   }
 })
-export const getRelaventComments = createAsyncThunk('get-comments',async(user_id,thunkapi)=>{
+export const getRelaventComments = createAsyncThunk('get-comments',async(id_user,thunkapi)=>{
   try {
-    const response = await axios.get(`http://localhost:5000/api/posts/get-my-comments/${user_id}`)
+    const response = await axios.get(`http://localhost:5000/api/posts/get-my-comments/${id_user}`)
     return response.data
 
   } catch (error) {
@@ -181,28 +181,28 @@ export const postSlice = createSlice({
       state.postLoading = true
     })
     builder.addCase(getRelaventPosts.rejected,(state,action)=>{
-      state.postLoading = false,
-      state.postError = true,
+      state.postLoading = false;
+      state.postError = true;
       state.postMessage = action.payload
     })
     builder.addCase(getRelaventPosts.fulfilled,(state,action)=>{
-      state.postLoading = false,
-      state.postError = false,
-      state.postSuccess = true,
+      state.postLoading = false;
+      state.postError = false;
+      state.postSuccess = true;
       state.myPost = action.payload
     })
     builder.addCase(getRelaventComments.pending,(state,action)=>{
-      state.commentLoading = true
+      state.commentLoading = true;
     })
     builder.addCase(getRelaventComments.rejected,(state,action)=>{
-      state.commentLoading = false,
-      state.commentError = true,
+      state.commentLoading = false;
+      state.commentError = true;
       state.commentMessage = action.payload
     })
     builder.addCase(getRelaventComments.fulfilled,(state,action)=>{
-      state.commentLoading = false,
-      state.commentError = false,
-      state.commentSuccess = true,
+      state.commentLoading = false;
+      state.commentError = false;
+      state.commentSuccess = true;
       state.mycomments =  action.payload
     })
   },
