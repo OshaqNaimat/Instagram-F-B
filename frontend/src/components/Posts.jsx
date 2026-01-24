@@ -9,7 +9,11 @@ import { FiBookmark } from "react-icons/fi";
 import moment from "moment";
 import ClockLoader from "react-spinners/ClockLoader";
 import { useDispatch, useSelector } from "react-redux";
-import { addCommentData, addLikeData } from "../features/posts/postSlice";
+import {
+  addCommentData,
+  addLikeData,
+  getRelaventComments,
+} from "../features/posts/postSlice";
 import { toast } from "react-hot-toast";
 import { addLikes } from "../../../backend/controller/PostController";
 import { motion, AnimatePresence } from "framer-motion";
@@ -43,6 +47,7 @@ const Posts = ({
     };
 
     dispatch(addCommentData(commentData));
+    dispatch(getRelaventComments());
     toast.success("Comment Added");
     setComments("");
   };
@@ -213,7 +218,7 @@ const Posts = ({
 
           <button
             onClick={handleComment}
-            disabled={comments.trim() === "" || commentLoading}
+            // disabled={comments.trim() === "" || commentLoading}
             className={`font-semibold px-1 transition
         ${
           comments.trim() === "" || commentLoading

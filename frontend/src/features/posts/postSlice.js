@@ -16,6 +16,7 @@ const initialState = {
   likesSucces:false,
   likesMessage:"",
   myPost:[],
+  mycomments:[],
   allcomments:[]
 };
 
@@ -140,14 +141,14 @@ export const postSlice = createSlice({
       state.commentLoading = true
     })
     builder.addCase(addCommentData.rejected,(state,action)=>{
-      state.commentLoading = false,
-      state.commentError = true,cs
-      state.commentMessage = action.paylaod
+      state.commentLoading = false;
+      state.commentError = true;
+      state.commentMessage = action.payload
     })
     builder.addCase(addCommentData.fulfilled, (state,action)=>{
-      state.commentLoading = false,
-      state.commentError = false,
-      state.commentSucces = true,
+      state.commentLoading = false;
+      state.commentError = false;
+      state.commentSucces = true;
       state.posts = state.posts.map((item,index)=>{
         if(item._id == action.payload._id){
           item.comment = action.payload.comment 
@@ -202,7 +203,7 @@ export const postSlice = createSlice({
       state.commentLoading = false,
       state.commentError = false,
       state.commentSuccess = true,
-      state.allcomments =  action.payload
+      state.mycomments =  action.payload
     })
   },
 });
