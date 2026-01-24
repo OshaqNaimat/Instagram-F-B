@@ -11,7 +11,7 @@ let user = JSON.parse(localStorage.getItem("user"));
 const IconSidebar = () => {
   return (
     <>
-      <div className="flex flex-col border-r border-gray-300 gap-4 items-center min-h-screen">
+      <div className="flex flex-col border-r border-gray-300 gap-6 items-center min-h-screen">
         <Link to={"/home"}>
           <span className="text-2xl font-semibold cursor-pointer">𝓟𝓲𝔁𝓮𝓵𝓪</span>
         </Link>
