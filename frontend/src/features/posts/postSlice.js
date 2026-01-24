@@ -79,6 +79,14 @@ export const getRelaventPosts = createAsyncThunk("get-posts",async(user_id,thunk
         return thunkapi.rejectWithValue(error.response.data)
   }
 })
+export const getRelaventComments = createAsyncThunk('get-comments',async(user_id,thunkapi)=>{
+  try {
+    const response = await axios.get(`http://localhost:5000/api/posts/get-my-comments/${user_id}`)
+  } catch (error) {
+        return thunkapi.rejectWithValue(error.response.data)
+    
+  }
+})
 
 export const postSlice = createSlice({
   name: "daak",
