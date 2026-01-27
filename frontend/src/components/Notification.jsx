@@ -61,20 +61,22 @@ const notifications = {
   ],
 };
 
-const ActionButton = ({ type, showNotify, setShowNotify }) => {
-  if (type === "following")
+const ActionButton = ({ type }) => {
+  if (type === "following") {
     return (
       <button className="px-4 py-1 text-sm bg-gray-800 text-white rounded-lg">
         Following
       </button>
     );
+  }
 
-  if (type === "follow_back")
+  if (type === "follow_back") {
     return (
       <button className="px-4 py-1 text-sm bg-blue-500 hover:bg-blue-600 text-white rounded-lg">
         Follow Back
       </button>
     );
+  }
 
   return (
     <button className="px-4 py-1 text-sm bg-blue-500 hover:bg-blue-600 text-white rounded-lg">
@@ -83,27 +85,30 @@ const ActionButton = ({ type, showNotify, setShowNotify }) => {
   );
 };
 
-const NotificationItem = ({ item, showNotify, setShowNotify }) => (
-  <div className="flex items-center justify-between gap-3 py-3">
-    <div className="flex items-center gap-3">
-      <img
-        src={
-          item.avatar ||
-          "https://cdn-icons-png.flaticon.com/256/12225/12225935.png"
-        }
-        alt=""
-        className="w-10 h-10 rounded-full object-cover"
-      />
-      <div className="text-sm text-white">
-        <span className="font-semibold">{item.username}</span>{" "}
-        {item.name && <span className="text-gray-300">({item.name})</span>}{" "}
-        {item.text} <span className="text-gray-400">{item.time}</span>
-      </div>
-    </div>
+const NotificationItem = ({ item }) => {
+  return (
+    <div className="flex items-center justify-between gap-3 py-3">
+      <div className="flex items-center gap-3">
+        <img
+          src={
+            item.avatar ||
+            "https://cdn-icons-png.flaticon.com/256/12225/12225935.png"
+          }
+          alt=""
+          className="w-10 h-10 rounded-full object-cover"
+        />
 
-    <ActionButton type={item.action} />
-  </div>
-);
+        <div className="text-sm text-white">
+          <span className="font-semibold">{item.username}</span>{" "}
+          {item.name && <span className="text-gray-300">({item.name})</span>}{" "}
+          {item.text} <span className="text-gray-400">{item.time}</span>
+        </div>
+      </div>
+
+      <ActionButton type={item.action} />
+    </div>
+  );
+};
 
 const Notifications = () => {
   return (
@@ -119,7 +124,6 @@ const Notifications = () => {
 
         {/* Content */}
         <div className="overflow-y-auto h-full px-4 pb-6">
-          {/* This Week */}
           <h3 className="text-sm font-semibold mt-4 mb-2 text-gray-300">
             This week
           </h3>
@@ -129,7 +133,6 @@ const Notifications = () => {
 
           <div className="border-b border-gray-800 my-4" />
 
-          {/* This Month */}
           <h3 className="text-sm font-semibold mb-2 text-gray-300">
             This month
           </h3>
