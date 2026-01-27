@@ -61,7 +61,7 @@ const notifications = {
   ],
 };
 
-const ActionButton = ({ type }) => {
+const ActionButton = ({ type, showNotify, setShowNotify }) => {
   if (type === "following")
     return (
       <button className="px-4 py-1 text-sm bg-gray-800 text-white rounded-lg">
@@ -83,7 +83,7 @@ const ActionButton = ({ type }) => {
   );
 };
 
-const NotificationItem = ({ item }) => (
+const NotificationItem = ({ item, showNotify, setShowNotify }) => (
   <div className="flex items-center justify-between gap-3 py-3">
     <div className="flex items-center gap-3">
       <img
