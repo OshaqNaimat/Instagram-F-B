@@ -1,4 +1,5 @@
 import React from "react";
+import { IoClose } from "react-icons/io5";
 
 const notifications = {
   week: [
@@ -62,21 +63,21 @@ const notifications = {
 };
 
 const ActionButton = ({ type }) => {
-  if (type === "following") {
-    return (
-      <button className="px-4 py-1 text-sm bg-gray-800 text-white rounded-lg">
-        Following
-      </button>
-    );
-  }
+  //   if (type === "following") {
+  //     return (
+  //       <button className="px-4 py-1 text-sm bg-gray-800 text-white rounded-lg">
+  //         Following
+  //       </button>
+  //     );
+  //   }
 
-  if (type === "follow_back") {
-    return (
-      <button className="px-4 py-1 text-sm bg-blue-500 hover:bg-blue-600 text-white rounded-lg">
-        Follow Back
-      </button>
-    );
-  }
+  //   if (type === "follow_back") {
+  //     return (
+  //       <button className="px-4 py-1 text-sm bg-blue-500 hover:bg-blue-600 text-white rounded-lg">
+  //         Follow Back
+  //       </button>
+  //     );
+  //   }
 
   return (
     <button className="px-4 py-1 text-sm bg-blue-500 hover:bg-blue-600 text-white rounded-lg">
@@ -110,15 +111,19 @@ const NotificationItem = ({ item }) => {
   );
 };
 
-const Notifications = () => {
+const Notifications = ({ setShowNotify }) => {
   return (
     <div className="fixed inset-0 bg-black/80 flex justify-center items-center z-50">
       <div className="w-full max-w-md bg-black text-white rounded-xl shadow-xl h-[90vh] overflow-hidden">
         {/* Header */}
         <div className="flex justify-between items-center px-4 py-3 border-b border-gray-800">
           <h2 className="text-lg font-semibold">Notifications</h2>
-          <button className="text-gray-400 text-2xl hover:text-white">
-            &times;
+          <button
+            onClick={() => setShowNotify(false)}
+            className="text-gray-400 cursor-pointer hover:scale-105 transition text-2xl hover:text-white"
+          >
+            {/* &times; */}
+            <IoClose />
           </button>
         </div>
 
