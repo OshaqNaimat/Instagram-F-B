@@ -11,6 +11,7 @@ const Sidebar = ({
   setPpage,
   showSearch,
   setShowSearch,
+  setShowNotify,
 }) => {
   const [user, setUser] = useState({});
   const dispatch = useDispatch();
@@ -33,12 +34,12 @@ const Sidebar = ({
   const updatedSidebarItems = sidebarItems.map((item) =>
     item.title === "Profile"
       ? { ...item, title: user.fullName || "Profile" }
-      : item
+      : item,
   );
 
   const filteredItems = isMobile
     ? updatedSidebarItems.filter((item) =>
-        mobileVisibleTitles.includes(item.title)
+        mobileVisibleTitles.includes(item.title),
       )
     : updatedSidebarItems;
 
@@ -50,6 +51,11 @@ const Sidebar = ({
     }
     if (item.title === "Search") {
       setShowSearch((prev) => !prev);
+
+      return;
+    }
+    if (item.title === "Notifications") {
+      setShowNotify((prev) => !prev);
 
       return;
     }
@@ -96,7 +102,7 @@ const Sidebar = ({
               {item.icon}
               <span className="hidden lg:block">{item.title}</span>
             </div>
-          )
+          ),
         )}
       </ul>
     </div>

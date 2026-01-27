@@ -64,6 +64,7 @@ const Home = () => {
             isMobile={false}
             showSearch={showSearch}
             setShowSearch={setShowSearch}
+            setShowNotify={setShowNotify}
           />
         </div>
 
