@@ -19,7 +19,7 @@ const Home = () => {
   const [show, setShow] = useState(false);
   const [allSuggestions, setAllSuggestions] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
-
+  const [showNotify, setShowNotify] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
