@@ -14,6 +14,7 @@ import PostSkeleton from "../components/PostSkeleton";
 import CommentPopUp from "../components/CommentPopUp";
 import Search from "../components/Search";
 import FollowersSkeleton from "../components/FollowersSkeleton";
+import Notifications from "../components/Notification";
 
 const Home = () => {
   const [show, setShow] = useState(false);
@@ -50,6 +51,7 @@ const Home = () => {
         setAllSuggestion={setAllSuggestions}
       />
       <Search showSearch={showSearch} setShowSearch={setShowSearch} />
+      <Notifications showNotify={showNotify} setShowNotify={setShowNotify} />
       {/* all comments */}
       {/* </div> */}
       <PostModal show={show} setShow={setShow} />
