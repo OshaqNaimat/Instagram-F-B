@@ -120,7 +120,7 @@ const Notifications = ({ setShowNotify }) => {
           <h2 className="text-lg font-semibold">Notifications</h2>
           <button
             onClick={() => setShowNotify(false)}
-            className="text-gray-400 cursor-pointer hover:scale-105 transition text-2xl hover:text-white"
+            className="text-gray-300 cursor-pointer hover:scale-105 transition text-2xl hover:text-white"
           >
             {/* &times; */}
             <IoClose />
