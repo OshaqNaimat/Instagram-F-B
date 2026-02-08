@@ -21,6 +21,7 @@ const Home = () => {
   const [allSuggestions, setAllSuggestions] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const [showNotify, setShowNotify] = useState(false);
+  const [NotificationClose, setNotificationClose] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -51,7 +52,12 @@ const Home = () => {
         setAllSuggestion={setAllSuggestions}
       />
       <Search showSearch={showSearch} setShowSearch={setShowSearch} />
-      <Notifications showNotify={showNotify} setShowNotify={setShowNotify} />
+      {/* <Notifications
+        setNotificationClose={setNotificationClose}
+        NotificationClose={NotificationClose}
+        showNotify={showNotify}
+        setShowNotify={setShowNotify}
+      /> */}
       {/* all comments */}
       {/* </div> */}
       <PostModal show={show} setShow={setShow} />
@@ -59,6 +65,7 @@ const Home = () => {
         {/* Sidebar */}
         <div className="hidden md:block md:col-span-1 lg:col-span-1">
           <Sidebar
+            setNotificationClose={setNotificationClose}
             show={show}
             setShow={setShow}
             isMobile={false}

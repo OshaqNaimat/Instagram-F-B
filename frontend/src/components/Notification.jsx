@@ -7,7 +7,7 @@ const notifications = {
       id: 1,
       username: "ayyan_only",
       name: "Ayyan ONLY ✨",
-      avatar: "https://via.placeholder.com/40",
+      avatar: "",
       text: "started following you.",
       time: "3d",
       action: "following",
@@ -18,7 +18,7 @@ const notifications = {
       id: 2,
       username: "muziiiibaloch",
       name: "M.",
-      avatar: "https://via.placeholder.com/40",
+      avatar: "",
       text: "started following you.",
       time: "Jan 08",
       action: "following",
@@ -36,7 +36,7 @@ const notifications = {
       id: 4,
       username: "t7sultan",
       name: "SULTAN ❄️",
-      avatar: "https://via.placeholder.com/40",
+      avatar: "",
       text: "started following you.",
       time: "Jan 01",
       action: "follow_back",
@@ -45,7 +45,7 @@ const notifications = {
       id: 5,
       username: "rashidzardari1",
       name: "RASHID ZARDARI",
-      avatar: "https://via.placeholder.com/40",
+      avatar: "",
       text: "started following you.",
       time: "Dec 29",
       action: "following",
@@ -54,7 +54,7 @@ const notifications = {
       id: 6,
       username: "awais_shah11",
       name: "SyEd AwAiS ShAh 💕",
-      avatar: "https://via.placeholder.com/40",
+      avatar: "",
       text: "started following you.",
       time: "Dec 29",
       action: "follow_back",
@@ -86,7 +86,7 @@ const ActionButton = ({ type }) => {
   );
 };
 
-const NotificationItem = ({ item }) => {
+const NotificationItem = ({ item, setNotificationClose }) => {
   return (
     <div className="flex items-center justify-between gap-3 py-3">
       <div className="flex items-center gap-3">
@@ -111,7 +111,7 @@ const NotificationItem = ({ item }) => {
   );
 };
 
-const Notifications = ({ setShowNotify }) => {
+const Notifications = ({ setShowNotify, setNotificationClose }) => {
   return (
     <div className="fixed inset-0 bg-black/80 flex justify-center items-center z-50">
       <div className="w-full max-w-md bg-black text-white rounded-xl shadow-xl h-[90vh] overflow-hidden">
@@ -123,7 +123,7 @@ const Notifications = ({ setShowNotify }) => {
             className="text-gray-300 cursor-pointer hover:scale-105 transition text-2xl hover:text-white"
           >
             {/* &times; */}
-            <IoClose />
+            <IoClose onClick={() => setNotificationClose(true)} />
           </button>
         </div>
 
