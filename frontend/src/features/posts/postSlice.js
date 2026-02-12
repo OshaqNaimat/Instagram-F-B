@@ -7,17 +7,17 @@ const initialState = {
   postError: false,
   postMessage: "",
   postLoading: false,
-  commentLoading:false,
-  commentError:false,
-  commentSucces:false,
-  commentMessage:"",
-  likesLoading:false,
-  likesError:false,
-  likesSucces:false,
-  likesMessage:"",
-  myPost:[],
-  mycomments:[],
-  allcomments:[]
+  commentLoading: false,
+  commentError: false,
+  commentSucces: false,
+  commentMessage: "",
+  likesLoading: false,
+  likesError: false,
+  likesSucces: false,
+  likesMessage: "",
+  myPost: [],
+  mycomments: [],
+  allcomments: [],
 };
 
 export const addDaak = createAsyncThunk(
@@ -26,19 +26,19 @@ export const addDaak = createAsyncThunk(
     try {
       const response = await axios.post(
         `http://localhost:5000/api/posts/addPost/${postData.user_id}`,
-        postData
+        postData,
       );
       return response.data;
     } catch (error) {
       return thunkapi.rejectWithValue(error.response.data.error);
     }
-  }
+  },
 );
 
 export const getDaak = createAsyncThunk("get-daaks", async (_, thunkapi) => {
   try {
     const response = await axios.get(
-      "http://localhost:5000/api/posts/get-post"
+      "http://localhost:5000/api/posts/get-post",
     );
     return response.data;
   } catch (error) {
@@ -46,50 +46,75 @@ export const getDaak = createAsyncThunk("get-daaks", async (_, thunkapi) => {
   }
 });
 
-export const commentGet = createAsyncThunk('getComments',async(userComment,thunkapi)=>{
-  try {
-    const response = await axios.get("http://localhost:5000/api/posts/get-comments",userComment)
-    return response.data
-  } catch (error) {
-    return thunkapi.rejectWithValue(error.response.data.error)
-  }
-})
+export const commentGet = createAsyncThunk(
+  "getComments",
+  async (userComment, thunkapi) => {
+    try {
+      const response = await axios.get(
+        "http://localhost:5000/api/posts/get-comments",
+        userComment,
+      );
+      return response.data;
+    } catch (error) {
+      return thunkapi.rejectWithValue(error.response.data.error);
+    }
+  },
+);
 
-export const addCommentData = createAsyncThunk("add-comment",async(CommentData,thunkApi)=>{
-  try {
-    const response = await axios.post(`http://localhost:5000/api/posts/add-comment/${CommentData.post_id}/${CommentData.user_id}`,CommentData)
-    return response.data
-  } catch (error) {
-         return thunkApi.rejectWithValue(error.response.data)    
-  }
-})
+export const addCommentData = createAsyncThunk(
+  "add-comment",
+  async (CommentData, thunkApi) => {
+    try {
+      const response = await axios.post(
+        `http://localhost:5000/api/posts/add-comment/${CommentData.post_id}/${CommentData.user_id}`,
+        CommentData,
+      );
+      return response.data;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.response.data);
+    }
+  },
+);
 
-export const addLikeData = createAsyncThunk("add-likes",async(LikesData,thunkapi)=>{
-  try {
-    const response = await axios.post(`http://localhost:5000/api/posts/add-likes/${LikesData.post_id}/${LikesData.user_id}`)
-    return response.data
-  } catch (error) {
-        return thunkapi.rejectWithValue(error.response.data)
-  }
-})
-export const getRelaventPosts = createAsyncThunk("get-posts",async(user_id,thunkapi)=>{
-  try {
-    const response = await axios.get(`http://localhost:5000/api/posts/get-my-posts/${user_id}`)
-    return response.data
-  } catch (error) {
-        return thunkapi.rejectWithValue(error.response.data)
-  }
-})
-export const getRelaventComments = createAsyncThunk('get-comments',async(id_user,thunkapi)=>{
-  try {
-    const response = await axios.get(`http://localhost:5000/api/posts/get-my-comments/${id_user}`)
-    return response.data
-
-  } catch (error) {
-        return thunkapi.rejectWithValue(error.response.data)
-    
-  }
-})
+export const addLikeData = createAsyncThunk(
+  "add-likes",
+  async (LikesData, thunkapi) => {
+    try {
+      const response = await axios.post(
+        `http://localhost:5000/api/posts/add-likes/${LikesData.post_id}/${LikesData.user_id}`,
+      );
+      return response.data;
+    } catch (error) {
+      return thunkapi.rejectWithValue(error.response.data);
+    }
+  },
+);
+export const getRelaventPosts = createAsyncThunk(
+  "get-posts",
+  async (user_id, thunkapi) => {
+    try {
+      const response = await axios.get(
+        `http://localhost:5000/api/posts/get-my-posts/${user_id}`,
+      );
+      return response.data;
+    } catch (error) {
+      return thunkapi.rejectWithValue(error.response.data);
+    }
+  },
+);
+export const getRelaventComments = createAsyncThunk(
+  "get-comments",
+  async (id_user, thunkapi) => {
+    try {
+      const response = await axios.get(
+        `http://localhost:5000/api/posts/get-my-comments/${id_user}`,
+      );
+      return response.data;
+    } catch (error) {
+      return thunkapi.rejectWithValue(error.response.data);
+    }
+  },
+);
 
 export const postSlice = createSlice({
   name: "daak",
@@ -137,74 +162,74 @@ export const postSlice = createSlice({
       state.comemntLoading = false;
       state.allcomments = action.payload;
     });
-    builder.addCase(addCommentData.pending, (state,action)=>{
-      state.commentLoading = true
-    })
-    builder.addCase(addCommentData.rejected,(state,action)=>{
+    builder.addCase(addCommentData.pending, (state, action) => {
+      state.commentLoading = true;
+    });
+    builder.addCase(addCommentData.rejected, (state, action) => {
       state.commentLoading = false;
       state.commentError = true;
-      state.commentMessage = action.payload
-    })
-    builder.addCase(addCommentData.fulfilled, (state,action)=>{
+      state.commentMessage = action.payload;
+    });
+    builder.addCase(addCommentData.fulfilled, (state, action) => {
       state.commentLoading = false;
       state.commentError = false;
       state.commentSucces = true;
-      state.posts = state.posts.map((item,index)=>{
-        if(item._id == action.payload._id){
-          item.comment = action.payload.comment 
+      state.posts = state.posts.map((item, index) => {
+        if (item._id == action.payload._id) {
+          item.comment = action.payload.comment;
         }
 
-        return item
-      }) 
-    })
-    builder.addCase(addLikeData.pending, (state,action)=>{
-      state.likesLoading = true
-    })
-    builder.addCase(addLikeData.rejected,(state,action)=>{
-      state.likesLoading = false,
-      state.likesError = true,
-      state.likesMessage = action.paylaod
-    })
-    builder.addCase(addLikeData.fulfilled, (state,action)=>{
-      state.likesLoading = false,
-      state.likesError = false,
-      state.likesSucces = true,
-      state.posts = state.posts.map((item,index)=>{
-        if(item._id == action.payload._id){
-          item.likes = action.payload.likes 
-        }
+        return item;
+      });
+    });
+    builder.addCase(addLikeData.pending, (state, action) => {
+      state.likesLoading = true;
+    });
+    builder.addCase(addLikeData.rejected, (state, action) => {
+      ((state.likesLoading = false),
+        (state.likesError = true),
+        (state.likesMessage = action.paylaod));
+    });
+    builder.addCase(addLikeData.fulfilled, (state, action) => {
+      ((state.likesLoading = false),
+        (state.likesError = false),
+        (state.likesSucces = true),
+        (state.posts = state.posts.map((item, index) => {
+          if (item._id == action.payload._id) {
+            item.likes = action.payload.likes;
+          }
 
-        return item
-      }) 
-    })
-    builder.addCase(getRelaventPosts.pending,(state,action)=>{
-      state.postLoading = true
-    })
-    builder.addCase(getRelaventPosts.rejected,(state,action)=>{
+          return item;
+        })));
+    });
+    builder.addCase(getRelaventPosts.pending, (state, action) => {
+      state.postLoading = true;
+    });
+    builder.addCase(getRelaventPosts.rejected, (state, action) => {
       state.postLoading = false;
       state.postError = true;
-      state.postMessage = action.payload
-    })
-    builder.addCase(getRelaventPosts.fulfilled,(state,action)=>{
+      state.postMessage = action.payload;
+    });
+    builder.addCase(getRelaventPosts.fulfilled, (state, action) => {
       state.postLoading = false;
       state.postError = false;
       state.postSuccess = true;
-      state.myPost = action.payload
-    })
-    builder.addCase(getRelaventComments.pending,(state,action)=>{
+      state.myPost = action.payload;
+    });
+    builder.addCase(getRelaventComments.pending, (state, action) => {
       state.commentLoading = true;
-    })
-    builder.addCase(getRelaventComments.rejected,(state,action)=>{
+    });
+    builder.addCase(getRelaventComments.rejected, (state, action) => {
       state.commentLoading = false;
       state.commentError = true;
-      state.commentMessage = action.payload
-    })
-    builder.addCase(getRelaventComments.fulfilled,(state,action)=>{
+      state.commentMessage = action.payload;
+    });
+    builder.addCase(getRelaventComments.fulfilled, (state, action) => {
       state.commentLoading = false;
       state.commentError = false;
       state.commentSuccess = true;
-      state.mycomments =  action.payload
-    })
+      state.mycomments = action.payload;
+    });
   },
 });
 
